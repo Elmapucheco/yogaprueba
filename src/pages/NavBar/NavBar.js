@@ -38,9 +38,9 @@ const NavBar = () => {
           className="icon-container"
         >
           <img src={asana} className="icon" ref={lessonRef} />
-          <p>Classes</p>
+          <p>Practice</p>
           {isOpenLessons && (
-            <div ref={menuLessonRef} className="lessons-dropdown">
+            <div ref={menuLessonRef} className="practice-dropdown">
               <ul>
                 <Link to="/slider/gallery" state={{ images }}>
                   Classes
@@ -64,7 +64,7 @@ const NavBar = () => {
               <ul>
                 <Link to="/favorites">Favorites</Link>
                 <Link to="/poses-list">Poses</Link>
-                <Link to="/program">Yoga Program</Link>
+                <Link to="/program">Program</Link>
                 <Link to="/app-info"> App Info</Link>
               </ul>
             </div>
