@@ -46,7 +46,7 @@ const NavBar = () => {
                   Classes
                 </Link>
                 <Link to="/challengeGallery">Challenge</Link>
-                <Link to="/program">Wellness</Link>
+
                 <Link to="/breathe">Just breath</Link>
               </ul>
             </div>
@@ -64,6 +64,7 @@ const NavBar = () => {
               <ul>
                 <Link to="/favorites">Favorites</Link>
                 <Link to="/poses-list">Poses</Link>
+                <Link to="/program">Yoga Program</Link>
                 <Link to="/app-info"> App Info</Link>
               </ul>
             </div>
