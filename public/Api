@@ -1,0 +1,43 @@
+{"base":"https://yoga-api-nzy4.onrender.com/v1",
+"categories":"https://yoga-api-nzy4.onrender.com/v1/categories",
+"category-by-id":"https://yoga-api-nzy4.onrender.com/v1/categories?id=value", ()
+"category-by-name":"https://yoga-api-nzy4.onrender.com/v1/categories?name=value",
+"category-by-id-level":"https://yoga-api-nzy4.onrender.com/v1/categories?id=value&level=value",
+"poses":"https://yoga-api-nzy4.onrender.com/v1/poses",
+"pose-by-id":"https://yoga-api-nzy4.onrender.com/v1/poses?id=value",
+"pose-by-name":"https://yoga-api-nzy4.onrender.com/v1/poses?name=value",
+"poses-by-level":"https://yoga-api-nzy4.onrender.com/v1/poses?level=beginner"}
+
+      "pose_description":"From a seated position the hands are gripped around[{"id":1,
+
+"category_name":"Core Yoga",
+"category_description":"Engage your abdominal muscles with core yoga poses that build a
+strong and stable center like Boat Pose, Dolphin Pose and Side Plank Pose.",
+"poses":[{"id":1,
+"category_name":"Core Yoga",
+"english_name":"Boat",
+"sanskrit_name_adapted":"Navasana",
+"sanskrit_name":"Nāvāsana",
+"translation_name":"nāva = boat, āsana = posture",
+"pose_description":"From a seated position the feet are lifted up so
+that the thighs are angled about 45-50 degrees relative to the earth.
+
+      "pose_benefits":"Strengthens the abdomen, hip flexors, and spine.  Stimulates the kidneys,
+          thyroid and prostate glands, and intestines.  Helps relieve stress.  Improves digestion.",
+      "url_svg":"https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483071/yoga-api/1_txmirf.svg",
+      "url_png":"https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483071/yoga-api/1_txmirf.png",
+      "url_svg_alt":"https://www.dropbox.com/s/4m64ztxkj8a4dab/boatstraightlegs.svg?raw=1"},
+
+
+      // Usando fetch API para hacer la solicitud GET
+
+fetch('https://yoga-api-nzy4.onrender.com/v1/categories')
+.then(response => response.json())
+.then(data => {
+// data es la lista de categorías obtenidas de la API
+const categoryNames = data.map(category => category.category_name);
+console.log(categoryNames); // Esto mostrará solo los nombres de las categorías
+})
+.catch(error => {
+console.error('Error fetching categories:', error);
+});

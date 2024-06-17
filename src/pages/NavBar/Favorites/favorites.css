@@ -1,0 +1,125 @@
+.favorites-container {
+    text-align: center;
+    background-color: #f9f9f9;
+    
+    padding: 0 0 30px;
+  }
+.favorites-header h1{
+    color: white;
+      font-size:  clamp(0.5rem, 2.8vw + 1rem, 3rem);
+      position: absolute;
+      z-index: 5;
+      left: 50%;
+      top:20%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      z-index: 2;
+  }
+  .favorites-header p{
+    position: absolute;
+    z-index: 4;
+    bottom: 0;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    font-size: 1.2rem;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    left: 50%;
+    transform: translateX(-50%);
+    padding-block: 15px;
+    white-space: nowrap;
+  }
+  .favorites-header img{
+    width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      object-position: center
+  }
+  .favorites-header{
+    position: relative;
+    z-index: 0;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+  .favorites-header::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: hsla(185, 64%, 51%, 1);
+  background: linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
+  background: -moz-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
+  background: -webkit-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", endColorstr="#471069", GradientType=1 );
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    z-index: 1;
+  }
+
+  .favorites-sequence-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .favorites-sequence-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 0.625rem 1.25rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+  }
+  .favorites-check-go{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30%;
+  }
+  .favorites-check-go h2{
+    font-size: 1.1rem;
+    margin-bottom: 0;
+    text-align: center;
+    color: #662572;
+  }
+  .favorites-activo{
+    fill:#662572; 
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    
+  }
+ 
+  .favorites-next-icon{
+    width: 20px;
+    height: 20px;
+    margin:0;
+    display: block;
+  }
+
+  .favorites-breathe{
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 3s ease-in-out forwards 3s;
+  }
+  .favorites-loading{
+    position: absolute;
+    z-index: 2;
+    top: 12%;
+    left: 30%;
+    color: rgb(64, 108, 116);
+    opacity: 0;
+    animation: fadeIn 3s ease-in-out forwards; /* Animación de desvanecimiento durante 3 segundos */
+  }
+  
+  @keyframes fadeIn {
+    from {
+        opacity: 0; /* Opacidad inicial */
+    }
+    to {
+        opacity: 1; /* Opacidad final */
+    }}

@@ -1,0 +1,135 @@
+.container-poselist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; 
+  background-color: white;
+  max-width: 768px;
+  
+  position: relative;
+  z-index: 0;
+  overflow: hidden; /* Esto ayuda a evitar que el contenido se desborde */
+}
+
+.container-poselist::before {
+  content: '';
+  position: fixed; /* Cambiado a fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Asegúrate de que ocupe el alto del viewport */
+  background: hsla(185, 64%, 51%, 1);
+  background: linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
+  background: -moz-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
+  background: -webkit-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#30C5D2", endColorstr="#471069", GradientType=1);
+  z-index: -1; /* Asegúrate de que el pseudo-elemento esté detrás del contenido */
+  pointer-events: none;
+}
+.asana-poselist {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  max-width: 768px; /* Ajusta el ancho máximo del grid */
+  width: 100%; /* Asegura que el grid ocupe todo el ancho disponible */
+  padding: 20px; /* Añade espacio interno al grid si es necesario */
+}
+.asana-poselist a {
+  text-decoration: none;
+  color: rgb(127, 50, 127);
+}
+.poselist-asana-item{
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fdfdfc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+.poselist-asana-item img {
+  padding-top: 3px;
+  width: 80px;
+  height: auto;
+  border-radius: 50%;
+  filter:brightness(120%);
+}
+
+.poselist-asana-item p {
+  font-size: 0.8rem;
+  font-weight:600;
+  text-align: center;
+}
+
+.poselist-asana-item:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in-out; 
+}
+
+/* Media Queries para dispositivos móviles */
+@media (max-width: 768px) {
+  .asana-list {
+    grid-template-columns: repeat(3, 1fr); /* Cambia a 3 columnas */
+    gap: 15px; /* Ajusta el espacio */
+  }
+  
+  .container-list {
+    margin: 20px auto;
+    padding: 10px;
+  }
+  
+  .asana-item {
+    width: 120px;
+    height: 120px;
+    font-size: 16px;
+  }
+  
+  .asana-item img {
+    width: 60px;
+    margin: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .asana-list {
+    grid-template-columns: repeat(2, 1fr); /* Cambia a 2 columnas para pantallas muy pequeñas */
+    gap: 10px; /* Ajusta el espacio */
+  }
+  
+  .asana-item {
+    width: 100px;
+    height: 100px;
+    font-size: 14px;
+  }
+  
+  .asana-item img {
+    width: 50px;
+    margin: 5px;
+  }
+}
+.breathe{
+  position: relative;
+}
+.poses-loading{
+  position: absolute;
+  z-index: 2;
+  top: 12%;
+  left: 30%;
+  color: rgb(64, 108, 116);
+  opacity: 0;
+  animation: fadeIn 3s ease-in-out forwards; /* Animación de desvanecimiento durante 3 segundos */
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0; /* Opacidad inicial */
+  }
+  to {
+      opacity: 1; /* Opacidad final */
+  }}

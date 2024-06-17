@@ -1,0 +1,171 @@
+.sliderInfo-day-iconBack a{
+   color: white;
+    position: absolute;
+    z-index: 4;
+    top: 40%;
+    left:10px;
+  }
+.sliderInfo-day-iconBack a svg{
+    display: block;
+    width: 25px;
+    height: 25px;
+  }
+.sliderInfo-day-iconBack .music-icon{
+  color: white;
+  position: absolute;
+  z-index: 4;
+  right: 15px;
+  top:40%;
+  width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+.sliderInfo-portada h1{
+    color: white;
+    font-size:  clamp(0.5rem, 2.8vw + 1rem, 3rem);
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    top:20%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+  }
+.sliderInfo-portada p{
+    position: absolute;
+    z-index: 4;
+    bottom: 0;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    font-size: 1.2rem;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    padding: 15px 5px;
+}
+  
+  .sliderInfo-portada img{
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+.sliderInfo-portada{
+  position: relative;
+  z-index: 0;
+  
+}
+.sliderInfo-portada::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: hsla(185, 64%, 51%, 1);
+    background: linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
+    background: -moz-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
+    background: -webkit-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", endColorstr="#471069", GradientType=1 );
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+.sliderInfo-day-sequence {
+    font-size: 20px;
+    background-color: white;
+    padding: 10px;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 40px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+.sliderInfo-asana-container{
+  width: 100%;
+  padding: 5px;
+}  
+  .sliderInfo-asana {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px; 
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 10px; 
+  }
+
+  .sliderInfo-asana-img-contenedor{
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    width: 500px;
+  }
+  .sliderInfo-asana-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    filter: brightness(120%);
+    box-shadow: 0 4px 8px rgba(203, 181, 234, 0.8);
+  }
+  
+  .sliderInfo-asana-name {
+    margin-left: 30px;
+  }
+  .sliderInfo-info-icon{
+    width: 30px;
+    height: auto;
+  }
+  .sliderInfo-start-button {
+    align-items: center;
+    background-color: initial;
+    background-image: linear-gradient(rgba(179, 132, 201, .7), rgba(57, 31, 91, 0.7) 50%);
+    border-radius: 42px;
+    border-width: 0;
+    box-shadow: rgba(57, 31, 91, 0.24) 0 2px 2px,rgba(179, 132, 201, 0.4) 0 8px 12px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: flex;
+    font-family: Quicksand,sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    justify-content: center;
+    letter-spacing: .04em;
+    line-height: 1rem;
+    margin: 0;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: rgba(255, 255, 255, 0.4) 0 0 4px,rgba(255, 255, 255, 0.2) 0 0 12px,rgba(57, 31, 91, 0.6) 1px 1px 4px,rgba(57, 31, 91, 0.32) 4px 4px 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: 60%;
+    position: fixed;
+    bottom: 70px;
+    left: 50%;
+    backdrop-filter: blur(5px);
+    text-align: center;
+    transition: transform 0.1s ease;
+    transform: translateX(-50%) scale(1);
+}
+.sliderInfo-start-button:hover, .sliderInfo-start-button:focus {
+    background-image: linear-gradient(#B384C9, #391F5B 50%);
+    transform: translateX(-50%) scale(1.1); 
+}
+.breathe{
+  position: relative;
+}
+.sliderInfo-loading{
+  position: absolute;
+  z-index: 2;
+  top: 12%;
+  left: 30%;
+  color: rgb(64, 108, 116);
+  opacity: 0;
+  animation: fadeIn 3s ease-in-out forwards; /* Animación de desvanecimiento durante 3 segundos */
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0; /* Opacidad inicial */
+  }
+  to {
+      opacity: 1; /* Opacidad final */
+  }
+}

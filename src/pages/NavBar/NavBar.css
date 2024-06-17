@@ -1,0 +1,99 @@
+.NavBar {
+  width: 100%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 -2px 4px rgba(67, 15, 71, 0.1);
+  position: fixed;
+  bottom: 0; 
+  height: 70px; 
+  border-top-left-radius: 5px; 
+  border-top-right-radius: 5px;
+}
+.NavBar a {
+  text-decoration: none;
+  color: rgb(127, 50, 127);
+  text-shadow: 1px 1px 2px rgba(72, 9, 70, 0.1);
+}
+
+.icons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 0.2rem;
+}
+
+.icon-container {
+  position: relative; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+   transition: transform 0.1s ease;
+}
+.icon-container:hover{
+  transform: scale(1.1); 
+}
+.icon-container-link p{
+ color: black;
+}
+.icon-container p {
+  font-size: 0.6rem;
+  padding-top: 2px;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+
+.lessons-dropdown,
+.info-dropdown {
+  position: absolute;
+  z-index: 100;
+  width: 120px;
+  bottom: calc(100% + 10px); /* Posicionado 10px debajo del icono */
+  background-color: #fff;
+  border-radius: 5px;
+  /* padding: 5px; */
+  box-shadow: 0 2px 4px rgba(77, 21, 71, 0.3);
+}
+
+.lessons-dropdown ul,
+.info-dropdown ul{
+  list-style-type: none;
+ 
+}
+
+.lessons-dropdown ul li,
+.info-dropdown ul li{
+  font-size: 0.8rem;
+  padding: 0.5em 0.8em;
+  cursor: pointer;
+  display: block;
+}
+
+.lessons-dropdown ul li:hover,
+.info-dropdown ul li:hover {
+  background-color: #f0f0ff; 
+  transform: none;
+  border-radius: 5px;
+}
+
+.lessons-dropdown ul a,
+.info-dropdown ul a{
+  padding: 0.5em 0.8em;
+  cursor: pointer;
+  display: block;
+  
+}
+
+/* Cambiar color de fondo al hacer hover */
+.lessons-dropdown ul a:hover,
+.info-dropdown ul a:hover {
+  background-color: #f0f0ff; /* Liláceo */
+  transform: none;
+  border-radius: 5px;
+}

@@ -1,0 +1,12 @@
+.section {
+    background-color: white;
+    color: black;
+    width: 80%;
+    height: 80vh; /* Establece la altura al 80% del viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente los elementos */
+    align-items: center; /* Centra horizontalmente los elementos */
+    margin: 0 auto;
+  }
+  

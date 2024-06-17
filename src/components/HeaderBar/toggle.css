@@ -1,0 +1,35 @@
+.container-ans {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    background: #7b2472;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .container-ans.toggled {
+    background: #4caf50; /* Color para el estado activo */
+  }
+  
+  .toggle-container-ans {
+    position: relative;
+    width: 50%;
+    height: 50%;
+  }
+  
+  .toggle-button-ans {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+  }
+  
+  .container-ans.toggled .toggle-button-ans {
+    transform: translateX(20px); 
+  }
+  

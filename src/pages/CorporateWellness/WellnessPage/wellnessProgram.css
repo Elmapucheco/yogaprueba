@@ -1,0 +1,16 @@
+.wellness-program{
+    width: 90%;
+    margin: 0 auto 20px;
+    padding: 20px;
+    overflow: hidden;
+    height: auto;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.wellness-video-container{
+    aspect-ratio: 16 / 9;
+    width: 70%;
+    height: auto;
+    margin-inline: auto;
+}
