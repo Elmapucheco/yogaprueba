@@ -4,12 +4,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./slider.css";
 import { useSliderArray } from "../slider/SliderArrayContext";
+import { useDarkMode } from "../../components/DarkMode";
 
 import { Link } from "react-router-dom";
 
 const SliderComponent = () => {
   const images = useSliderArray();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const { darkMode } = useDarkMode();
   const settings = {
     className: "",
     dots: false,
@@ -19,12 +21,10 @@ const SliderComponent = () => {
     adaptiveHeight: true,
     autoplay: true, // Activar el autoplay
     autoplaySpeed: 3000, // Intervalo de cambio de imagen en milisegundos (por ejemplo, 3000ms = 3 segundos)
-    prevArrow: null, // Ocultar la flecha anterior
-    nextArrow: null, // Ocultar la flecha siguiente
   };
 
   return (
-    <div className="slider-container">
+    <div className={`slider-container ${darkMode ? "dark" : ""}`}>
       <div className="slider-header">
         <h3 className="slider-header-title">Choose your class</h3>
       </div>

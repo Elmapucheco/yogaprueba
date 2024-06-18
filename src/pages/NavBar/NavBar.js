@@ -5,13 +5,18 @@ import asana from "../../assets/asana.png";
 import book from "../../assets/book.png";
 import home from "../../assets/home.png";
 import account from "../../assets/account.png";
-
+import asanadark from "../../assets/asanadark.png";
+import bookdark from "../../assets/bookdark.png";
+import homedark from "../../assets/homedark.png";
+import accountdark from "../../assets/accountdark.png";
+import { useDarkMode } from "../../components/DarkMode";
 import { useSliderArray } from "../slider/SliderArrayContext";
+
 const NavBar = () => {
   const images = useSliderArray();
   const [isOpenLessons, setIsOpenLessons] = useState(false);
   const [isOpenInfo, setIsOpenInfo] = useState(false);
-
+  const { darkMode } = useDarkMode();
   const menuInfoRef = useRef();
   const menuLessonRef = useRef();
   const lessonRef = useRef();
@@ -27,17 +32,21 @@ const NavBar = () => {
     }
   });
   return (
-    <div className="NavBar">
+    <div className={`NavBar ${darkMode ? "dark" : ""}`}>
       <div className="icons">
         <Link to="/" className="icon-container icon-container-link">
-          <img src={home} className="icon" />
+          <img src={darkMode ? homedark : home} className="icon" />
           <p>Home</p>
         </Link>
         <div
           onClick={() => setIsOpenLessons(!isOpenLessons)}
           className="icon-container"
         >
-          <img src={asana} className="icon" ref={lessonRef} />
+          <img
+            src={darkMode ? asanadark : asana}
+            className="icon"
+            ref={lessonRef}
+          />
           <p>Practice</p>
           {isOpenLessons && (
             <div ref={menuLessonRef} className="practice-dropdown">
@@ -57,7 +66,11 @@ const NavBar = () => {
           className="icon-container"
         >
           <div></div>
-          <img src={book} className="icon" ref={infoRef} />
+          <img
+            src={darkMode ? bookdark : book}
+            className="icon"
+            ref={infoRef}
+          />
           <p>Info</p>
           {isOpenInfo && (
             <div ref={menuInfoRef} className="info-dropdown">
@@ -71,7 +84,7 @@ const NavBar = () => {
           )}
         </div>
         <Link to="/login" className="icon-container icon-container-link">
-          <img src={account} className="icon" />
+          <img src={darkMode ? accountdark : account} className="icon" />
           <p>Log In</p>
         </Link>
       </div>

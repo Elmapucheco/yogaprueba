@@ -2,16 +2,22 @@ import React, { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import nextIcon from "../../../assets/nextPlay.png";
 import backIcon from "../../../assets/backPlay.png";
-import pauseIcon from "../../../assets/pausePlay.png";
+import nextIcondark from "../../../assets/nextPlaydark.png";
+import backIcondark from "../../../assets/backPlaydark.png";
+import pause from "../../../assets/pause.png";
+import pausedark from "../../../assets/pausedark.png";
 import exit from "../../../assets/exit.png";
-import playIcon from "../../../assets/play-button.png";
+import play from "../../../assets/play.png";
+import playdark from "../../../assets/playdark.png";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import ConfirmModal from "../../../components/Modal/ConfirmModal";
 import Confetti from "react-confetti";
 import bell from "../../../assets/bell.wav";
 import "./sliderPlay.css";
+import { useDarkMode } from "../../../components/DarkMode";
 
 const SliderPlay = () => {
+  const { darkMode } = useDarkMode();
   const containerRef = useRef(null);
   const location = useLocation();
   const { asanaDetails } = location.state;
@@ -161,7 +167,7 @@ const SliderPlay = () => {
   };
 
   return (
-    <div className="sliderplay-container">
+    <div className={`sliderplay-container ${darkMode ? "dark" : ""}`}>
       {isFinished && <Confetti />}
       <div className="sliderPlay-header">
         <img
@@ -178,7 +184,7 @@ const SliderPlay = () => {
       <div className="sliderplay-main">
         {!isFirstAsana && (
           <img
-            src={backIcon}
+            src={darkMode ? backIcondark : backIcon}
             alt="Back"
             className="sliderplay-icon sliderplay-icon-left"
             onClick={handleBack}
@@ -186,7 +192,7 @@ const SliderPlay = () => {
         )}
         {!isLastAsana && (
           <img
-            src={nextIcon}
+            src={darkMode ? nextIcondark : nextIcon}
             alt="Next"
             className="sliderplay-icon sliderplay-icon-right"
             onClick={handleNext}
@@ -225,7 +231,15 @@ const SliderPlay = () => {
         </div>
         <div className="sliderplay-icon-pause">
           <img
-            src={isPaused ? playIcon : pauseIcon}
+            src={
+              isPaused
+                ? darkMode
+                  ? playdark
+                  : play
+                : darkMode
+                ? pausedark
+                : pause
+            }
             alt={isPaused ? "Play" : "Pause"}
             onClick={handlePause}
           />

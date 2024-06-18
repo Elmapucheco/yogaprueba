@@ -19,3 +19,6 @@ body {
   padding-bottom: 0;
   padding-top: 0;
 }
+.dark-mode{
+  background-color: #282D35;
+}

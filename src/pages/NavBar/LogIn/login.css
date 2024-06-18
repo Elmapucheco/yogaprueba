@@ -10,6 +10,10 @@
     z-index: 0;
     
 }
+.login-body.dark{
+    background-color: #282D35;
+    background-image: none;
+}
 .login-body::before{
     content: '';
   position: absolute;

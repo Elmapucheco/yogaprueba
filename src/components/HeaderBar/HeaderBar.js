@@ -1,13 +1,16 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import tools from "../../assets/tools.png";
+import toolsdark from "../../assets/toolsdark.png";
 import logo from "../../assets/logo.jpg";
+import logodark from "../../assets/logodark.jpg";
 import musicFile from "../../assets/audio.wav";
 import "./headerBar.css";
 import Toggle from "./Toggle";
+import { useDarkMode } from "../DarkMode";
 
 function HeaderBar() {
+  const { darkMode, toggleDarkMode } = useDarkMode();
   const [isOpen, setIsOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
   const [musicOn, setMusicOn] = useState(false);
 
   const menuRef = useRef();
@@ -44,10 +47,6 @@ function HeaderBar() {
     });
   };
 
-  const handleDarkModeToggle = () => {
-    setDarkMode((prev) => !prev);
-  };
-
   useEffect(() => {
     const handleEnded = () => {
       if (musicOn) {
@@ -74,12 +73,12 @@ function HeaderBar() {
   }, []);
 
   return (
-    <nav className="headerbar-container">
-      <img src={logo} alt="Logo" />
+    <nav className={`headerbar-container ${darkMode ? "dark" : ""}`}>
+      <img src={darkMode ? logodark : logo} alt="Logo" />
 
       <div className="headerbar-settings">
         <img
-          src={tools}
+          src={darkMode ? toolsdark : tools}
           ref={iconRef}
           onClick={() => setIsOpen(!isOpen)}
           alt="Settings"
@@ -96,7 +95,7 @@ function HeaderBar() {
                 <Toggle
                   className="toggle"
                   checked={darkMode}
-                  onChange={handleDarkModeToggle}
+                  onChange={toggleDarkMode}
                 />
               </li>
               <li className="toggle-container">

@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Breathe from "../../../components/Breathe/Breathe";
 import "./posesList.css";
+import { useDarkMode } from "../../../components/DarkMode";
 
 function PosesList() {
   const [asanas, setAsanas] = useState([]);
+  const { darkMode } = useDarkMode();
 
   useEffect(() => {
     fetch("https://yoga-api-nzy4.onrender.com/v1//poses")

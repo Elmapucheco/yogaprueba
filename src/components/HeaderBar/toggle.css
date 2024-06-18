@@ -2,14 +2,14 @@
     position: relative;
     width: 40px;
     height: 20px;
-    background: #7b2472;
+    background: #83276a;
     border-radius: 25px;
     cursor: pointer;
     transition: background 0.3s;
   }
   
   .container-ans.toggled {
-    background: #4caf50; /* Color para el estado activo */
+    background: #16b183; 
   }
   
   .toggle-container-ans {

@@ -1,8 +1,10 @@
 import React from "react";
 import soul from "../../../assets/slider1.jpg";
 import "./appInfo.css";
+import { useDarkMode } from "../../../components/DarkMode";
 
 function AppInfo() {
+  const { darkMode } = useDarkMode();
   return (
     <div className="raka">
       <div className="img-soulmate">

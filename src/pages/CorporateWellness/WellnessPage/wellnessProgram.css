@@ -1,17 +1,23 @@
 .program-container{
     width: 90%;
     margin: 0 auto 20px;
-    padding-top: 5px;
+    padding-block: 5px;
     overflow: hidden;
-    height: auto;
+    min-height: 100vh;
     background-color: white;
     border-radius: 5px;
+}
+.program-container.dark{
+    background-color: #282D35;
 }
 .program-container h1{
     font-size: 1.4rem;
     padding-block: 10px;
-    color: rgb(85, 21, 94);
+    color: rgb(56, 13, 61);
     /* text-align: justify;  */
+}
+.program-container.dark h1{
+    color: #bbb8c4;
 }
 .span-program{
     font-size: 1.5rem;
@@ -32,6 +38,9 @@
     font-size: 1rem;
     color:rgb(82, 20, 88);
 }
+.program-container.dark .program-description{
+    color: #bbb8c4;
+}
 .program-list ul{
    
    padding-bottom: 10px;
@@ -44,7 +53,6 @@
     color: rgb(121, 26, 130);
     font-weight: 600;
     text-shadow: 1px 1px 3px rgb(62, 31, 91, 0.1);
-    
 }
 .program-list li svg{
     color: rgb(137, 29, 147);
@@ -53,6 +61,12 @@
     justify-content: center;
     margin-right: 10px;
 }
+.program-container.dark .program-list li ,
+.program-container.dark .program-list li svg,
+.program-container.dark .span-program{
+    color: #9f73b3;
+}
+
 .tologin-button{
     align-items: center;
     background-color: initial;

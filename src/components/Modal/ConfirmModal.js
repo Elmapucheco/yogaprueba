@@ -1,11 +1,13 @@
 import React from "react";
-import "./confirmModal.css"; // Asegúrate de crear este archivo para los estilos
+import "./confirmModal.css";
+import { useDarkMode } from "../DarkMode";
 
 const ConfirmModal = ({ show, onConfirm, onCancel }) => {
+  const { darkMode } = useDarkMode();
   if (!show) return null;
 
   return (
-    <div className="modal-overlay">
+    <div className={`modal-overlay ${darkMode ? "dark" : ""}`}>
       <div className="modal-content">
         <h2>Do you want to quit?</h2>
         <div className="modal-buttons">

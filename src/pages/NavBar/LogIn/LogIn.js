@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-
 import "./login.css";
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { useDarkMode } from "../../../components/DarkMode";
 
 function LogIn() {
   const [action, setAction] = useState("");
+  const { darkMode } = useDarkMode();
   const registerLink = () => {
     setAction(" active");
   };
@@ -16,7 +17,7 @@ function LogIn() {
   };
 
   return (
-    <div className="login-body">
+    <div className={`login-body ${darkMode ? "dark" : ""}`}>
       <div className={`wrapper-login ${action}`}>
         <div className="form-box login">
           <form action="">

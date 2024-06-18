@@ -1,3 +1,8 @@
+.challengeDay-container{
+  min-height: 100vh;
+  padding-bottom: 1px;
+}
+
 .challengeDay-day-iconBack button{
   color: white;
    position: absolute;
@@ -77,6 +82,9 @@
    border-bottom-right-radius: 20px;
    border-bottom-left-radius: 20px;
 }
+.challengeDay-container.dark .challengeDay-day-sequence{
+  background-color: #282D35;
+}
 .challengeDay-asana-container{
  width: 100%;
  padding: 5px;
@@ -103,9 +111,14 @@
     filter: brightness(120%);
     box-shadow: 0 4px 8px rgba(203, 181, 234, 0.8);
  }
- 
+ .challengeDay-container.dark .challengeDay-asana-img{
+  background-color: white;
+ }
  .challengeDay-asana-name {
    margin-left: 30px;
+ }
+ .challengeDay-container.dark .challengeDay-asana-name{
+  color: #918E9B;
  }
  .challengeDay-info-icon{
    width: 30px;

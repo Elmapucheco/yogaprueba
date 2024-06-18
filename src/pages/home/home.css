@@ -5,3 +5,13 @@
         justify-content: space-around;
     }
 } */
+.home{
+    min-height: 100%;
+    padding: 0;
+    margin: 0;
+}
+.home.dark-mode {
+    background-color: #282D35;
+    color: #ffffff;
+    /* Otros estilos específicos para modo oscuro */
+  }

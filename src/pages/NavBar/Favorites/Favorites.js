@@ -3,12 +3,15 @@ import { Link } from "react-router-dom";
 import "./favorites.css";
 import Breathe from "../../../components/Breathe/Breathe";
 import next from "../../../assets/next.png";
+import nextdark from "../../../assets/nextdark.png";
 import cat from "../../../assets/cat.jpg";
 import { MdDelete } from "react-icons/md";
+import { useDarkMode } from "../../../components/DarkMode";
 
 function Favorites() {
   const [favoritos, setFavoritos] = useState([]);
   const [sequences, setSequences] = useState([]);
+  const { darkMode } = useDarkMode();
 
   useEffect(() => {
     const favoritosGuardados =
@@ -166,7 +169,7 @@ function Favorites() {
   }
 
   return (
-    <div className="favorites-container">
+    <div className={`favorites-container ${darkMode ? "dark" : ""}`}>
       <div className="favorites-header">
         <h1>Favorite Challenge Days</h1>
         <img className="favorites-img" src={cat} />
@@ -190,7 +193,7 @@ function Favorites() {
                 <h2 className="favorites-day-number">Day {sequence.dia}</h2>
                 {favoritos.includes(sequence.dia) ? (
                   <MdDelete
-                    className="favorites-activo"
+                    className="favorites-delete"
                     onClick={() => toggleFavorito(sequence.dia)}
                   />
                 ) : (
@@ -204,7 +207,7 @@ function Favorites() {
                 state={sequences}
               >
                 <img
-                  src={next}
+                  src={darkMode ? nextdark : next}
                   alt="Next icon"
                   className="favorites-next-icon"
                 />

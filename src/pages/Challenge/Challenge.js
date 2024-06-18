@@ -2,10 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import gara6 from "../../assets/challengePic.jpg";
 import "./challenge.css";
+import { useDarkMode } from "../../components/DarkMode";
 
 function Challenge() {
+  const { darkMode } = useDarkMode();
   return (
-    <div className="container-challenge">
+    <div className={`container-challenge ${darkMode ? "dark" : ""}`}>
       <Link to="challengeGallery">
         <h3 className="title-challenge">30 days Yoga Challenge</h3>
         <div className="cont-img">

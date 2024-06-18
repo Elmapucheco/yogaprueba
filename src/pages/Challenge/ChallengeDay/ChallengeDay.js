@@ -6,9 +6,11 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import start from "../../../assets/challengeDay.jpg";
 import info from "../../../assets/info.png";
 import MusicPlayer from "../../../components/MusicPlayer";
+import { useDarkMode } from "../../../components/DarkMode";
 
 function ChallengeDay() {
-  const { dia } = useParams(); // Obtener el valor de 'dia' desde los parámetros de la URL
+  const { darkMode, toggleDarkMode } = useDarkMode();
+  const { dia } = useParams();
   const location = useLocation();
   const sequences = location.state;
   const [daySequence, setDaySequence] = useState(null);
@@ -35,7 +37,7 @@ function ChallengeDay() {
   }
 
   return (
-    <>
+    <div className={`challengeDay-container ${darkMode ? "dark" : ""}`}>
       <div className="challengeDay-portada">
         <div className="challengeDay-day-iconBack">
           <button onClick={goBack}>
@@ -87,7 +89,7 @@ function ChallengeDay() {
           Start
         </Link>
       </div>
-    </>
+    </div>
   );
 }
 

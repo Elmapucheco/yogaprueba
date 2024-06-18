@@ -17,9 +17,11 @@ import LogIn from "./pages/NavBar/LogIn/LogIn";
 import Error from "./pages/Error/Error";
 import Breathe from "../src/components/Breathe/Breathe";
 import SplashScreen from "./pages/SplashScreen/SplashScreen";
+import { useDarkMode } from "../src/components/DarkMode";
 
 function App() {
   const [isLoading, setLoading] = useState(true);
+  const { darkMode } = useDarkMode();
 
   useEffect(() => {
     setTimeout(() => {
@@ -33,28 +35,33 @@ function App() {
 
   return (
     <Router>
-      <Routes>
-        {/* Rutas con SharedLayout */}
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Home />} />
-          <Route path="slider/info/:index" element={<SliderInfo />} />
-          <Route path="slider/gallery" element={<SliderGallery />} />
-          <Route path="challengeGallery" element={<ChallengeGallery />} />
-          <Route path="challengeGallery/:dia" element={<ChallengeDay />} />
-          <Route path="program" element={<WellnessProgram />} />
-          <Route path="favorites" element={<Favorites />} />
-          <Route path="poses-list" element={<PosesList />} />
-          <Route path="poses-list/:name" element={<PoseDetail />} />
-          <Route path="app-info" element={<AppInfo />} />
-          <Route path="login" element={<LogIn />} />
-          <Route path="breathe" element={<Breathe />} />
-          <Route path="*" element={<Error />} />
-        </Route>
+      <div className={` ${darkMode ? "dark-mode" : ""}`}>
+        <Routes>
+          {/* Rutas con SharedLayout */}
+          <Route path="/" element={<SharedLayout />}>
+            <Route index element={<Home />} />
+            <Route path="slider/info/:index" element={<SliderInfo />} />
+            <Route path="slider/gallery" element={<SliderGallery />} />
+            <Route path="challengeGallery" element={<ChallengeGallery />} />
+            <Route path="challengeGallery/:dia" element={<ChallengeDay />} />
+            <Route path="program" element={<WellnessProgram />} />
+            <Route path="favorites" element={<Favorites />} />
+            <Route path="poses-list" element={<PosesList />} />
+            <Route path="poses-list/:name" element={<PoseDetail />} />
+            <Route path="app-info" element={<AppInfo />} />
+            <Route path="login" element={<LogIn />} />
+            <Route path="breathe" element={<Breathe />} />
+            <Route path="*" element={<Error />} />
+          </Route>
 
-        {/* Rutas sin SharedLayout */}
-        <Route path="/slider/info/:index/play" element={<SliderPlay />} />
-        <Route path="/challengeGallery/:dia/play" element={<ChallengePlay />} />
-      </Routes>
+          {/* Rutas sin SharedLayout */}
+          <Route path="/slider/info/:index/play" element={<SliderPlay />} />
+          <Route
+            path="/challengeGallery/:dia/play"
+            element={<ChallengePlay />}
+          />
+        </Routes>
+      </div>
     </Router>
   );
 }

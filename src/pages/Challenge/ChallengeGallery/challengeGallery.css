@@ -1,8 +1,5 @@
 .challengeGallery-container {
-  text-align: center;
   background-color: #f9f9f9;
-  
-  padding: 0 0 30px;
 }
 .challengeGallery-header h1{
   color: white;
@@ -71,6 +68,9 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", en
   width: 100%;
   max-width: 800px;
 }
+.challengeGallery-container.dark .sequence-card{
+  background-color: #282D35;
+}
 .a {
   text-decoration: none;
   color: rgb(127, 50, 127);
@@ -87,11 +87,18 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", en
   text-align: center;
   color: #662572;
 }
+
+.challengeGallery-container.dark .check-go h2,
+.challengeGallery-container.dark .resting-number{
+  color: #918E9B;
+}
 .challenge-favorites{
   width: 20px;
   height: 20px;
   padding-top: 2px;
- 
+}
+.challengeGallery-container.dark .challenge-favorites{
+  color: #918E9B;
 }
 .favorito-activo{
   fill:#662572; 
@@ -99,9 +106,9 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", en
   height: 20px;
   padding-top: 2px;
 }
-/* .challenge-favorites path, .favorito-activo path{
-  stroke:none
-} */
+.challengeGallery-container.dark .favorito-activo{
+  fill:#9843a8
+}
 .next-icon{
   width: 20px;
   height: 20px;

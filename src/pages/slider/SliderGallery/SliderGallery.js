@@ -1,14 +1,19 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./slidergallery.css";
+import { useDarkMode } from "../../../components/DarkMode";
 
 const SliderGallery = () => {
+  const { darkMode } = useDarkMode();
   const location = useLocation();
   const { images } = location.state;
 
   const classes = images.map((classItem, index) => {
     return (
-      <div key={index} className="slider-gallery-container">
+      <div
+        key={index}
+        className={`slider-gallery-container ${darkMode ? "dark" : ""}`}
+      >
         <Link
           to={`/slider/info/${index}`}
           key={index}

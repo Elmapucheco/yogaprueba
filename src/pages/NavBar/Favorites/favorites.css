@@ -4,6 +4,9 @@
     min-height: 90vh;
     padding: 0 0 30px;
   }
+.favorites-container.dark{
+  background-color:  #282D35;
+}
 .favorites-header h1{
     color: white;
       font-size:  clamp(0.5rem, 2.8vw + 1rem, 3rem);
@@ -74,6 +77,11 @@
     width: 100%;
     max-width: 800px;
   }
+  .favorites-container.dark .favorites-sequence-card{
+    background-color: #171f1d;
+    box-shadow: 0px 1px 4px rgba(158, 103, 148, 0.25);
+
+  }
   .favorites-check-go{
     display: flex;
     align-items: center;
@@ -86,14 +94,19 @@
     text-align: center;
     color: #662572;
   }
-  .favorites-activo{
+  .favorites-container.dark .favorites-check-go h2,
+  .favorites-container.dark .no-favorites{
+  color:#bbb8c4;
+  }
+  .favorites-delete{
     fill:#662572; 
     width: 20px;
     height: 20px;
     cursor: pointer;
-    
   }
- 
+ .favorites-container.dark .favorites-delete{
+  fill:#822a92;
+ }
   .favorites-next-icon{
     width: 20px;
     height: 20px;

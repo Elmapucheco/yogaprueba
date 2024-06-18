@@ -41,7 +41,9 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", en
   width: 100%;
   z-index: 3;
 }
-
+.sliderplay-container.dark .sliderPlay-header{
+  background-color: #282D35;
+}
 .sliderplay-exit {
   width: 30px;
   height: 30px;
@@ -50,11 +52,13 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", en
   cursor: pointer;
   top: 10px;
   right: 10px;
-  background-color: rgb(7, 59, 96,0.2);
+  background-color: rgba(36, 166, 195, 0.5);
   padding: 7px;
   border-radius: 50%;
 }
-
+.sliderplay-container.dark .sliderplay-exit{
+  background-color: rgba(84, 180, 215, 0.5);
+}
 .sliderplay-name {
   font-size: 1.7rem;
   color: #073b60;
@@ -62,7 +66,9 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", en
   /* text-align: justify; */
   padding:10px;
 }
-
+.sliderplay-container.dark .sliderplay-name{
+  color: #bbb8c4;
+}
 .sliderplay-main {
   flex: 1;
   display: flex;
@@ -121,7 +127,9 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", en
   padding: 10px;
   border-radius: 50%;
 }
-
+.sliderplay-container.dark .sliderplay-icon{
+  background-color: rgba(28, 118, 134, 0.9);
+}
 .sliderplay-icon-right {
   top: 48%;
   right: 20px;
@@ -174,10 +182,10 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", en
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* display: contents; */
-
   cursor: pointer;
+}
+.sliderplay-container.dark .sliderplay-icon-pause{
+  background-color: rgba(28, 118, 134, 0.9);
 }
 .sliderplay-icon-pause img{
   width: 35px;

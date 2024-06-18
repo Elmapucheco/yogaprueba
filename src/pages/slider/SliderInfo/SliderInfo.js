@@ -4,9 +4,11 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import info from "../../../assets/info.png";
 import Breathe from "../../../components/Breathe/Breathe";
 import MusicPlayer from "../../../components/MusicPlayer";
+import { useDarkMode } from "../../../components/DarkMode";
 import "./sliderInfo.css";
 
 const SliderInfo = () => {
+  const { darkMode } = useDarkMode();
   const location = useLocation();
   const { sequence, title, img, images } = location.state;
   const params = useParams();
@@ -54,7 +56,7 @@ const SliderInfo = () => {
   }
 
   return (
-    <>
+    <div className={`sliderInfo-container ${darkMode ? "dark" : ""}`}>
       <div className="sliderInfo-portada">
         <div className="sliderInfo-day-iconBack">
           <Link to="/slider/gallery" state={{ images }}>
@@ -98,7 +100,7 @@ const SliderInfo = () => {
           Start
         </Link>
       </div>
-    </>
+    </div>
   );
 };
 

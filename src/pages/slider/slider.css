@@ -1,11 +1,13 @@
 .slider-container {
   max-width: 90%;
-  margin: 0.35rem auto 0.35rem;
-  padding: 1em;
+  margin: 0 auto 0.35rem;
+  padding: 1.2rem 1rem 1rem;
   border-radius: 5px;
   background-color: white;
   position: relative;
-  
+}
+.slider-container.dark{
+  background-color: #282D35;
 }
 .slider-header {
   width: 100%;
@@ -26,7 +28,7 @@
 .link-slider{  
   position: absolute;
   z-index: 2;
-  top:1.2rem; 
+  top:1.4rem; 
   right: 1.2rem;
   text-decoration: none;
   color: white;

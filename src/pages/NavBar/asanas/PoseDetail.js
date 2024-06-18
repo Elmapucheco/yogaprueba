@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import "./poseDetail.css";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import { useDarkMode } from "../../../components/DarkMode";
 
 function PoseDetail() {
   const [asana, setAsana] = useState(null);
   const { name } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
+  const { darkMode } = useDarkMode();
 
   const goBack = () => {
     navigate(-1);

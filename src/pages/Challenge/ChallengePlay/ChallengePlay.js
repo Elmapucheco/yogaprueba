@@ -4,15 +4,21 @@ import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import "../../slider/SliderPlay/sliderPlay.css";
 import nextIcon from "../../../assets/nextPlay.png";
 import backIcon from "../../../assets/backPlay.png";
-import pauseIcon from "../../../assets/pausePlay.png";
-import playIcon from "../../../assets/play-button.png";
+import nextIcondark from "../../../assets/nextPlaydark.png";
+import backIcondark from "../../../assets/backPlaydark.png";
+import pause from "../../../assets/pause.png";
+import pausedark from "../../../assets/pausedark.png";
+import play from "../../../assets/play.png";
+import playdark from "../../../assets/playdark.png";
 import exit from "../../../assets/exit.png";
 import ConfirmModal from "../../../components/Modal/ConfirmModal";
+import { useDarkMode } from "../../../components/DarkMode";
 import Confetti from "react-confetti";
 import bell from "../../../assets/bell.wav";
 const bellAudio = new Audio(bell);
 
 const ChallengePlay = () => {
+  const { darkMode } = useDarkMode();
   const containerRef = useRef(null);
   const location = useLocation();
   const { daySequence } = location.state;
@@ -173,7 +179,7 @@ const ChallengePlay = () => {
   }
 
   return (
-    <div className="sliderplay-container">
+    <div className={`sliderplay-container ${darkMode ? "dark" : ""}`}>
       {isFinished && <Confetti />}
       <div className="sliderPlay-header">
         <img
@@ -190,7 +196,7 @@ const ChallengePlay = () => {
       <div className="sliderplay-main">
         {!isFirstAsana && (
           <img
-            src={backIcon}
+            src={darkMode ? backIcondark : backIcon}
             alt="Back"
             className="sliderplay-icon sliderplay-icon-left"
             onClick={handleBack}
@@ -198,7 +204,7 @@ const ChallengePlay = () => {
         )}
         {!isLastAsana && (
           <img
-            src={nextIcon}
+            src={darkMode ? nextIcondark : nextIcon}
             alt="Next"
             className="sliderplay-icon sliderplay-icon-right"
             onClick={handleNext}
@@ -237,7 +243,15 @@ const ChallengePlay = () => {
         </div>
         <div className="sliderplay-icon-pause">
           <img
-            src={isPaused ? playIcon : pauseIcon}
+            src={
+              isPaused
+                ? darkMode
+                  ? playdark
+                  : play
+                : darkMode
+                ? pausedark
+                : pause
+            }
             alt={isPaused ? "Play" : "Pause"}
             onClick={handlePause}
           />
@@ -253,58 +267,3 @@ const ChallengePlay = () => {
 };
 
 export default ChallengePlay;
-
-//   return (
-//     <div className="challenge-play-container">
-//       <div className="challenge-play-content">
-//         * <img
-//           src={backIcon}
-//           alt="Back"
-//           className="challenge-play-icon challenge-play-icon-left"
-//           onClick={handleBack}
-//         />
-//         <div className="challenge-play-main">
-//           <img
-//             src={currentAsana.url_png}
-//             alt={`Asana ${currentAsanaIndex + 1}`}
-//             className="challenge-play-image"
-//           />
-//           {isPreparing && <div className="preparation-timer">{prepTime}</div>}
-//           <span className="challenge-play-asana-name">
-//             {currentAsana.english_name} ({currentAsana.sanskrit_name}){" "}
-//             {currentAsana.side && `(${currentAsana.side})`}
-//           </span>
-//           {!isPreparing && (
-//             <CountdownCircleTimer
-//               key={key}
-//               isPlaying={!isPaused}
-//               duration={asanaDuration}
-//               colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-//               colorsTime={[asanaDuration, 0]}
-//               onComplete={() => handleTimerExpire()}
-//               size={100}
-//             >
-//               {({ remainingTime }) => (
-//                 <div className="countdown-timer-text">{remainingTime}</div>
-//               )}
-//             </CountdownCircleTimer>
-//           )}
-//         </div>
-//         <img
-//           src={nextIcon}
-//           alt="Next"
-//           className="challenge-play-icon challenge-play-icon-right"
-//           onClick={handleNext}
-//         />
-//         <img
-//           src={pauseIcon}
-//           alt="Pause"
-//           className="challenge-play-icon challenge-play-icon-pause"
-//           onClick={handlePause}
-//         />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ChallengePlay;

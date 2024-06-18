@@ -1,11 +1,14 @@
 .container-wellness{
     max-width: 90%;
-    margin: 0.35rem auto 1rem ;
-    padding:0.4em 1em;
+    margin: 0.35rem auto 0;
+    padding:0.4rem 1rem 1rem;
     overflow: hidden;
     height: auto;
     background-color: white;
     border-radius: 5px;
+}
+.container-wellness.dark{
+    background-color: #282D35;
 }
 .cont-img-wellness {
     width: 100%; 

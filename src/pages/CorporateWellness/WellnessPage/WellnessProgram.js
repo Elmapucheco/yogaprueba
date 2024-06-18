@@ -2,10 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { GoDotFill } from "react-icons/go";
 import "./wellnessProgram.css";
+import { useDarkMode } from "../../../components/DarkMode";
 
 const WellnessProgram = () => {
+  const { darkMode } = useDarkMode();
   return (
-    <div className="program-container">
+    <div className={`program-container ${darkMode ? "dark" : ""}`}>
       <h1>
         Boost your team's well-being with our{" "}
         <span className="span-program">Employee Yoga Program!</span>
