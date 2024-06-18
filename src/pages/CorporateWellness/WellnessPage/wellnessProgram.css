@@ -83,7 +83,7 @@
     transition: transform 0.1s ease;
     transform:scale(1);
 }
-.tologin-button:hover, .sliderInfo-start-button:focus {
+.tologin-button:hover, .tologin-button:focus {
     background-image: linear-gradient(#B384C9, #391F5B 50%);
     transform:scale(1.1); 
 }

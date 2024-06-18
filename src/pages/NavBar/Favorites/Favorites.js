@@ -144,10 +144,6 @@ function Favorites() {
     }
   }, []);
 
-  if (favoritos.length === 0) {
-    return <div>There are no favorite days marked.</div>;
-  }
-
   const favoriteSequences = sequences.filter((sequence) =>
     favoritos.includes(sequence.dia)
   );
@@ -168,39 +164,55 @@ function Favorites() {
       </div>
     );
   }
+
   return (
     <div className="favorites-container">
       <div className="favorites-header">
         <h1>Favorite Challenge Days</h1>
         <img className="favorites-img" src={cat} />
-        <p>Here is your selection</p>
+        <p>Enjoy your selection</p>
       </div>
+      {favoritos.length === 0 ? (
+        <>
+          <h2 className="no-favorites">
+            There are no favorite days marked.
+            <br /> You can choose your favorites in{" "}
+          </h2>
+          <Link to="/challengeGallery" className="link-button">
+            30 Days Yoga Challenge
+          </Link>
+        </>
+      ) : (
+        <div className="favorites-sequence-list">
+          {favoriteSequences.map((sequence, index) => (
+            <div className="favorites-sequence-card" key={index}>
+              <div className="favorites-check-go">
+                <h2 className="favorites-day-number">Day {sequence.dia}</h2>
+                {favoritos.includes(sequence.dia) ? (
+                  <MdDelete
+                    className="favorites-activo"
+                    onClick={() => toggleFavorito(sequence.dia)}
+                  />
+                ) : (
+                  <div onClick={() => toggleFavorito(sequence.dia)} />
+                )}
+              </div>
 
-      <div className="favorites-sequence-list">
-        {favoriteSequences.map((sequence, index) => (
-          <div className="favorites-sequence-card" key={index}>
-            <div className="favorites-check-go">
-              <h2 className="favorites-day-number">Day {sequence.dia}</h2>
-              {favoritos.includes(sequence.dia) ? (
-                <MdDelete
-                  className="favorites-activo"
-                  onClick={() => toggleFavorito(sequence.dia)}
+              <Link
+                className="favorites-sequence-link"
+                to={`/challengeGallery/${sequence.dia}`}
+                state={sequences}
+              >
+                <img
+                  src={next}
+                  alt="Next icon"
+                  className="favorites-next-icon"
                 />
-              ) : (
-                <div onClick={() => toggleFavorito(sequence.dia)} />
-              )}
+              </Link>
             </div>
-
-            <Link
-              className="favorites-sequence-link"
-              to={`/challengeGallery/${sequence.dia}`}
-              state={sequences}
-            >
-              <img src={next} alt="Next icon" className="favorites-next-icon" />
-            </Link>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
