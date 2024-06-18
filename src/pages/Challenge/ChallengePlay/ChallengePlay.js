@@ -9,7 +9,7 @@ import playIcon from "../../../assets/play-button.png";
 import exit from "../../../assets/exit.png";
 import ConfirmModal from "../../../components/Modal/ConfirmModal";
 import Confetti from "react-confetti";
-import bell from "../../../assets/bell.mp3";
+import bell from "../../../assets/bell.wav";
 const bellAudio = new Audio(bell);
 
 const ChallengePlay = () => {

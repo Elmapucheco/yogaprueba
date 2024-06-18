@@ -8,7 +8,7 @@ import playIcon from "../../../assets/play-button.png";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import ConfirmModal from "../../../components/Modal/ConfirmModal";
 import Confetti from "react-confetti";
-import bell from "../../../assets/bell.mp3";
+import bell from "../../../assets/bell.wav";
 import "./sliderPlay.css";
 
 const SliderPlay = () => {
