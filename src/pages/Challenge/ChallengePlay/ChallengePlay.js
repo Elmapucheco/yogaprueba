@@ -9,6 +9,8 @@ import playIcon from "../../../assets/play-button.png";
 import exit from "../../../assets/exit.png";
 import ConfirmModal from "../../../components/Modal/ConfirmModal";
 import Confetti from "react-confetti";
+import bell from "../../../assets/bell.mp3";
+const bellAudio = new Audio(bell);
 
 const ChallengePlay = () => {
   const containerRef = useRef(null);
@@ -125,8 +127,11 @@ const ChallengePlay = () => {
   const isLastAsana = currentAsanaIndex === processedAsanas.length - 1;
 
   const handleTimerExpire = () => {
+    bellAudio.play();
     if (!isPreparing) {
-      handleNext();
+      setTimeout(() => {
+        handleNext();
+      }, 2000);
     }
     if (currentAsanaIndex === processedAsanas.length - 1) {
       setIsFinished(true);

@@ -8,6 +8,7 @@ import playIcon from "../../../assets/play-button.png";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import ConfirmModal from "../../../components/Modal/ConfirmModal";
 import Confetti from "react-confetti";
+import bell from "../../../assets/bell.mp3";
 import "./sliderPlay.css";
 
 const SliderPlay = () => {
@@ -23,6 +24,7 @@ const SliderPlay = () => {
   const [isFinished, setIsFinished] = useState(false);
   const asanaDuration = 30;
   const navigate = useNavigate();
+  const bellAudio = new Audio(bell);
 
   const goBack = () => {
     setShowModal(true); // Mostrar el modal de confirmación
@@ -142,9 +144,13 @@ const SliderPlay = () => {
   };
 
   const handleTimerExpire = () => {
+    bellAudio.play();
     if (!isPreparing) {
-      handleNext();
+      setTimeout(() => {
+        handleNext();
+      }, 2000);
     }
+
     if (currentAsanaIndex === processedAsanas.length - 1) {
       setIsFinished(true);
 
