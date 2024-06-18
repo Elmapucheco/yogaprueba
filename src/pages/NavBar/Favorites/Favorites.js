@@ -175,7 +175,7 @@ function Favorites() {
       {favoritos.length === 0 ? (
         <>
           <h2 className="no-favorites">
-            You haven't chosen favorites yet
+            You haven't chosen favorites yet.
             <br /> You can do it on{" "}
           </h2>
           <Link to="/challengeGallery" className="link-button">

@@ -117,6 +117,7 @@
   }
   .no-favorites{
     margin: 20px;
+    margin-bottom: 0;
     line-height: 2;
   }
   .link-button {
@@ -135,7 +136,7 @@
       justify-content: center;
       letter-spacing: .04em;
       line-height: 1rem;
-      margin: 10px auto;
+      margin: 5px auto;
       padding: 1.5rem 2rem;
       text-align: center;
       text-decoration: none;
