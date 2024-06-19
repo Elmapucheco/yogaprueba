@@ -112,7 +112,7 @@
    height: 50px;
    border-radius: 50%;
     filter: brightness(120%);
-    box-shadow: 0 2px 6px rgba(203, 181, 234, 0.6);
+    box-shadow: 0 4px 6px rgba(203, 181, 234, 0.8);
  }
  .challengeDay-container.dark .challengeDay-asana-img{
   background-color: white;
