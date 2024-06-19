@@ -39,7 +39,18 @@ export const AudioProvider = ({ children }) => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, [isPlaying]);
+  useEffect(() => {
+    const handleEnded = () => {
+      // Volver a reproducir desde el principio cuando termine
+      audioRef.current.currentTime = 0;
+      audioRef.current.play();
+    };
 
+    audioRef.current.addEventListener("ended", handleEnded);
+    return () => {
+      audioRef.current.removeEventListener("ended", handleEnded);
+    };
+  }, []);
   return (
     <AudioContext.Provider value={{ playAudio, stopAudio, isPlaying }}>
       {children}

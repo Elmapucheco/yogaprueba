@@ -39,7 +39,6 @@ function App() {
       <Router>
         <div className={` ${darkMode ? "dark-mode" : ""}`}>
           <Routes>
-            {/* Rutas con SharedLayout */}
             <Route path="/" element={<SharedLayout />}>
               <Route index element={<Home />} />
               <Route path="slider/info/:index" element={<SliderInfo />} />
@@ -56,7 +55,6 @@ function App() {
               <Route path="*" element={<Error />} />
             </Route>
 
-            {/* Rutas sin SharedLayout */}
             <Route path="/slider/info/:index/play" element={<SliderPlay />} />
             <Route
               path="/challengeGallery/:dia/play"
