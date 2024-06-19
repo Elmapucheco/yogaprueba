@@ -62,7 +62,7 @@ const SliderInfo = () => {
           <Link to="/slider/gallery" state={{ images }}>
             <IoMdArrowRoundBack />
           </Link>
-          <MusicPlayer />
+          {/* <MusicPlayer /> */}
           <h1>{title}</h1>
           <img src={img} />
           <p>

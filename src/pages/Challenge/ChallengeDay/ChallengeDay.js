@@ -43,7 +43,7 @@ function ChallengeDay() {
           <button onClick={goBack}>
             <IoMdArrowRoundBack />
           </button>
-          <MusicPlayer />
+          {/* <MusicPlayer /> */}
           <h1>Day {dia}</h1>
           <img src={start} />
           <p>
