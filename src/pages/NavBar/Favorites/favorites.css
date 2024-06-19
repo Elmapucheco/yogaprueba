@@ -1,8 +1,9 @@
 .favorites-container {
     text-align: center;
     background-color: #f9f9f9;
-    min-height: 90vh;
-    padding: 0 0 30px;
+    min-height: 100vh; 
+    padding-block: 70px;
+   
   }
 .favorites-container.dark{
   background-color:  #282D35;

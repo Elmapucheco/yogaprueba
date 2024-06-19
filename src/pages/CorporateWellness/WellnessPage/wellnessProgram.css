@@ -1,9 +1,10 @@
 .program-container{
     width: 90%;
     margin: 0 auto 20px;
-    padding-block: 5px;
+    
     overflow: hidden;
-    min-height: 100vh;
+    min-height: 100vh; 
+  padding-block: 70px;
     background-color: white;
     border-radius: 5px;
 }

@@ -8,35 +8,31 @@ const SliderGallery = () => {
   const location = useLocation();
   const { images } = location.state;
 
-  const classes = images.map((classItem, index) => {
-    return (
-      <div
-        key={index}
-        className={`slider-gallery-container ${darkMode ? "dark" : ""}`}
-      >
-        <Link
-          to={`/slider/info/${index}`}
-          key={index}
-          state={{
-            sequence: classItem.sequence,
-            img: classItem.img,
-            title: classItem.title,
-            images: images,
-          }}
-        >
-          <div className="slider-gallery-wrapper">
-            <div className="img-gallery">
-              <h2>{classItem.title}</h2>
-              <img src={classItem.img} alt="Imagen 1" />
+  return (
+    <div className={`slider-gallery-container ${darkMode ? "dark" : ""}`}>
+      {images.map((classItem, index) => (
+        <div key={index}>
+          <Link
+            to={`/slider/info/${index}`}
+            state={{
+              sequence: classItem.sequence,
+              img: classItem.img,
+              title: classItem.title,
+              images: images,
+            }}
+          >
+            <div className="slider-gallery-wrapper">
+              <div className="img-gallery">
+                <h2>{classItem.title}</h2>
+                <img src={classItem.img} alt={`Imagen ${index + 1}`} />
+              </div>
+              <p>{classItem.description}</p>
             </div>
-            <p>{classItem.description}</p>
-          </div>
-        </Link>
-      </div>
-    );
-  });
-
-  return classes;
+          </Link>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default SliderGallery;

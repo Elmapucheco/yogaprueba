@@ -7,7 +7,7 @@
 } */
 .home{
     min-height: 100%;
-    padding: 0;
+    padding-block: 70px;
     margin: 0;
 }
 .home.dark-mode {

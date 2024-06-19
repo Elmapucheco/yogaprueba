@@ -45,12 +45,6 @@ const ChallengePlay = () => {
     setShowModal(false);
   };
 
-  useEffect(() => {
-    document.body.classList.add("no-padding");
-    return () => {
-      document.body.classList.remove("no-padding");
-    };
-  }, []);
   const asanasToRepeat = [
     "Crescent Lunge",
     "Eagle",

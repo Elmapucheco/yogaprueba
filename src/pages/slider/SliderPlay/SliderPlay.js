@@ -75,13 +75,6 @@ const SliderPlay = () => {
   const currentAsana = processedAsanas[currentAsanaIndex];
 
   useEffect(() => {
-    document.body.classList.add("no-padding");
-    return () => {
-      document.body.classList.remove("no-padding");
-    };
-  }, []);
-
-  useEffect(() => {
     const breatheInTime = 3000; // 3 segundos para "breathe in"
     const breatheOutTime = 3000; // 3 segundos para "breathe out"
 

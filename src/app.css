@@ -10,15 +10,12 @@
 body {
   background-color: white;
   font-family: "Poppins", sans-serif;
-  padding-bottom: 70px;
-  padding-top: 70px;
+  /* padding-bottom: 70px;
+  padding-top: 70px; */
   min-width: 350px;
   
   }
-.no-padding{
-  padding-bottom: 0;
-  padding-top: 0;
-}
+
 .dark-mode{
   background-color: #282D35;
 }

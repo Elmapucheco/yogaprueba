@@ -1,6 +1,6 @@
 .sliderInfo-container{
   min-height: 100vh;
-  padding-bottom: 1px;
+  padding-block:70px;
 }
 .sliderInfo-container.dark{
   background-color: #282D35;

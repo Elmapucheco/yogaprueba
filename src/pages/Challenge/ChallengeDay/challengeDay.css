@@ -1,6 +1,6 @@
 .challengeDay-container{
-  min-height: 100vh;
-  padding-bottom: 1px;
+  min-height: 100vh; 
+  padding-block: 70px;
 }
 
 .challengeDay-day-iconBack button{
