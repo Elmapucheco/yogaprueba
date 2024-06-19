@@ -185,7 +185,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", en
   cursor: pointer;
 }
 .sliderplay-container.dark .sliderplay-icon-pause{
-  background-color: rgba(28, 118, 134, 0.9);
+  background-color: #1c7686e6;
 }
 .sliderplay-icon-pause img{
   width: 35px;

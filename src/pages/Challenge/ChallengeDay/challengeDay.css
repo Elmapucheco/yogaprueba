@@ -75,7 +75,7 @@
 .challengeDay-day-sequence {
    font-size: 20px;
    background-color: white;
-   padding: 10px;
+   padding-block: 10px;
    position: relative;
    z-index: 2;
    margin-bottom: 40px;
@@ -97,7 +97,9 @@
    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.1);
    padding-bottom: 10px; 
  }
-
+.challengeDay-container.dark .challengeDay-asana{
+  box-shadow: 0 2px 2px rgba(165, 128, 157, 0.1);
+}
  .challengeDay-asana-img-contenedor{
    display: flex;
    justify-content:flex-start;
@@ -109,7 +111,7 @@
    height: 50px;
    border-radius: 50%;
     filter: brightness(120%);
-    box-shadow: 0 4px 8px rgba(203, 181, 234, 0.8);
+    box-shadow: 0 2px 6px rgba(203, 181, 234, 0.6);
  }
  .challengeDay-container.dark .challengeDay-asana-img{
   background-color: white;

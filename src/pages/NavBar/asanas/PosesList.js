@@ -30,7 +30,7 @@ function PosesList() {
   );
 
   return (
-    <div className="container-poselist">
+    <div className={`container-poselist ${darkMode ? "dark" : ""}`}>
       <div className="asana-poselist">
         {filteredAsanas.map((asana) => (
           <Link

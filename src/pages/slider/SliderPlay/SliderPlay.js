@@ -215,7 +215,7 @@ const SliderPlay = () => {
                 key={key} // Usamos el key para reiniciar el temporizador
                 isPlaying={!isPaused}
                 duration={asanaDuration}
-                colors={["#01497c", "#2c7da0", "#468faf", "#61a5c2"]}
+                colors={["#1c7b8a", "#1c707d", "#196672", "#175d68"]}
                 colorsTime={[asanaDuration, 0]}
                 onComplete={handleTimerExpire}
                 size={90}

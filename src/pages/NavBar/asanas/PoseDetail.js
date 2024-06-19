@@ -42,7 +42,7 @@ function PoseDetail() {
     location.state && location.state.fromPosesList === "signal";
 
   return (
-    <div className="container-posedetail">
+    <div className={`container-posedetail ${darkMode ? "dark" : ""}`}>
       <div className="container-posedetail-info">
         <div className="back-to-container">
           <button onClick={goBack}>

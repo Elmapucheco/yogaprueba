@@ -70,6 +70,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", en
 }
 .challengeGallery-container.dark .sequence-card{
   background-color: #282D35;
+  box-shadow: 0 4px 8px rgba(165, 128, 157, 0.6);
 }
 .a {
   text-decoration: none;
@@ -90,7 +91,8 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", en
 
 .challengeGallery-container.dark .check-go h2,
 .challengeGallery-container.dark .resting-number{
-  color: #918E9B;
+  color: #dcb1e4;
+  font-weight: 400;
 }
 .challenge-favorites{
   width: 20px;
@@ -98,7 +100,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", en
   padding-top: 2px;
 }
 .challengeGallery-container.dark .challenge-favorites{
-  color: #918E9B;
+  color: #dcb1e4;
 }
 .favorito-activo{
   fill:#662572; 
