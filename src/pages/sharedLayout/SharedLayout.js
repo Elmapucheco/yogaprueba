@@ -47,7 +47,7 @@ function SharedLayout() {
         "Wheel",
       ],
       description:
-        "A focused yoga practice designed to stretch and strengthen the upper body, improving posture and relieving tension.",
+        "A focused sequence designed to stretch the upper body, improving posture and relieving tension.",
     },
     {
       img: gara,
@@ -85,7 +85,7 @@ function SharedLayout() {
         "Corpse",
       ],
       description:
-        "A beginner-friendly sequence of asanas designed to teach fundamental poses and build a solid foundation.",
+        "A beginner-friendly sequence of asanas designed to teach fundamental poses.",
     },
     {
       img: gara4,

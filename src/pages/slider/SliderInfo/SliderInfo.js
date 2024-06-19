@@ -3,7 +3,6 @@ import { useLocation, Link, useParams } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import info from "../../../assets/info.png";
 import Breathe from "../../../components/Breathe/Breathe";
-import MusicPlayer from "../../../components/MusicPlayer";
 import { useDarkMode } from "../../../components/DarkMode";
 import "./sliderInfo.css";
 

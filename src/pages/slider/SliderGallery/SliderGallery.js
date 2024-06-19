@@ -26,6 +26,7 @@ const SliderGallery = () => {
                 <h2>{classItem.title}</h2>
                 <img src={classItem.img} alt={`Imagen ${index + 1}`} />
               </div>
+
               <p>{classItem.description}</p>
             </div>
           </Link>
