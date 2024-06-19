@@ -1,21 +1,21 @@
+// HeaderBar.js
 import React, { useRef, useEffect, useState } from "react";
 import tools from "../../assets/tools.png";
 import toolsdark from "../../assets/toolsdark.png";
 import logo from "../../assets/logo.jpg";
 import logodark from "../../assets/logodark.jpg";
-import musicFile from "../../assets/audio.wav";
 import "./headerBar.css";
 import Toggle from "./Toggle";
 import { useDarkMode } from "../DarkMode";
+import { useAudio } from "../MusicPlayer";
 
 function HeaderBar() {
   const { darkMode, toggleDarkMode } = useDarkMode();
+  const { isPlaying, playAudio, stopAudio } = useAudio();
   const [isOpen, setIsOpen] = useState(false);
-  const [musicOn, setMusicOn] = useState(false);
 
   const menuRef = useRef();
   const iconRef = useRef();
-  const audioRef = useRef(new Audio(musicFile));
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -36,41 +36,12 @@ function HeaderBar() {
   }, []);
 
   const handleMusicToggle = () => {
-    setMusicOn((prev) => {
-      if (prev) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-      } else {
-        audioRef.current.play();
-      }
-      return !prev;
-    });
+    if (isPlaying) {
+      stopAudio();
+    } else {
+      playAudio();
+    }
   };
-
-  useEffect(() => {
-    const handleEnded = () => {
-      if (musicOn) {
-        audioRef.current.currentTime = 0;
-        audioRef.current.play();
-      }
-    };
-
-    audioRef.current.addEventListener("ended", handleEnded);
-    return () => {
-      audioRef.current.removeEventListener("ended", handleEnded);
-    };
-  }, [musicOn]);
-
-  useEffect(() => {
-    const handlePause = () => {
-      audioRef.current.currentTime = 0;
-    };
-
-    audioRef.current.addEventListener("pause", handlePause);
-    return () => {
-      audioRef.current.removeEventListener("pause", handlePause);
-    };
-  }, []);
 
   return (
     <nav className={`headerbar-container ${darkMode ? "dark" : ""}`}>
@@ -102,7 +73,7 @@ function HeaderBar() {
                 <span>Music</span>
                 <Toggle
                   className="toggle"
-                  checked={musicOn}
+                  checked={isPlaying} // Usar el estado del contexto
                   onChange={handleMusicToggle}
                 />
               </li>

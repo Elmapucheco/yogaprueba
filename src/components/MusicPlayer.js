@@ -1,61 +1,52 @@
-// MusicPlayer.js
-import React, { useEffect, useState, useRef } from "react";
-import { FaMusic } from "react-icons/fa";
-import musicFile from "../assets/audio.wav";
+import React, {
+  createContext,
+  useContext,
+  useRef,
+  useEffect,
+  useState,
+} from "react";
+import music from "../assets/audio.wav";
 
-const MusicPlayer = () => {
-  const audioRef = useRef(new Audio(musicFile));
-  const [musicOn, setMusicOn] = useState(false);
-  const [hasInteracted, setHasInteracted] = useState(false);
+const AudioContext = createContext();
 
-  useEffect(() => {
-    // Verificar si hay música activada en localStorage al cargar el componente
-    const savedState = localStorage.getItem("musicOn");
-    if (savedState) {
-      setMusicOn(JSON.parse(savedState));
-    }
+export const AudioProvider = ({ children }) => {
+  const audioRef = useRef(new Audio(music));
+  const [isPlaying, setIsPlaying] = useState(false);
 
-    // Establecer el evento 'ended' para reiniciar la música cuando finaliza
-    const handleEnded = () => {
-      if (musicOn) {
-        audioRef.current.currentTime = 0;
-        audioRef.current.play().catch((error) => {
-          console.error("Failed to restart audio:", error);
-        });
-      }
-    };
-    audioRef.current.addEventListener("ended", handleEnded);
-
-    // Limpiar el event listener al desmontar el componente
-    return () => {
-      audioRef.current.removeEventListener("ended", handleEnded);
-    };
-  }, [musicOn]);
-
-  // Manejar el clic en el ícono de música
-  const handleMusicToggle = () => {
-    if (!hasInteracted) {
-      setHasInteracted(true); // Marcar que el usuario ha interactuado con el reproductor
-    }
-
-    setMusicOn((prev) => {
-      const newState = !prev;
-      if (newState) {
-        // Intentar iniciar la reproducción de audio si está activada
-        audioRef.current.play().catch((error) => {
-          console.error("Failed to start audio:", error);
-        });
-      } else {
-        // Pausar la reproducción si está desactivada
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-      }
-      localStorage.setItem("musicOn", JSON.stringify(newState));
-      return newState;
-    });
+  const playAudio = () => {
+    audioRef.current.play();
+    setIsPlaying(true);
   };
 
-  return <FaMusic className="music-icon" onClick={handleMusicToggle} />;
+  const stopAudio = () => {
+    audioRef.current.pause();
+    audioRef.current.currentTime = 0;
+    setIsPlaying(false);
+  };
+
+  // Controlar el audio cuando la visibilidad de la página cambia
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible" && isPlaying) {
+        playAudio();
+      } else {
+        stopAudio();
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [isPlaying]);
+
+  return (
+    <AudioContext.Provider value={{ playAudio, stopAudio, isPlaying }}>
+      {children}
+    </AudioContext.Provider>
+  );
 };
 
-export default MusicPlayer;
+export const useAudio = () => {
+  return useContext(AudioContext);
+};
