@@ -121,6 +121,11 @@ background-color: #3f3f58;
       display: block;
       border-inline: none;
       box-shadow: none;
+      
+  }
+  .NavBar.dark{
+    box-shadow: none;
+    
   }
   .icon-container{
     padding-top: 5px;
