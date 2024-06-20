@@ -1,7 +1,7 @@
 .container-wellness{
     width:90%;
     padding-block:1rem;
-    /* overflow: hidden; */
+    overflow: hidden;
     height: auto;
     background-color: white;
     border-radius: 5px;
@@ -51,12 +51,13 @@
     display: block;
 }
 
-@media(min-width:768px){
-    
-}
 
 @media(min-width:1024px){
     .container-wellness{
-        width: 400px;;
+        width: 30%;
+        height: auto;
+    }
+    .cont-img-wellness h3{
+        font-size:clamp(1rem, 1.5vw, 2rem);
     }
   }

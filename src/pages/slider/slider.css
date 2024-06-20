@@ -6,6 +6,7 @@
   background-color: white;
   position: relative;
   height: auto;
+  overflow: hidden;
  
 }
 .slider-container.dark{
@@ -25,7 +26,6 @@
   top: 1rem;
   left: 1.25rem; 
   z-index: 3;
-  
 }
 .link-slider{  
   position: absolute;
@@ -135,6 +135,28 @@
 
 @media(min-width:1024px){
   .slider-container{
-      width: 400px;;
+      width: 30%;
+      height: auto;
+      margin-top: 4px;
   }
+  .slider-header-title{
+    font-size:clamp(1rem, 1.5vw, 2rem);
+    }
+  .slide-wrapper h3 {
+      font-size:clamp(1rem, 1.4vw, 2rem);
+      
+    }
+    
+  .slide-wrapper p {
+  
+      font-size:clamp(1rem, 1vw, 2rem);; 
+    }
+  .link-slider{
+      width: 80px;
+      height: 50px;
+      font-size: 0.8rem;
+    }
+    .slide-wrapper{
+      padding-bottom: 0;
+    }
 }

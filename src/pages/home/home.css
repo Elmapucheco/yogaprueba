@@ -15,6 +15,14 @@
     /* Otros estilos específicos para modo oscuro */
   }
 
+  @media(min-width:768px){
+    .home{
+      padding:6rem 1.5rem;
+    }
+    
+  }
+
+
 @media(min-width:1024px){
     .home{
         flex-direction: row;
