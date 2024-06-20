@@ -40,8 +40,8 @@
   background-color: rgba(61, 26, 69, 0.5);
   clip-path: polygon(100% 0, 0 0, 100% 100%);
   clip-path: polygon(100% 0, 0 0, 100% 100%);
-  width: 80px; /* Ajusta el ancho */
-  height: 50px; /* Ajusta la altura */
+  width: 80px;
+  height: 50px;
   border-top-right-radius: 5px;
   display: flex;
   align-items:flex-start;
@@ -120,7 +120,17 @@
 }
 
 @media(min-width:768px){
-    
+    .link-slider{
+      width: 100px;
+      height: 70px;
+      font-size: 1rem;
+    }
+    .slide-wrapper h3{
+      bottom: 2.5rem;
+    }
+    .slide-wrapper p{
+      bottom:0.6rem
+    }
 }
 
 @media(min-width:1024px){
