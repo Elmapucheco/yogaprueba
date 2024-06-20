@@ -147,6 +147,10 @@
   .check-go{
     width: 25%;
   }
+  .challenge-favorites, .favorito-activo{
+    width: 25px;
+    height: 25px;
+  }
 }
 @media(min-width:768px){
   .challengeGallery-header p{
@@ -161,6 +165,10 @@
   }
   .check-go{
     width: 20%;
+  }
+  .challenge-favorites, .favorito-activo{
+    width: 25px;
+    height: 25px;
   }
 }
 @media(min-width:1024px){
