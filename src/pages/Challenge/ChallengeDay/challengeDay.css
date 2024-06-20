@@ -2,6 +2,49 @@
   min-height: 100vh; 
   padding-block: 70px;
 }
+.challengeDay-portada{
+  position: relative;
+  z-index: 0;
+ }
+ .challengeDay-portada::before{
+  content: "";
+    position: absolute;
+    inset: 0;
+    background: hsla(185, 64%, 51%, 1);
+  background: linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
+  background: -moz-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
+  background: -webkit-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", endColorstr="#471069", GradientType=1 );
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+.challengeDay-portada h1{
+  color: white;
+  font-size:clamp(1rem, 6vw, 3rem);
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top:20%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+.challengeDay-portada p{
+  position: absolute;
+  z-index: 4;
+  bottom: 0;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  font-size:clamp(1rem, 4.5vw, 2rem);
+  text-align: center;
+  backdrop-filter: blur(5px);
+  padding: 1rem 0.31rem;
+}
+.challengeDay-portada img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
 .challengeDay-day-iconBack button{
   color: white;
@@ -27,76 +70,29 @@
    height: 20px;
    cursor: pointer;
 }
-.challengeDay-portada h1{
-   color: white;
-   font-size:  clamp(0.5rem, 2.8vw + 1rem, 3rem);
-   position: absolute;
-   z-index: 5;
-   left: 50%;
-   top:20%;
-   transform: translate(-50%, -50%);
-   white-space: nowrap;
- }
-.challengeDay-portada p{
-   position: absolute;
-   z-index: 4;
-   bottom: 0;
-   color: white;
-   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-   font-size: 1.2rem;
-   text-align: center;
-   backdrop-filter: blur(5px);
-   padding: 15px 5px;
-}
- 
- .challengeDay-portada img{
-   width: 100%;
-   height: auto;
-   display: block;
- }
- 
-.challengeDay-portada{
- position: relative;
- z-index: 0;
-}
-.challengeDay-portada::before{
-   content: "";
-     position: absolute;
-     inset: 0;
-     background: hsla(185, 64%, 51%, 1);
-   background: linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
-   background: -moz-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
-   background: -webkit-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
-   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", endColorstr="#471069", GradientType=1 );
-     width: 100%;
-     height: auto;
-     border-radius: 5px;
-}
 .challengeDay-day-sequence {
-   font-size: 20px;
+  font-size:clamp(1.2rem, 4.5vw, 1.5rem);
    background-color: white;
-   padding-bottom: 10px;
+   padding-bottom: 0.625rem;
    position: relative;
    z-index: 2;
-   margin-bottom: 40px;
-   border-bottom-right-radius: 20px;
-   border-bottom-left-radius: 20px;
+   margin-bottom: 2.5rem;
+   
 }
 .challengeDay-container.dark .challengeDay-day-sequence{
   background-color: #282D35;
 }
 .challengeDay-asana-container{
  width: 100%;
- padding: 5px;
- margin-bottom: 10px;
+ padding: 0.31rem;
+ margin-bottom: 0.625rem;
 }  
  .challengeDay-asana {
    display: flex;
    align-items: center;
    justify-content: space-between;
-   /* margin-bottom: 10px;  */
-   box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.1);
-   padding: 10px 15px; 
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.1);
+   padding: 0.625rem 1rem; 
  }
 .challengeDay-container.dark .challengeDay-asana{
   box-shadow: 0 2px 2px rgba(165, 128, 157, 0.1);
@@ -105,7 +101,7 @@
    display: flex;
    justify-content:flex-start;
    align-items: center;
-   width: 500px;
+   
  }
  .challengeDay-asana-img {
    width: 50px;
@@ -118,7 +114,7 @@
   background-color: white;
  }
  .challengeDay-asana-name {
-   margin-left: 30px;
+   margin-left: 1.5rem;
  }
  .challengeDay-container.dark .challengeDay-asana-name{
   color: #918E9B;
@@ -181,4 +177,18 @@
    to {
      opacity: 1;
    }} 
+
+   @media(min-width:768px){
+  .challengeDay-asana{
+    padding-inline: 2rem;
+  }
+  .challengeDay-portada {
+    aspect-ratio: 21 / 9;
+    overflow: hidden;
+  }
+  .challengeDay-portada img{
    
+    object-fit: cover; /* Corta la imagen para cubrir completamente el contenedor */
+    display: block;
+  }
+   }
