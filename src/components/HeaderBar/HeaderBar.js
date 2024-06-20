@@ -1,5 +1,6 @@
 // HeaderBar.js
 import React, { useRef, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import tools from "../../assets/tools.png";
 import toolsdark from "../../assets/toolsdark.png";
 import logo from "../../assets/logo.jpg";
@@ -45,8 +46,13 @@ function HeaderBar() {
 
   return (
     <nav className={`headerbar-container ${darkMode ? "dark" : ""}`}>
-      <img src={darkMode ? logodark : logo} alt="Logo" />
-
+      <Link to="/">
+        <img
+          src={darkMode ? logodark : logo}
+          alt="Logo"
+          className="icon-logo-home"
+        />
+      </Link>
       <div className="headerbar-settings">
         <img
           src={darkMode ? toolsdark : tools}

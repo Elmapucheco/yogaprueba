@@ -7,14 +7,14 @@ import { useDarkMode } from "../../components/DarkMode";
 function CorporateWellness() {
   const { darkMode } = useDarkMode();
   return (
-    <Link to="/program">
-      <div className={`container-wellness ${darkMode ? "dark" : ""}`}>
+    <div className={`container-wellness ${darkMode ? "dark" : ""}`}>
+      <Link to="/program">
         <div className="cont-img-wellness">
           <h3>Employee Yoga Program</h3>
           <img className="img-wellness" src={office} alt="Office" />
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
 

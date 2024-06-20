@@ -1,27 +1,24 @@
 .container-challenge {
-    max-width: 90%;
-    margin: 0.35rem auto 0.35rem ;
-    padding-inline: 1em;
-    padding-bottom: 1em;
-    overflow: hidden;
+    width: 90%;
+    padding-block: 1rem;
+    /* overflow: hidden; */
     height: auto;
     background-color:white;
     border-radius: 5px;
     position: relative;
+   
 }
 .container-challenge.dark{
     background-color: #282D35;
-    
 }
 .title-challenge {
     color: white;
-    font-size:clamp(0.3rem, 1.5vw + 1rem, 3rem);
+    font-size:clamp(1rem, 5vw, 2rem);
     position: absolute; 
     z-index: 3;
-    top: 15px;
-    left: 20px; 
-    padding: 10px;
-    /* backdrop-filter:blur(10px); */
+    top: 1rem;
+    left: 1.25rem; 
+  
 }
 .cont-img {
     width: 100%; 
@@ -55,3 +52,13 @@
     border-radius: 5px;
     pointer-events: none;
 } 
+
+@media(min-width:768px){
+    
+}
+
+@media(min-width:1024px){
+    .container-challenge{
+        width: 400px;;
+    }
+  }

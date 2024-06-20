@@ -2,7 +2,7 @@
   width: 100%;
   z-index: 5;
   background-color: #fff;
-  padding: 10px;
+  padding: 0.625rem;
   box-shadow: 0 -2px 4px rgba(67, 15, 71, 0.1);
   position: fixed;
   bottom: 0; 
@@ -107,4 +107,31 @@
 .NavBar.dark .info-dropdown ul a:hover {
 background-color: #3f3f58;
   color: white;
+}
+
+@media(min-width:1024px){
+  .NavBar{
+      position: fixed;
+      z-index: 5;
+      top: 0;
+      right:170px;
+      transform: translateX(-50);
+      width: 1050px;
+      margin: 0 auto;
+      display: block;
+      border-inline: none;
+      box-shadow: none;
+  }
+  .icon-container{
+    padding-top: 5px;
+  }
+  .practice-dropdown,
+  .info-dropdown{
+    top: calc(100% + 10px);
+    position: absolute;
+    z-index: 200;
+  }
+.icon-home{
+  display: none;
+}
 }

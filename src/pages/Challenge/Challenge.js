@@ -9,8 +9,8 @@ function Challenge() {
   return (
     <div className={`container-challenge ${darkMode ? "dark" : ""}`}>
       <Link to="challengeGallery">
-        <h3 className="title-challenge">30 days Yoga Challenge</h3>
         <div className="cont-img">
+          <h3 className="title-challenge">30 days Yoga Challenge</h3>
           <img className="img-challenge" src={gara6} alt="Yoga Challenge" />
         </div>
       </Link>

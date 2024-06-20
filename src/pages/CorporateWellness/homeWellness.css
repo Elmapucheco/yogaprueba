@@ -1,14 +1,23 @@
 .container-wellness{
-    max-width: 90%;
-    margin: 0.35rem auto 0;
-    padding:0.4rem 1rem 1rem;
-    overflow: hidden;
+    width:90%;
+    padding-block:1rem;
+    /* overflow: hidden; */
     height: auto;
     background-color: white;
     border-radius: 5px;
+    position: relative;
+    
 }
 .container-wellness.dark{
     background-color: #282D35;
+}
+.cont-img-wellness h3{
+    color:white;
+    font-size:clamp(1rem, 5vw, 2rem);
+    position: absolute;
+    top: 1rem;
+    left: 1.25rem; 
+    z-index: 3;
 }
 .cont-img-wellness {
     width: 100%; 
@@ -18,28 +27,19 @@
     overflow: hidden;
     
 }
-.cont-img-wellness h3{
-    color:white;
-    font-size: clamp(0.3rem, 1.5vw + 1rem, 3rem);
-    position: absolute;
-    top: 15px;
-    left: 20px; 
-    margin: 0;
-    z-index: 3;
-}
+
 .cont-img-wellness::before{
     content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
-background: -moz-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
-
-background: -webkit-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", endColorstr="#471069", GradientType=1 );
-      z-index: 1;
-      width: 100%;
-      height: 100%;
-      border-radius: 5px;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
+    background: -moz-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
+    background: -webkit-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", endColorstr="#471069", GradientType=1 );
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
   }
   .img-wellness {
     width: 100%;
@@ -52,3 +52,12 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", en
     
 }
 
+@media(min-width:768px){
+    
+}
+
+@media(min-width:1024px){
+    .container-wellness{
+        width: 400px;;
+    }
+  }

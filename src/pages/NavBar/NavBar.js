@@ -34,7 +34,7 @@ const NavBar = () => {
   return (
     <div className={`NavBar ${darkMode ? "dark" : ""}`}>
       <div className="icons">
-        <Link to="/" className="icon-container icon-container-link">
+        <Link to="/" className="icon-container icon-container-link icon-home">
           <img src={darkMode ? homedark : home} className="icon" />
           <p>Home</p>
         </Link>
