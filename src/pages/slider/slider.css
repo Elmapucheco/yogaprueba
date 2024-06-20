@@ -56,12 +56,9 @@
 }
 .slide-wrapper {
   width: 100%;
-  max-width: 768px;
-  padding-top: 66%;
-  float: left;
-  margin: 0 auto;
+  padding-top: 66%;/*padding trick*/
+  /* margin: 0 auto; */
   border-radius: 5px;
-  overflow: hidden;
   padding-bottom: 5px;
   position: relative;
   overflow: hidden;
@@ -88,10 +85,10 @@
   height: 100%;
   border-radius: 5px;
   object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
 }
 
 .slide-wrapper h3,
@@ -108,14 +105,14 @@
 .slide-wrapper h3 {
   bottom: 2rem; 
   left: 1.25rem;
-  font-size: clamp(0.3rem, 1vw + 1rem, 2rem); 
+  font-size:clamp(1rem, 4.5vw, 2rem);
   
 }
 
 .slide-wrapper p {
-  bottom: 0.31rem; 
+  bottom: 0.4rem; 
   left: 1.25rem; 
-  font-size: clamp(0.2rem, 0.5vw + 1rem, 2rem); 
+  font-size:clamp(1rem, 3vw, 2rem);; 
 }
 
 .slide-wrapper:last-child {

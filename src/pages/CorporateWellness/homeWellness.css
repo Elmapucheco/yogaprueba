@@ -21,8 +21,7 @@
 }
 .cont-img-wellness {
     width: 100%; 
-    max-width: 768px;
-    padding-top: 66%;
+    padding-top: 66%;/*padding trick*/
     position: relative; 
     overflow: hidden;
     
@@ -49,7 +48,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    
+    display: block;
 }
 
 @media(min-width:768px){
