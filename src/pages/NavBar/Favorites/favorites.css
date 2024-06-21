@@ -1,6 +1,6 @@
 .favorites-container {
     text-align: center;
-    background-color: #f9f9f9;
+    background-color:white;
     min-height: 100vh; 
     padding-block: 70px;
    
@@ -10,7 +10,7 @@
 }
 .favorites-header h1{
     color: white;
-      font-size:  clamp(0.5rem, 2.8vw + 1rem, 3rem);
+    font-size:clamp(1rem, 6vw, 2.5rem);
       position: absolute;
       z-index: 5;
       left: 50%;
@@ -25,12 +25,13 @@
     bottom: 0;
     color: white;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    font-size: 1.2rem;
+    font-size:clamp(1rem, 4.5vw, 2rem);
     text-align: center;
     backdrop-filter: blur(5px);
+    width: 100%;
     left: 50%;
     transform: translateX(-50%);
-    padding-block: 15px;
+    padding-block: 1rem;
     white-space: nowrap;
   }
   .favorites-header img{
@@ -57,7 +58,7 @@
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", endColorstr="#471069", GradientType=1 );
     width: 100%;
     height: auto;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     z-index: 1;
   }
 
@@ -76,11 +77,10 @@
     padding: 0.625rem 1.25rem;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 800px;
   }
   .favorites-container.dark .favorites-sequence-card{
     background-color: #171f1d;
-    box-shadow: 0 2px 2px rgba(165, 128, 157, 0.1);
+    box-shadow: 0 3px 8px rgba(165, 128, 157, 0.3);
   }
   .favorites-check-go{
     display: flex;
@@ -89,7 +89,7 @@
     width: 30%;
   }
   .favorites-check-go h2, .no-favorites{
-    font-size: 1.1rem;
+    font-size:clamp(1rem, 4.5vw, 1.5rem);
     margin-bottom: 0;
     text-align: center;
     color: #662572;
@@ -97,6 +97,7 @@
   .favorites-container.dark .favorites-check-go h2,
   .favorites-container.dark .no-favorites{
   color:#bbb8c4;
+  font-weight: 400;
   }
   .favorites-delete{
     fill:#662572; 
@@ -105,7 +106,7 @@
     cursor: pointer;
   }
  .favorites-container.dark .favorites-delete{
-  fill:#822a92;
+  fill:#9843a8
  }
   .favorites-next-icon{
     width: 20px;
@@ -129,8 +130,9 @@
     animation: fadeIn 3s ease-in-out forwards; /* Animación de desvanecimiento durante 3 segundos */
   }
   .no-favorites{
-    margin: 20px;
-    margin-bottom: 0;
+    font-size:clamp(1rem, 4.5vw, 2rem);
+    margin: 1.25rem;
+    margin-bottom: 0.625rem;
     line-height: 2;
   }
   .link-button {
@@ -139,12 +141,12 @@
       background-image: linear-gradient(rgba(179, 132, 201, .7), rgba(57, 31, 91, 0.7) 50%);
       border-radius: 42px;
       border-width: 0;
-      box-shadow: rgba(57, 31, 91, 0.24) 0 2px 2px, rgba(179, 132, 201, 0.4) 0 6px 8px;
+      box-shadow: rgba(57, 31, 91, 0.24) 0 2px 2px, rgba(179, 132, 201, 0.4) 0 4px 8px;
       color: #FFFFFF;
       cursor: pointer;
       display: flex;
       font-family: Quicksand,sans-serif;
-      font-size: 1.2rem;
+      font-size:clamp(1rem, 4.5vw, 2rem);
       font-weight: 700;
       justify-content: center;
       letter-spacing: .04em;
@@ -175,3 +177,58 @@
     to {
         opacity: 1; /* Opacidad final */
     }}
+
+    @media(min-width:768px){
+      .favorites-header p{
+        font-size: 2rem;
+        width: 100%;
+      }
+      .favorites-header{
+        aspect-ratio: 21 / 9;
+      }
+      .favorites-sequence-card{
+        padding: 1rem 3rem;
+      }
+      .favorites-check-go{
+        width: 20%;
+      }
+      .favorites-delete{
+        width: 25px;
+        height: 25px;
+      }
+      .no-favorites{
+        margin:0;
+      }
+    } 
+    @media(min-width:1024px){
+      .favorites-container{
+        width: 900px;
+        margin: 5.62rem auto 1.25rem ;
+        padding-block: 0;
+        border-radius: 5px;
+        height: 100vh;
+       }
+      .no-favorites-container{
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      padding-block: 1rem ;
+      border-radius: ;
+      }
+
+      .favorites-container.dark .no-favorites-container{
+        box-shadow: 0 2px 8px rgba(165, 128, 157, 0.4);
+      }
+      .favorites-header img{
+        border-radius: 5px;
+      }
+      .favorites-header::before{
+        border-radius: 5px;
+      }
+      .no-favorites{
+        font-size: 1.2rem;
+        padding-block: 1rem
+      }
+      .link-button{
+        margin-bottom:2rem ;
+      width: 60%;
+      }
+    }

@@ -176,7 +176,7 @@ function Favorites() {
         <p>Enjoy your selection</p>
       </div>
       {favoritos.length === 0 ? (
-        <>
+        <div className="no-favorites-container">
           <h2 className="no-favorites">
             You haven't chosen favorites yet.
             <br /> You can do it on{" "}
@@ -184,7 +184,7 @@ function Favorites() {
           <Link to="/challengeGallery" className="link-button">
             30 Days Yoga Challenge
           </Link>
-        </>
+        </div>
       ) : (
         <div className="favorites-sequence-list">
           {favoriteSequences.map((sequence, index) => (

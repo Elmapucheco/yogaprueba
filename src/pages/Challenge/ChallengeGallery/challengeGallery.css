@@ -5,7 +5,7 @@
 
 .challengeGallery-header h1{
   color: white;
-  font-size:clamp(1rem, 6vw, 2.2rem);
+  font-size:clamp(1rem, 6vw, 2.5rem);
     position: absolute;
     z-index: 5;
     left: 50%;

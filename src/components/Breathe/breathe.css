@@ -119,6 +119,12 @@
   }
 }
 
-
+@media(min-width:1024px){
+  .body-breath{
+    padding-top: 70px;
+    padding-bottom: 0;
+  }
+  
+}
 
 

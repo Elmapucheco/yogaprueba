@@ -24,7 +24,6 @@ function PosesList() {
     );
   }
 
-  // Filtrar el asana con english_name igual a "Child's Pose"
   const filteredAsanas = asanas.filter(
     (asana) => asana.english_name !== "Child's Pose"
   );
