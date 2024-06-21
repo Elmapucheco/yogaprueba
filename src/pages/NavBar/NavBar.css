@@ -115,10 +115,9 @@ background-color: #3f3f58;
       z-index: 5;
       top: 0;
       left: 50%; /* Centrar horizontalmente */
-    transform: translateX(-50%);
+      transform: translateX(-50%);
       width: 73%;
       margin: 0 auto;
-      display: block;
       border-inline: none;
       box-shadow: none;
       
@@ -130,12 +129,15 @@ background-color: #3f3f58;
   .icon-container{
     padding-top: 5px;
   }
-  .practice-dropdown,
+ 
   .info-dropdown{
     top: calc(100% + 10px);
-    position: absolute;
-    z-index: 200;
+    height: 165px;
   }
+.practice-dropdown{
+  top: calc(100% + 10px);
+  height: 120px;
+}
 .icon-home{
   display: none;
 }
