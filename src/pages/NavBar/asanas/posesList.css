@@ -89,7 +89,7 @@
   text-align: center;
 }
 .container-poselist.dark .poselist-asana-item p{
-  color: #dcb1e4;
+  color: #bbb8c4;
 }
 .poselist-asana-item:hover {
   transform: scale(1.1);

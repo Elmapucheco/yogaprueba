@@ -50,7 +50,6 @@
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", endColorstr="#471069", GradientType=1 );
   width: 100%;
   height: auto;
-  border-radius: 5px;
   z-index: 1;
 }
 .sequence-list {
@@ -186,6 +185,9 @@
     box-shadow: 0 3px 8px rgba(165, 128, 157, 0.3);
   }
   .challengeGallery-header img{
+    border-radius: 5px;
+  }
+  .challengeGallery-header::before{
     border-radius: 5px;
   }
 }
