@@ -34,7 +34,7 @@
 .program-description{
     margin-block: 0.625rem;
     line-height: 1.5;
-    font-size:clamp(1rem, 2vw, 2rem);
+    font-size:clamp(1rem, 2vw, 1.8rem);
     color:rgb(82, 20, 88);
 }
 .program-container.dark .program-description{
@@ -76,13 +76,12 @@
     color: #FFFFFF;
     cursor: pointer;
     display: flex;
-    font-family: Quicksand,sans-serif;
-    font-size: 1.2rem;
+    font-size:clamp(1.2rem, 1.8vw, 2rem);
     font-weight: 700;
     justify-content: center;
     letter-spacing: .04em;
     line-height: 1rem;
-    margin: 20px auto 10px;
+    margin: 2rem auto 0.625rem;
     padding: 1.5rem 2rem;
     text-align: center;
     text-decoration: none;
@@ -102,5 +101,32 @@
 }
 
 @media(min-width:768px){
+    .tologin-button{
+        margin-top: 3rem;
+    }
+}
+
+@media(min-width:1024px){
     
+    .program-description{
+        font-size:clamp(1rem, 1.5vw, 1.8rem);
+    }
+    .program-list li{
+        font-size:clamp(1rem, 1.7vw, 2rem);
+    }
+    
+    .video-list{
+        display: flex;
+        align-items: center;
+        justify-content:flex-start;
+    }
+    .program-video-container iframe{
+        width: 500px;
+    }
+    .tologin-button{
+        width: 50%;
+    }
+    .program-list ul{
+        margin-left: 3rem;
+    }
 }

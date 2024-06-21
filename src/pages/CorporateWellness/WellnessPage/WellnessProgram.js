@@ -18,35 +18,38 @@ const WellnessProgram = () => {
         your employees to cultivate a focused mind while enjoying the physical
         benefits of yoga.
       </p>
-      <div className="program-video-container">
-        <iframe
-          title="Yoga Video"
-          src="https://www.youtube.com/embed/Qr0p2fW1zcQ"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+      <div className="video-list">
+        <div className="program-video-container">
+          <iframe
+            title="Yoga Video"
+            src="https://www.youtube.com/embed/Qr0p2fW1zcQ"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+        <div className="program-list">
+          <ul>
+            <li>
+              <GoDotFill />
+              Yoga for Healthy Back
+            </li>
+            <li>
+              <GoDotFill />
+              Breath and Mindfulness
+            </li>
+            <li>
+              <GoDotFill />
+              Office Chair Yoga
+            </li>
+            <li>
+              <GoDotFill />
+              Yoganidra Relaxation
+            </li>
+          </ul>
+        </div>
       </div>
-      <div className="program-list">
-        <ul>
-          <li>
-            <GoDotFill />
-            Yoga for Healthy Back
-          </li>
-          <li>
-            <GoDotFill />
-            Breath and Mindfulness
-          </li>
-          <li>
-            <GoDotFill />
-            Office Chair Yoga
-          </li>
-          <li>
-            <GoDotFill />
-            Yoganidra Relaxation
-          </li>
-        </ul>
-      </div>
+
       <p className="program-description">
         Through our Employee Yoga Program, your team will get access to 4
         different yoga sessions, available in Czech and English, and choose the
