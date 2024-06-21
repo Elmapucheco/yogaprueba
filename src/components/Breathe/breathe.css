@@ -8,12 +8,28 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
   margin: 0;
   background-image: url('../../assets/breathe.JPG');
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   animation: fadeIn 5s ease-in-out forwards;
+  position: relative;
+  z-index: 0;
+}
+.body-breath::before{
+  content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: hsla(185, 64%, 51%, 1);
+background: linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
+background: -moz-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
+background: -webkit-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", endColorstr="#471069", GradientType=1 );
+z-index: 1;
 }
 @keyframes fadeIn {
    from {
@@ -32,6 +48,7 @@
   width: 18.75rem;
   position: relative;
   transform: scale(1);
+  z-index: 3;
  }
 
 .circle {
@@ -123,6 +140,7 @@
   .body-breath{
     padding-top: 70px;
     padding-bottom: 0;
+    background-image: url('../../assets/kathmandu.JPG');
   }
   
 }
