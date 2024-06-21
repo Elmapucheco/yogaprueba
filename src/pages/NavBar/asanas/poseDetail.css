@@ -141,13 +141,16 @@
     .container-posedetail{
       width: 90%;
       margin-inline: auto;
+      padding-top: 100px;
     }
     .container-posedetail-info img{
-      width: 25%; 
-      height: 25%;
+      width: 300px; 
+      height: 300px;
+     
     }
     .container-posedetail h2{
-      font-size:clamp(1rem, 1.8vw, 2rem);
+      font-size:clamp(1rem, 1.5vw, 2rem);
+      
     }
     .container-posedetail h3{
       font-size:clamp(1rem, 1.4vw, 1.5rem)
@@ -159,4 +162,20 @@
       width: 30px;
       height: 30px;
     }
-  }
+    .details-desktop{
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+    }
+    .asana-nameasana{
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-block: auto;
+    }
+   .text-asanas{
+        flex: 1;
+        margin-block: auto;
+      }
+    } 

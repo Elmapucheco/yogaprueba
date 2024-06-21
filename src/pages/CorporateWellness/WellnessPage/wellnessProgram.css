@@ -29,7 +29,7 @@
     height: auto;
     margin: 0.625rem auto;
     display: block;
-    padding: 1rem;
+   
 }
 .program-description{
     margin-block: 0.625rem;
@@ -107,6 +107,9 @@
 }
 
 @media(min-width:1024px){
+    .program-container{
+        padding-inline: 4rem;
+    }
     
     .program-description{
         font-size:clamp(1rem, 1.5vw, 1.8rem);
@@ -122,6 +125,7 @@
     }
     .program-video-container iframe{
         width: 500px;
+        margin-left: 0;
     }
     .tologin-button{
         width: 50%;
