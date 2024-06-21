@@ -187,3 +187,14 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", en
   width: 35px;
   height: 35px;
 }
+@media(min-width:768px){
+  
+  .sliderplay-icon-pause img{
+    width: 40px;
+  height: 40px;
+  }
+  .sliderplay-icon{
+    width: 45px;
+    height: 45px;
+  }
+}
