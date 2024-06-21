@@ -3,8 +3,8 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding-top: 80px;
-  padding-inline: clamp(1rem, 4vw, 2rem); /* Ajuste dinámico del padding */
+  padding-top: 5rem;
+  padding-inline: 0;
   background-color: white;
   position: relative;
   z-index: 0;
@@ -35,10 +35,10 @@
 .asana-poselist {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(auto,150px));
   gap: 15px;
-  padding: 1.25rem;
-  
+  padding: 1rem;
+  justify-content: center;
   
 }
 
@@ -46,14 +46,14 @@
   text-decoration: none;
   color: rgb(127, 50, 127);
   width: 100%;
-  max-width: 150px;
+  /* max-width: 100px; */
   height: 150px;
   
 }
 
 .poselist-asana-item {
   margin-bottom: 0.625rem;
-  padding: clamp(0.625rem, 1vw, 1rem); /* Ajuste del padding */
+  padding: clamp(0.625rem, 1vw, 1rem); 
   border-radius: 10px;
   background-color: #fdfdfc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -113,11 +113,6 @@
   transition: transform 0.2s ease-in-out;
 }
 
-.asana-list {
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-
 .asana-item {
   width: 100px;
   height: 100px;
@@ -153,26 +148,3 @@
   }
 }
 
-@media (min-width: 600px) {
-  .asana-poselist {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (min-width: 900px) {
-  .asana-poselist {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
-
-@media (min-width: 1200px) {
-  .asana-poselist {
-    grid-template-columns: repeat(6, 1fr);
-  }
-}
-
-@media (min-width: 1500px) {
-  .asana-poselist {
-    grid-template-columns: repeat(7, 1fr);
-  }
-}

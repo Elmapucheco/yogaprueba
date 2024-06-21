@@ -4,7 +4,6 @@
     align-items: center;
     min-height: 100vh;
     background-image:url("../../../assets/breathe.JPG");
-    max-width: 768px;
     margin-inline: auto;
     position: relative;
     z-index: 0;
@@ -27,14 +26,12 @@ background: -moz-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 7
 background: -webkit-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
 filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", endColorstr="#471069", GradientType=1 );
   z-index: 1;
-  /* pointer-events: none; */
 }
 .wrapper-login{
     position: relative;
     z-index: 2;
     width: 420px;
     height: 450px;
-    /* background: transparent; */
     border: 2px solid rgba(255, 255,255,.1);
     backdrop-filter:blur(30px);
     border-radius: 10px;
@@ -148,21 +145,3 @@ form .register-link{
     text-decoration: underline;
 }
 
-
-
-
-/* codigo para el input activo cuando clickean en el
-
-input {
-    width: 100%;
-    padding: 0.5em;
-    margin-bottom: 0.75em;
-    border: 2px solid #d1d5db;
-    border-radius: 5px;
-}
-
-input:focus {
-    outline: none;
-    border-color: #8a71ec;
-    background-color: #e6e8ec;
-} */
