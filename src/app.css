@@ -6,7 +6,13 @@
   box-sizing: border-box;
   margin:0;
 }
+html{
+  background-color: white;
+}
 
+html .dark-mode{
+  background-color: #282D35;
+}
 body {
   background-color: white;
   font-family: "Poppins", sans-serif;

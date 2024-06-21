@@ -25,6 +25,13 @@ function App() {
   const { darkMode } = useDarkMode();
 
   useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark-mode");
+    } else {
+      document.documentElement.classList.remove("dark-mode");
+    }
+  }, [darkMode]);
+  useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 2000);

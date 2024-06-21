@@ -2,6 +2,7 @@
   min-height: 100vh; 
   padding-block: 70px;
 }
+
 .challengeGallery-header h1{
   color: white;
   font-size:clamp(1rem, 6vw, 2.2rem);
@@ -29,13 +30,14 @@
     height: auto;
     display: block;
     object-fit: cover;
-    object-position: center
+    object-position: center;
+    
 }
 .challengeGallery-header{
   position: relative;
   z-index: 0;
   aspect-ratio: 16 / 9;
-  overflow: hidden;
+  overflow: hidden; 
 }
 .challengeGallery-header::before{
   content: "";
@@ -69,7 +71,7 @@
 }
 .challengeGallery-container.dark .sequence-card{
   background-color: #282D35;
-  box-shadow: 0 4px 8px rgba(165, 128, 157, 0.6);
+  box-shadow: 0 3px 8px rgba(165, 128, 157, 0.3);
 }
 .a {
   text-decoration: none;
@@ -175,9 +177,13 @@
   .challengeGallery-container{
     width: 900px;
     margin-inline: auto;
-    padding-top: 90px;
+    margin-top: 90px;
+    padding-block: 0;
     border-radius: 5px;
-    padding-bottom: 0;
+   
+  }
+  .challengeGallery-container.dark{
+    box-shadow: 0 3px 8px rgba(165, 128, 157, 0.3);
   }
   .challengeGallery-header img{
     border-radius: 5px;

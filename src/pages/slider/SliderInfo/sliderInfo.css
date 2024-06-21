@@ -214,5 +214,40 @@
     
     object-fit: cover; /* Corta la imagen para cubrir completamente el contenedor */
     display: block;
+    object-position: center;
   }
 }
+
+@media(min-width:1024px){
+  .sliderInfo-container{
+    width: 900px;
+  margin-inline: auto;
+  margin-top: 90px;
+  padding-block: 0;
+  border-radius: 5px;
+  
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  .sliderInfo-container.dark{
+    box-shadow: 0 3px 8px rgba(165, 128, 157, 0.3);
+  }
+
+  .sliderInfo-start-button{
+    width: 40%;
+    bottom: 10px;
+  }
+  .sliderInfo-day-sequence{
+    margin-bottom:4.8rem ;
+    padding-bottom: 0;
+    
+  }
+  .sliderInfo-asana-container{
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom-left-radius: 5px; /* Ajusta el valor según sea necesario */
+    border-bottom-right-radius: 5px; 
+  }
+  .sliderInfo-portada img{
+    border-radius: 5px;
+  }
+ }
