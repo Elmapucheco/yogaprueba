@@ -35,9 +35,9 @@
 .asana-poselist {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(auto,150px));
+  grid-template-columns: repeat(auto-fit, 110px);
   gap: 15px;
-  padding: 1rem;
+  padding: 1rem 0.3rem;
   justify-content: center;
   
 }
@@ -46,9 +46,6 @@
   text-decoration: none;
   color: rgb(127, 50, 127);
   width: 100%;
-  /* max-width: 100px; */
-  height: 150px;
-  
 }
 
 .poselist-asana-item {
@@ -57,8 +54,6 @@
   border-radius: 10px;
   background-color: #fdfdfc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  width: 100%;
-  max-width: 150px;
   height: 150px;
   display: flex;
   flex-direction: column;
@@ -99,7 +94,7 @@
 }
 
 .poselist-asana-item p {
-  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-size: 0.8rem;
   font-weight: 600;
   text-align: center;
 }
@@ -148,3 +143,25 @@
   }
 }
 
+@media(min-width:768px){
+  .asana-poselist {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 150px);
+    gap: 20px;
+    padding: 2rem;
+    justify-content: center;
+    
+  }
+  .poselist-asana-item{
+    height: 200px;
+    padding-block: 1.5rem;
+    
+  }
+  .poselist-asana-item p{
+    font-size: 1rem;
+  }
+  .poselist-asana-item img{
+    width: 90px;
+  }
+}
