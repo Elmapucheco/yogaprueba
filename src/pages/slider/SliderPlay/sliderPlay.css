@@ -160,7 +160,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", en
   top: 46%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
+
 }
 
 .sliderplay-countdown-text {
@@ -187,8 +187,8 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", en
   width: 35px;
   height: 35px;
 }
-@media(min-width:768px){
-  
+@media(min-width:768px)and (max-width:1024px){
+
   .sliderplay-icon-pause img{
     width: 40px;
   height: 40px;
@@ -197,4 +197,42 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", en
     width: 45px;
     height: 45px;
   }
+
 }
+@media(min-width:1024px){
+  .sand {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    min-height: 100vh;
+    background-image: url("../../../assets/sand.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+    opacity: 0; /* Comienza con opacidad cero para la animación */
+    animation: fadeIn 3s forwards; /* Aplica la animación de fadeIn por 1 segundo */
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0; /* Empieza completamente transparente */
+    }
+    to {
+      opacity: 1; /* Termina completamente visible */
+    }
+  }
+.sand.dark{
+  filter: brightness(70%);
+}
+.sliderplay-container{
+  width: 400px;
+  margin-inline: auto;
+  box-shadow: 4px 0 10px rgb(30, 40, 78, 0.6);
+}
+.sliderplay-name{
+  font-size:clamp(1rem, 2vw, 2rem);
+}
+
+}
+/* Renato Trentin  white sand */

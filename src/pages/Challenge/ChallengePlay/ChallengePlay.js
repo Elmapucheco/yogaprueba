@@ -173,89 +173,91 @@ const ChallengePlay = () => {
   }
 
   return (
-    <div className={`sliderplay-container ${darkMode ? "dark" : ""}`}>
-      {isFinished && <Confetti />}
-      <div className="sliderPlay-header">
-        <img
-          src={exit}
-          alt="Back"
-          className="sliderplay-exit"
-          onClick={goBack}
-        />
-        <span className="sliderplay-name">
-          {currentAsana.english_name}{" "}
-          {currentAsana.side && `(${currentAsana.side})`}
-        </span>
-      </div>
-      <div className="sliderplay-main">
-        {!isFirstAsana && (
+    <div className={`sand ${darkMode ? "dark" : ""}`}>
+      <div className={`sliderplay-container ${darkMode ? "dark" : ""}`}>
+        {isFinished && <Confetti />}
+        <div className="sliderPlay-header">
           <img
-            src={darkMode ? backIcondark : backIcon}
+            src={exit}
             alt="Back"
-            className="sliderplay-icon sliderplay-icon-left"
-            onClick={handleBack}
+            className="sliderplay-exit"
+            onClick={goBack}
           />
-        )}
-        {!isLastAsana && (
+          <span className="sliderplay-name">
+            {currentAsana.english_name}{" "}
+            {currentAsana.side && `(${currentAsana.side})`}
+          </span>
+        </div>
+        <div className="sliderplay-main">
+          {!isFirstAsana && (
+            <img
+              src={darkMode ? backIcondark : backIcon}
+              alt="Back"
+              className="sliderplay-icon sliderplay-icon-left"
+              onClick={handleBack}
+            />
+          )}
+          {!isLastAsana && (
+            <img
+              src={darkMode ? nextIcondark : nextIcon}
+              alt="Next"
+              className="sliderplay-icon sliderplay-icon-right"
+              onClick={handleNext}
+            />
+          )}
           <img
-            src={darkMode ? nextIcondark : nextIcon}
-            alt="Next"
-            className="sliderplay-icon sliderplay-icon-right"
-            onClick={handleNext}
+            ref={containerRef}
+            src={currentAsana.url_png}
+            alt={`Asana ${currentAsanaIndex + 1}`}
+            className="sliderplay-image"
           />
-        )}
-        <img
-          ref={containerRef}
-          src={currentAsana.url_png}
-          alt={`Asana ${currentAsanaIndex + 1}`}
-          className="sliderplay-image"
+        </div>
+        <div className="sliderplay-counter">
+          <div>
+            {isPreparing ? (
+              <div className="sliderplay-preparation-timer">{prepTime}</div>
+            ) : (
+              <div className="sliderplay-cowntdown-wrapper">
+                <CountdownCircleTimer
+                  key={key} // Usamos el key para reiniciar el temporizador
+                  isPlaying={!isPaused}
+                  duration={asanaDuration}
+                  colors={["#01497c", "#2c7da0", "#468faf", "#61a5c2"]}
+                  colorsTime={[asanaDuration, 0]}
+                  onComplete={handleTimerExpire}
+                  size={90}
+                >
+                  {({ remainingTime }) => (
+                    <div className="sliderplay-countdown-text">
+                      {remainingTime}
+                    </div>
+                  )}
+                </CountdownCircleTimer>
+              </div>
+            )}
+          </div>
+          <div className="sliderplay-icon-pause">
+            <img
+              src={
+                isPaused
+                  ? darkMode
+                    ? playdark
+                    : play
+                  : darkMode
+                  ? pausedark
+                  : pause
+              }
+              alt={isPaused ? "Play" : "Pause"}
+              onClick={handlePause}
+            />
+          </div>
+        </div>
+        <ConfirmModal
+          show={showModal}
+          onConfirm={handleConfirm}
+          onCancel={handleCancel}
         />
       </div>
-      <div className="sliderplay-counter">
-        <div>
-          {isPreparing ? (
-            <div className="sliderplay-preparation-timer">{prepTime}</div>
-          ) : (
-            <div className="sliderplay-cowntdown-wrapper">
-              <CountdownCircleTimer
-                key={key} // Usamos el key para reiniciar el temporizador
-                isPlaying={!isPaused}
-                duration={asanaDuration}
-                colors={["#01497c", "#2c7da0", "#468faf", "#61a5c2"]}
-                colorsTime={[asanaDuration, 0]}
-                onComplete={handleTimerExpire}
-                size={90}
-              >
-                {({ remainingTime }) => (
-                  <div className="sliderplay-countdown-text">
-                    {remainingTime}
-                  </div>
-                )}
-              </CountdownCircleTimer>
-            </div>
-          )}
-        </div>
-        <div className="sliderplay-icon-pause">
-          <img
-            src={
-              isPaused
-                ? darkMode
-                  ? playdark
-                  : play
-                : darkMode
-                ? pausedark
-                : pause
-            }
-            alt={isPaused ? "Play" : "Pause"}
-            onClick={handlePause}
-          />
-        </div>
-      </div>
-      <ConfirmModal
-        show={showModal}
-        onConfirm={handleConfirm}
-        onCancel={handleCancel}
-      />
     </div>
   );
 };
