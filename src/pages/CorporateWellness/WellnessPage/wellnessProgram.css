@@ -82,7 +82,7 @@
     letter-spacing: .04em;
     line-height: 1rem;
     margin: 2rem auto 0.625rem;
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 1.5rem;
     text-align: center;
     text-decoration: none;
     text-shadow: rgba(255, 255, 255, 0.4) 0 0 4px,rgba(255, 255, 255, 0.2) 0 0 12px,rgba(57, 31, 91, 0.6) 1px 1px 4px,rgba(57, 31, 91, 0.32) 4px 4px 16px;
@@ -90,7 +90,7 @@
     -webkit-user-select: none;
     touch-action: manipulation;
     vertical-align: baseline;
-    width: 80%;
+    width: 82%;
     text-align: center;
     transition: transform 0.1s ease;
     transform:scale(1);
