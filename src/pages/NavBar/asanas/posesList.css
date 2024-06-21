@@ -29,7 +29,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#30C5D2", endColorstr="#471069", GradientType=1);
   z-index: -1;
   pointer-events: none;
-  border: 2px solid red;
+  
 }
 
 .asana-poselist {
@@ -52,7 +52,6 @@
 }
 
 .poselist-asana-item {
-  border: 2px solid red;
   margin-bottom: 0.625rem;
   padding: clamp(0.625rem, 1vw, 1rem); /* Ajuste del padding */
   border-radius: 10px;
