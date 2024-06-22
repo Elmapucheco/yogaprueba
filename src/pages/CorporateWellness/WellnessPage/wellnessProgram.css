@@ -41,7 +41,7 @@
     color: #bbb8c4;
 }
 .program-list ul{
-   padding-bottom: 0.625rem;
+   padding-block: 0.625rem;
 }
 .program-list li{
     font-size:clamp(1rem, 2.5vw, 2rem);
