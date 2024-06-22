@@ -2,10 +2,18 @@
   background-color: white;
   min-height: 100vh; 
   padding-block: 70px;
-}
+ }
 .slider-gallery-container.dark{
   background-color: #282D35;
 }
+/* .slider-grid{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 500px);
+  gap: 15px;
+  padding: 1rem 0.3rem; 
+  justify-content: center;
+} */
 .slider-gallery-wrapper {
   position: relative;
   width: 90%;

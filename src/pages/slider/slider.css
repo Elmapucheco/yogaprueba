@@ -1,36 +1,36 @@
 .slider-container {
   width: 90%;
-  padding-block: 1rem;
+  padding-block: 1rem; 
   padding-bottom: 0.8rem;
   border-radius: 5px;
   background-color: white;
   position: relative;
   height: auto;
   overflow: hidden;
- 
 }
 .slider-container.dark{
   background-color: #282D35;
 }
+
 .slider-header {
   width: 100%;
   margin: 0 auto;
-  position: absolute; 
+  position: absolute;
   z-index: 2;
- 
+
 }
 .slider-header-title{
   color: white;
   font-size:clamp(1rem, 5vw, 2rem);
-  position: absolute; 
+  position: absolute;
   top: 1rem;
-  left: 1.25rem; 
+  left: 1.25rem;
   z-index: 3;
 }
-.link-slider{  
+.link-slider{
   position: absolute;
   z-index: 2;
-  top:1.4rem; 
+  top:1.4rem;
   right: 0.5rem;
   text-decoration: none;
   color: white;
@@ -49,20 +49,23 @@
   padding-top: 0.5em;
   padding-right: 0.3em;
   transition: background-color 0.3s ease, color 0.3s ease;
-} 
+}
 .link-slider:hover{
   background-color: rgba(59, 36, 62, 0.2);
   color: white;
 }
+
+
 .slide-wrapper {
   width: 100%;
   padding-top: 66%;/*padding trick*/
-  /* margin: 0 auto; */
+  margin: 0;
   border-radius: 5px;
   padding-bottom: 5px;
   position: relative;
   overflow: hidden;
-  
+  display: block;
+
 }
 .slide-wrapper::before{
   content: "";
@@ -103,16 +106,16 @@
 }
 
 .slide-wrapper h3 {
-  bottom: 2rem; 
+  bottom: 2rem;
   left: 1.25rem;
   font-size:clamp(1rem, 4.5vw, 2rem);
-  
+
 }
 
 .slide-wrapper p {
-  bottom: 0.4rem; 
-  left: 1.25rem; 
-  font-size:clamp(1rem, 3vw, 2rem);; 
+  bottom: 0.4rem;
+  left: 1.25rem;
+  font-size:clamp(1rem, 3vw, 2rem);;
 }
 
 .slide-wrapper:last-child {
@@ -138,25 +141,41 @@
       width: 30%;
       height: auto;
       margin-top: 4px;
+      padding-block: 0;
+      background-color: transparent;
+  }
+  .slider-container.dark{
+    background-color: transparent;
   }
   .slider-header-title{
     font-size:clamp(1rem, 1.5vw, 2rem);
     }
   .slide-wrapper h3 {
       font-size:clamp(1rem, 1.4vw, 2rem);
-      
+
     }
-    
+
   .slide-wrapper p {
-  
-      font-size:clamp(1rem, 1vw, 2rem);; 
+
+      font-size:clamp(1rem, 1vw, 2rem);;
     }
   .link-slider{
       width: 80px;
       height: 50px;
       font-size: 0.8rem;
+      top:0.3rem;
+  right: 0.3rem;
     }
     .slide-wrapper{
       padding-bottom: 0;
     }
+    /* div > .slide-link {
+      margin: 0;
+      padding: 0;
+      display: block;
+    }
+    .slider-container .slick-slide {
+      margin: 0;
+      padding: 0;
+    } */
 }

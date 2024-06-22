@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./breathe.css";
+import { useDarkMode } from "../DarkMode";
 
 const Breathe = () => {
   const containerRef = useRef(null);
   const [text, setText] = useState("Breathe In!");
+  const { darkMode } = useDarkMode();
 
   useEffect(() => {
     const totalTime = 7500;
@@ -35,7 +37,7 @@ const Breathe = () => {
   }, []);
 
   return (
-    <div className="body-breath">
+    <div className={`body-breath ${darkMode ? "dark" : ""}`}>
       <div className="container-breathe" ref={containerRef}>
         <div className="circle"></div>
         <p>{text}</p>

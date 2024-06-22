@@ -27,36 +27,38 @@ const SliderGallery = () => {
 
   return (
     <div className={`slider-gallery-container ${darkMode ? "dark" : ""}`}>
-      {images.map((classItem, index) => (
-        <div key={index} className="slider-gallery-item">
-          <div className="slider-gallery-wrapper">
-            <h2>{classItem.title}</h2>
-            <img src={classItem.img} alt={`Imagen ${index + 1}`} />
+      <div className="slider-grid">
+        {images.map((classItem, index) => (
+          <div key={index} className="slider-gallery-item">
+            <div className="slider-gallery-wrapper">
+              <h2>{classItem.title}</h2>
+              <img src={classItem.img} alt={`Imagen ${index + 1}`} />
 
-            <Link
-              to={`/slider/info/${index}`}
-              state={{
-                sequence: classItem.sequence,
-                img: classItem.img,
-                title: classItem.title,
-                images: images,
-              }}
-            >
-              <FaPlay className="icon-play" />
-            </Link>
-            <FaInfoCircle
-              className="icon-info"
-              onClick={() =>
-                openModal(
-                  classItem.duration,
-                  classItem.description,
-                  classItem.title
-                )
-              }
-            />
+              <Link
+                to={`/slider/info/${index}`}
+                state={{
+                  sequence: classItem.sequence,
+                  img: classItem.img,
+                  title: classItem.title,
+                  images: images,
+                }}
+              >
+                <FaPlay className="icon-play" />
+              </Link>
+              <FaInfoCircle
+                className="icon-info"
+                onClick={() =>
+                  openModal(
+                    classItem.duration,
+                    classItem.description,
+                    classItem.title
+                  )
+                }
+              />
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
 
       {isModalOpen && (
         <div className="modal">

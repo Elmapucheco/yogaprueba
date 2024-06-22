@@ -48,6 +48,7 @@ const SliderComponent = () => {
               sequence: image.sequence,
               images,
             }}
+            className="slide-link"
           >
             <div className="slide-wrapper">
               <img src={image.img} alt={`Slide ${index + 1}`} />
