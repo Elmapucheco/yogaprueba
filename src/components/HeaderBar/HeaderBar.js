@@ -70,14 +70,7 @@ function HeaderBar() {
           alt="Settings"
         />
         {isOpen && (
-          <div
-            className="tools-dropdown"
-            style={{
-              position: "absolute",
-              zIndex: 100,
-            }} /*chequear estilo con el css*/
-            ref={menuRef}
-          >
+          <div className="tools-dropdown" ref={menuRef}>
             <ul>
               <li className="toggle-container">
                 <span>Dark Mode</span>

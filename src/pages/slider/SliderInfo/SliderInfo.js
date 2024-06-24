@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, Link, useParams } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import { FaMusic } from "react-icons/fa";
+import { useAudio } from "../../../components/MusicPlayer";
 import info from "../../../assets/info.png";
 import Breathe from "../../../components/Breathe/Breathe";
 import { useDarkMode } from "../../../components/DarkMode";
@@ -13,6 +15,7 @@ const SliderInfo = () => {
   const params = useParams();
   const index = params.index;
   const [asanaDetails, setAsanaDetails] = useState([]);
+  const { isPlaying, stopAudio, playAudio } = useAudio();
 
   useEffect(() => {
     const fetchAsanas = async () => {
@@ -61,7 +64,10 @@ const SliderInfo = () => {
           <Link to="/slider/gallery" state={{ images }}>
             <IoMdArrowRoundBack />
           </Link>
-          {/* <MusicPlayer /> */}
+          <FaMusic
+            className="music-icon"
+            onClick={isPlaying ? stopAudio : playAudio}
+          />
           <h1>{title}</h1>
           <img src={img} />
           <p>

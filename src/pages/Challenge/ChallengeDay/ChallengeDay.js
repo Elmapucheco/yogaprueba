@@ -1,11 +1,12 @@
 // ChallengeDay.js
 import React, { useState, useEffect } from "react";
 import { useParams, useLocation, Link, useNavigate } from "react-router-dom";
-import "./challengeDay.css"; // Importa el archivo CSS
+import "./challengeDay.css";
+import { FaMusic } from "react-icons/fa";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import start from "../../../assets/challengeDay.jpg";
 import info from "../../../assets/info.png";
-import MusicPlayer from "../../../components/MusicPlayer";
+import { useAudio } from "../../../components/MusicPlayer";
 import { useDarkMode } from "../../../components/DarkMode";
 
 function ChallengeDay() {
@@ -15,6 +16,7 @@ function ChallengeDay() {
   const sequences = location.state;
   const [daySequence, setDaySequence] = useState(null);
   const navigate = useNavigate();
+  const { isPlaying, stopAudio, playAudio } = useAudio();
 
   const goBack = () => {
     navigate(-1);
@@ -43,7 +45,10 @@ function ChallengeDay() {
           <button onClick={goBack}>
             <IoMdArrowRoundBack />
           </button>
-          {/* <MusicPlayer /> */}
+          <FaMusic
+            className="music-icon"
+            onClick={isPlaying ? stopAudio : playAudio}
+          />
           <h1>Day {dia}</h1>
           <img src={start} />
           <p>
