@@ -9,9 +9,14 @@ const Breathe = () => {
 
   useEffect(() => {
     const totalTime = 7500;
-    const breatheTime = (totalTime / 5) * 2;
-    const holdTime = totalTime / 5;
-
+    const breatheTime = 3000;
+    const holdTime = 1500;
+    //   el totaltime se define para el intervalo al final,
+    //   los otros dos para establecer  los settimeout.Entonces en el return se define un ref
+    // y como siempre con ref usare un useEffect.Por convencion la funcion comenzara con un if para asegurarme
+    //  que al momento del useeffect el ref ya este existiendo, (es decir que el dom ya se haya renderizado)
+    //   y ahi comienza la respiracion y los sucesivos settimeout.Una vez declarada la funcion, finalmente puedo llamarla,
+    // generar el intervalo, y como return del useeffect la limpieza de todo para evitar fugas de memoria
     const breathAnimation = () => {
       if (containerRef.current) {
         setText("Breathe In!");

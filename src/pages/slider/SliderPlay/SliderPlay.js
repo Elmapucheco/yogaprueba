@@ -239,11 +239,9 @@ const SliderPlay = () => {
             />
           </div>
         </div>
-        <ConfirmModal
-          show={showModal}
-          onConfirm={handleConfirm}
-          onCancel={handleCancel}
-        />
+        {showModal && (
+          <ConfirmModal onConfirm={handleConfirm} onCancel={handleCancel} />
+        )}
       </div>
     </div>
   );

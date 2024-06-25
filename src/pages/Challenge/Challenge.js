@@ -11,7 +11,11 @@ function Challenge() {
       <Link to="challengeGallery">
         <div className="cont-img">
           <h3 className="title-challenge">30 days Yoga Challenge</h3>
-          <img className="img-challenge" src={gara6} alt="Yoga Challenge" />
+          <img
+            className="img-challenge"
+            src={gara6}
+            alt="Yoga Challenge access pic"
+          />
         </div>
       </Link>
     </div>

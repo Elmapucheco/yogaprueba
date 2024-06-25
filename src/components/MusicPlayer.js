@@ -80,3 +80,8 @@ export const AudioProvider = ({ children }) => {
 export const useAudio = () => {
   return useContext(AudioContext);
 };
+
+// el provider esta destinado a englobar componentes y brindarles la
+//  posibilidad de usar su logica y funciones.El useContext es lo
+//  que les da acceso a esas funcionalidades, por lo que el provider englobara componentes, y quienes
+//  hagan uso , importaran el useContext

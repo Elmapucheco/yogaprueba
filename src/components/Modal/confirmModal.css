@@ -16,9 +16,13 @@
     padding: 20px;
     border-radius: 8px;
     text-align: center;
+  }
+  .modal-content .modal-text{
     color: #196672;
   }
-  .modal-overlay.dark .modal-content{
+  
+  .modal-overlay.dark .modal-content,
+  .modal-overlay.dark .modal-text{
     background-color: #282D35;
     color:#4e919c ;
   }

@@ -34,7 +34,7 @@ const ChallengePlay = () => {
   const [showModal, setShowModal] = useState(false);
 
   const goBack = () => {
-    setShowModal(true); // Mostrar el modal de confirmación
+    setShowModal(true);
   };
 
   const handleConfirm = () => {
@@ -252,11 +252,9 @@ const ChallengePlay = () => {
             />
           </div>
         </div>
-        <ConfirmModal
-          show={showModal}
-          onConfirm={handleConfirm}
-          onCancel={handleCancel}
-        />
+        {showModal && (
+          <ConfirmModal onConfirm={handleConfirm} onCancel={handleCancel} />
+        )}
       </div>
     </div>
   );
