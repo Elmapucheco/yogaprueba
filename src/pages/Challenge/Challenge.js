@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import gara6 from "../../assets/challengePic.jpg";
 import "./challenge.css";
-import { useDarkMode } from "../../components/DarkMode";
+import { useDarkMode } from "../../components/Context/DarkMode";
 
 function Challenge() {
   const { darkMode } = useDarkMode();

@@ -17,8 +17,8 @@ import LogIn from "./pages/NavBar/LogIn/LogIn";
 import Error from "./pages/Error/Error";
 import Breathe from "../src/components/Breathe/Breathe";
 import SplashScreen from "./pages/SplashScreen/SplashScreen";
-import { useDarkMode } from "../src/components/DarkMode";
-import { AudioProvider } from "../src/components/MusicPlayer";
+import { useDarkMode } from "../src/components/Context/DarkMode";
+import { AudioProvider } from "./components/Context/MusicPlayer";
 
 function App() {
   const [isLoading, setLoading] = useState(true);

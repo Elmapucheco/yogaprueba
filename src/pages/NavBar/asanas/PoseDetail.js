@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import "./poseDetail.css";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import { useDarkMode } from "../../../components/DarkMode";
+import { useDarkMode } from "../../../components/Context/DarkMode";
 
 function PoseDetail() {
   const [asana, setAsana] = useState(null);

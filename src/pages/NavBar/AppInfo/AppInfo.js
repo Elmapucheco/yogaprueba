@@ -1,7 +1,7 @@
 import React from "react";
 import soul from "../../../assets/slider1.jpg";
 import "./appInfo.css";
-import { useDarkMode } from "../../../components/DarkMode";
+import { useDarkMode } from "../../../components/Context/DarkMode";
 
 function AppInfo() {
   const { darkMode } = useDarkMode();

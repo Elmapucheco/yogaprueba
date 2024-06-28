@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Breathe from "../../../components/Breathe/Breathe";
 import "./posesList.css";
-import { useDarkMode } from "../../../components/DarkMode";
+import { useDarkMode } from "../../../components/Context/DarkMode";
 
 function PosesList() {
   const [asanas, setAsanas] = useState([]);

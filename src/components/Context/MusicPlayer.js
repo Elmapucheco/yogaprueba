@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import music from "../assets/audio.wav";
+import music from "../../assets/audio.wav";
 
 const AudioContext = createContext();
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useLocation, useParams, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import "../../slider/SliderPlay/sliderPlay.css";
 import nextIcon from "../../../assets/nextPlay.png";
@@ -12,17 +12,36 @@ import play from "../../../assets/play.png";
 import playdark from "../../../assets/playdark.png";
 import exit from "../../../assets/exit.png";
 import ConfirmModal from "../../../components/Modal/ConfirmModal";
-import { useDarkMode } from "../../../components/DarkMode";
+import { useDarkMode } from "../../../components/Context/DarkMode";
 import Confetti from "react-confetti";
 import bell from "../../../assets/bell.wav";
+
 const bellAudio = new Audio(bell);
+
+const asanaDuration = 30;
+
+const asanasToRepeat = [
+  "Crescent Lunge",
+  "Eagle",
+  "Extended Side Angle",
+  "Half-Moon",
+  "King Pigeon",
+  "Pyramid",
+  "Reverse Warrior",
+  "Side Plank",
+  "Tree",
+  "Wild Thing",
+  "Low Lunge",
+  "Triangle",
+  "Warrior One",
+  "Warrior Two",
+];
 
 const ChallengePlay = () => {
   const { darkMode } = useDarkMode();
   const containerRef = useRef(null);
   const location = useLocation();
-  const { daySequence } = location.state;
-  const { dia } = useParams();
+  const { asanaLinks } = location.state;
   const [isPaused, setIsPaused] = useState(false);
   const [currentAsanaIndex, setCurrentAsanaIndex] = useState(0);
   const [key, setKey] = useState(0);
@@ -30,7 +49,6 @@ const ChallengePlay = () => {
   const [isFinished, setIsFinished] = useState(false);
   const [prepTime, setPrepTime] = useState(5);
   const navigate = useNavigate();
-  const asanaDuration = 30;
   const [showModal, setShowModal] = useState(false);
 
   const goBack = () => {
@@ -41,37 +59,12 @@ const ChallengePlay = () => {
     setShowModal(false);
     navigate(-1);
   };
+
   const handleCancel = () => {
     setShowModal(false);
   };
 
-  const asanasToRepeat = [
-    "Crescent Lunge",
-    "Eagle",
-    "Extended Side Angle",
-    "Half-Moon",
-    "King Pigeon",
-    "Pyramid",
-    "Reverse Warrior",
-    "Side Plank",
-    "Tree",
-    "Wild Thing",
-    "Low Lunge",
-    "Triangle",
-    "Warrior One",
-    "Warrior Two",
-  ];
-
-  const allAsanas = [
-    ...daySequence.seated,
-    ...daySequence.standing,
-    ...daySequence.backbend,
-    ...daySequence.forwardBend,
-    ...daySequence.balancing,
-    ...daySequence.restorative,
-  ];
-
-  const processedAsanas = allAsanas.flatMap((asana) => {
+  const processedAsanas = asanaLinks.flatMap((asana) => {
     if (asanasToRepeat.includes(asana.english_name)) {
       return [
         { ...asana, side: "Right side" },
@@ -80,11 +73,12 @@ const ChallengePlay = () => {
     }
     return [asana];
   });
+
   const currentAsana = processedAsanas[currentAsanaIndex];
 
   useEffect(() => {
-    const breatheInTime = 3000; // 3 segundos para "breathe in"
-    const breatheOutTime = 3000; // 3 segundos para "breathe out"
+    const breatheInTime = 3000;
+    const breatheOutTime = 3000;
 
     const breathAnimation = () => {
       if (containerRef.current) {
@@ -164,7 +158,7 @@ const ChallengePlay = () => {
     setIsPaused(!isPaused);
   };
 
-  if (processedAsanas.length === 0) {
+  if (asanaLinks.length === 0) {
     return (
       <div className="challenge-play-container">
         No se encontró la secuencia para reproducir

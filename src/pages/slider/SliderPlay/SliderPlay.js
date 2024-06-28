@@ -14,7 +14,28 @@ import ConfirmModal from "../../../components/Modal/ConfirmModal";
 import Confetti from "react-confetti";
 import bell from "../../../assets/bell.wav";
 import "./sliderPlay.css";
-import { useDarkMode } from "../../../components/DarkMode";
+import { useDarkMode } from "../../../components/Context/DarkMode";
+
+const asanaDuration = 30;
+
+const bellAudio = new Audio(bell);
+
+const asanasToRepeat = [
+  "Crescent Lunge",
+  "Eagle",
+  "Extended Side Angle",
+  "Half-Moon",
+  "King Pigeon",
+  "Pyramid",
+  "Reverse Warrior",
+  "Side Plank",
+  "Tree",
+  "Wild Thing",
+  "Low Lunge",
+  "Triangle",
+  "Warrior One",
+  "Warrior Two",
+];
 
 const SliderPlay = () => {
   const { darkMode } = useDarkMode();
@@ -28,9 +49,8 @@ const SliderPlay = () => {
   const [prepTime, setPrepTime] = useState(5); // Estado para el temporizador de preparación
   const [showModal, setShowModal] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
-  const asanaDuration = 30;
+
   const navigate = useNavigate();
-  const bellAudio = new Audio(bell);
 
   const goBack = () => {
     setShowModal(true); // Mostrar el modal de confirmación
@@ -44,23 +64,6 @@ const SliderPlay = () => {
   const handleCancel = () => {
     setShowModal(false);
   };
-
-  const asanasToRepeat = [
-    "Crescent Lunge",
-    "Eagle",
-    "Extended Side Angle",
-    "Half-Moon",
-    "King Pigeon",
-    "Pyramid",
-    "Reverse Warrior",
-    "Side Plank",
-    "Tree",
-    "Wild Thing",
-    "Low Lunge",
-    "Triangle",
-    "Warrior One",
-    "Warrior Two",
-  ];
 
   const processedAsanas = asanaDetails.flatMap((asana) => {
     if (asanasToRepeat.includes(asana.english_name)) {

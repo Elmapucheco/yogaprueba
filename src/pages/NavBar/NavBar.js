@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import asana from "../../assets/asana.png";
@@ -9,11 +9,11 @@ import asanadark from "../../assets/asanadark.png";
 import bookdark from "../../assets/bookdark.png";
 import homedark from "../../assets/homedark.png";
 import accountdark from "../../assets/accountdark.png";
-import { useDarkMode } from "../../components/DarkMode";
-import { useSliderArray } from "../slider/SliderArrayContext";
+import { useDarkMode } from "../../components/Context/DarkMode";
+import { useSlider } from "../../components/Context/SliderContext";
 
 const NavBar = () => {
-  const images = useSliderArray();
+  const classes = useSlider();
   const [isOpenLessons, setIsOpenLessons] = useState(false);
   const [isOpenInfo, setIsOpenInfo] = useState(false);
   const { darkMode } = useDarkMode();
@@ -21,16 +21,32 @@ const NavBar = () => {
   const menuLessonRef = useRef();
   const lessonRef = useRef();
   const infoRef = useRef();
-  window.addEventListener("click", (e) => {
-    if (e.target !== menuLessonRef.current && e.target !== lessonRef.current) {
-      setIsOpenLessons(false);
-    }
-  });
-  window.addEventListener("click", (e) => {
-    if (e.target !== menuInfoRef.current && e.target !== infoRef.current) {
-      setIsOpenInfo(false);
-    }
-  });
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        menuLessonRef.current &&
+        !menuLessonRef.current.contains(e.target) &&
+        e.target !== lessonRef.current
+      ) {
+        setIsOpenLessons(false);
+      }
+      if (
+        menuInfoRef.current &&
+        !menuInfoRef.current.contains(e.target) &&
+        e.target !== infoRef.current
+      ) {
+        setIsOpenInfo(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className={`NavBar ${darkMode ? "dark" : ""}`}>
       <div className="icons">
@@ -51,7 +67,7 @@ const NavBar = () => {
           {isOpenLessons && (
             <div ref={menuLessonRef} className="practice-dropdown">
               <ul>
-                <Link to="/slider/gallery" state={{ images }}>
+                <Link to="/slider/gallery" state={{ classes }}>
                   Classes
                 </Link>
                 <Link to="/challengeGallery">Challenge</Link>

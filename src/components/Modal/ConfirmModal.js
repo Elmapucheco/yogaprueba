@@ -1,6 +1,6 @@
 import React from "react";
 import "./confirmModal.css";
-import { useDarkMode } from "../DarkMode";
+import { useDarkMode } from "../Context/DarkMode";
 
 const ConfirmModal = ({ onConfirm, onCancel }) => {
   const { darkMode } = useDarkMode();

@@ -3,7 +3,7 @@ import "./login.css";
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import { useDarkMode } from "../../../components/DarkMode";
+import { useDarkMode } from "../../../components/Context/DarkMode";
 
 function LogIn() {
   const [action, setAction] = useState("");

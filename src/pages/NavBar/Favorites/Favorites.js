@@ -6,21 +6,19 @@ import next from "../../../assets/next.png";
 import nextdark from "../../../assets/nextdark.png";
 import cat from "../../../assets/cat.jpg";
 import { MdDelete } from "react-icons/md";
-import { useDarkMode } from "../../../components/DarkMode";
+import { useDarkMode } from "../../../components/Context/DarkMode";
 
 function Favorites() {
   const [favoritos, setFavoritos] = useState([]);
   const [sequences, setSequences] = useState([]);
   const { darkMode } = useDarkMode();
 
-  // Cargar favoritos desde localStorage
   useEffect(() => {
     const favoritosGuardados =
       JSON.parse(localStorage.getItem("favoritos")) || [];
     setFavoritos(favoritosGuardados);
   }, []);
 
-  // Cargar secuencias desde localStorage
   useEffect(() => {
     const storedSequences = JSON.parse(localStorage.getItem("sequences"));
     if (storedSequences) {

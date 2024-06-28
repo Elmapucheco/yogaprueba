@@ -80,6 +80,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", en
 .sliderplay-image {
   width: 60%;
   height: auto;
+  background-color: white;
   display: block;
   border-radius: 50%;
   filter: brightness(120%);

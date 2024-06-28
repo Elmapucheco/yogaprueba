@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { GoDotFill } from "react-icons/go";
 import "./wellnessProgram.css";
-import { useDarkMode } from "../../../components/DarkMode";
+import { useDarkMode } from "../../../components/Context/DarkMode";
 
 const WellnessProgram = () => {
   const { darkMode } = useDarkMode();

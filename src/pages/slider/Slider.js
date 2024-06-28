@@ -3,14 +3,12 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./slider.css";
-import { useSliderArray } from "../slider/SliderArrayContext";
-import { useDarkMode } from "../../components/DarkMode";
-
+import { useSlider } from "../../components/Context/SliderContext";
+import { useDarkMode } from "../../components/Context/DarkMode";
 import { Link } from "react-router-dom";
 
 const SliderComponent = () => {
-  const images = useSliderArray();
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const classes = useSlider();
   const { darkMode } = useDarkMode();
   const settings = {
     className: "",
@@ -19,8 +17,8 @@ const SliderComponent = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     adaptiveHeight: true,
-    autoplay: true, // Activar el autoplay
-    autoplaySpeed: 3000, // Intervalo de cambio de imagen en milisegundos (por ejemplo, 3000ms = 3 segundos)
+    autoplay: true,
+    autoplaySpeed: 3000,
   };
 
   return (
@@ -32,13 +30,13 @@ const SliderComponent = () => {
         className="link-slider"
         to={`/slider/gallery`}
         state={{
-          images,
+          classes,
         }}
       >
         See all
       </Link>
       <Slider {...settings}>
-        {images.map((image, index) => (
+        {classes.map((image, index) => (
           <Link
             to={`/slider/info/${index}`}
             key={index}
@@ -46,7 +44,7 @@ const SliderComponent = () => {
               title: image.title,
               img: image.img,
               sequence: image.sequence,
-              images,
+              classes,
             }}
             className="slide-link"
           >

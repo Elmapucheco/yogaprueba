@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./breathe.css";
-import { useDarkMode } from "../DarkMode";
+import { useDarkMode } from "../Context/DarkMode";
 
 const Breathe = () => {
   const containerRef = useRef(null);

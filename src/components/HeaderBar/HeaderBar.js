@@ -6,8 +6,8 @@ import logo from "../../assets/logo.jpg";
 import logodark from "../../assets/logodark.jpg";
 import "./headerBar.css";
 import Toggle from "./Toggle";
-import { useDarkMode } from "../DarkMode";
-import { useAudio } from "../MusicPlayer";
+import { useDarkMode } from "../Context/DarkMode";
+import { useAudio } from "../Context/MusicPlayer";
 
 function HeaderBar() {
   const { darkMode, toggleDarkMode } = useDarkMode();
