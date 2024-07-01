@@ -9,10 +9,29 @@ function PosesList() {
   const { darkMode } = useDarkMode();
 
   useEffect(() => {
-    fetch("https://yoga-api-nzy4.onrender.com/v1//poses")
-      .then((res) => res.json())
-      .then((data) => setAsanas(data))
-      .catch((error) => console.log("Error fetching data:", error));
+    const fetchData = async () => {
+      const localStorageData = localStorage.getItem("asanas");
+      if (localStorageData) {
+        setAsanas(JSON.parse(localStorageData));
+      } else {
+        try {
+          const response = await fetch(
+            "https://yoga-api-nzy4.onrender.com/v1/poses"
+          );
+          if (!response.ok) {
+            throw new Error("Error fetching data");
+          }
+          const data = await response.json();
+          setAsanas(data);
+
+          localStorage.setItem("asanas", JSON.stringify(data));
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      }
+    };
+
+    fetchData();
   }, []);
 
   if (!asanas || asanas.length === 0) {
