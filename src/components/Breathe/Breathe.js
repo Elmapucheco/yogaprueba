@@ -6,13 +6,12 @@ const Breathe = ({ delay }) => {
   const containerRef = useRef(null);
   const [text, setText] = useState("Breathe In!");
   const { darkMode } = useDarkMode();
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(!delay);
 
   useEffect(() => {
     const totalTime = 7500;
     const breatheTime = 3000;
     const holdTime = 1500;
-    let animationInterval = null;
 
     const breathAnimation = () => {
       if (containerRef.current) {
@@ -31,22 +30,22 @@ const Breathe = ({ delay }) => {
         }, breatheTime);
       }
     };
-    const startAnimation = () => {
-      setIsVisible(true);
-      breathAnimation();
-      animationInterval = setInterval(breathAnimation, totalTime);
-    };
 
     if (delay) {
-      setTimeout(startAnimation, delay);
+      const timeout = setTimeout(() => {
+        setIsVisible(true);
+        breathAnimation();
+      }, delay);
+      return () => clearTimeout(timeout);
     } else {
-      startAnimation();
+      breathAnimation();
     }
 
+    const interval = setInterval(breathAnimation, totalTime);
     return () => {
-      clearInterval(animationInterval);
+      clearInterval(interval);
     };
-  }, []);
+  }, [delay]);
 
   return (
     isVisible && (
