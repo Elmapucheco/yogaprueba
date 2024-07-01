@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import "./favorites.css";
 import Breathe from "../../../components/Breathe/Breathe";
@@ -14,9 +14,8 @@ function Favorites() {
   const { darkMode } = useDarkMode();
 
   useEffect(() => {
-    const favoritosGuardados =
-      JSON.parse(localStorage.getItem("favoritos")) || [];
-    setFavoritos(favoritosGuardados);
+    const storedFavorites = JSON.parse(localStorage.getItem("favoritos")) || [];
+    setFavoritos(storedFavorites);
   }, []);
 
   useEffect(() => {
@@ -32,14 +31,14 @@ function Favorites() {
     favoritos.includes(sequence.dia)
   );
 
-  const toggleFavorito = (dia) => {
-    const nuevosFavoritos = favoritos.includes(dia)
-      ? favoritos.filter((favorito) => favorito !== dia)
-      : [...favoritos, dia];
-
-    setFavoritos(nuevosFavoritos);
-    localStorage.setItem("favoritos", JSON.stringify(nuevosFavoritos));
-  };
+  const removeFavorite = useCallback(
+    (dia) => {
+      const updatedFavoritos = favoritos.filter((favorito) => favorito !== dia);
+      setFavoritos(updatedFavoritos);
+      localStorage.setItem("favoritos", JSON.stringify(updatedFavoritos));
+    },
+    [favoritos]
+  );
 
   if (!sequences || sequences.length === 0) {
     return (
@@ -73,14 +72,10 @@ function Favorites() {
             <div className="favorites-sequence-card" key={index}>
               <div className="favorites-check-go">
                 <h2 className="favorites-day-number">Day {sequence.dia}</h2>
-                {favoritos.includes(sequence.dia) ? (
-                  <MdDelete
-                    className="favorites-delete"
-                    onClick={() => toggleFavorito(sequence.dia)}
-                  />
-                ) : (
-                  <div onClick={() => toggleFavorito(sequence.dia)} />
-                )}
+                <MdDelete
+                  className="favorites-delete"
+                  onClick={() => removeFavorite(sequence.dia)}
+                />
               </div>
 
               <Link
@@ -103,3 +98,16 @@ function Favorites() {
 }
 
 export default Favorites;
+
+// The first thing the component does is bring in the favorites from localStorage.
+// The second thing is to bring the sequences that ChallengeGallery previously saved in
+//   LocalStorage.If favorites exist, it is because favorites were previously selected in
+//   ChallengeGallery and therefore the information was already processed and saved in
+//     localStorage.That is to say, it is understood that both data exist if the user chose a favorite.
+// Once obtained, it is iterated with filter over sequences in search of matches in
+//   sequence.dia with the favorites, which is the data stored in localStorage.
+// removeFavorites is called from the delete button and with a sequence.dia argument.Already in
+//   the function, a filter will check that the new array created DOES NOT contain that day, and
+//   subsequently saves the updated version in localStorage
+// useCallback in React memorizes functions to improve performance by avoiding
+// unnecessary recreations on each render, thus optimizing data flow and component efficiency.

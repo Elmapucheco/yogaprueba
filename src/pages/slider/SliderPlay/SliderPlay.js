@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+
 import nextIcon from "../../../assets/nextPlay.png";
 import backIcon from "../../../assets/backPlay.png";
 import nextIcondark from "../../../assets/nextPlaydark.png";
@@ -9,10 +10,12 @@ import pausedark from "../../../assets/pausedark.png";
 import exit from "../../../assets/exit.png";
 import play from "../../../assets/play.png";
 import playdark from "../../../assets/playdark.png";
+import bell from "../../../assets/bell.wav";
+
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import ConfirmModal from "../../../components/Modal/ConfirmModal";
 import Confetti from "react-confetti";
-import bell from "../../../assets/bell.wav";
+
 import "./sliderPlay.css";
 import { useDarkMode } from "../../../components/Context/DarkMode";
 
@@ -40,27 +43,27 @@ const asanasToRepeat = [
 const SliderPlay = () => {
   const { darkMode } = useDarkMode();
   const containerRef = useRef(null);
+
   const location = useLocation();
   const { asanaDetails } = location.state;
-  const [isPaused, setIsPaused] = useState(false);
-  const [currentAsanaIndex, setCurrentAsanaIndex] = useState(0);
-  const [key, setKey] = useState(0); // Añadimos un estado para reiniciar el temporizador
-  const [isPreparing, setIsPreparing] = useState(true); // Estado para el temporizador de preparación
-  const [prepTime, setPrepTime] = useState(5); // Estado para el temporizador de preparación
-  const [showModal, setShowModal] = useState(false);
-  const [isFinished, setIsFinished] = useState(false);
 
+  const [isPaused, setIsPaused] = useState(false);
+  const [isPreparing, setIsPreparing] = useState(true);
+  const [prepTime, setPrepTime] = useState(5);
+  const [key, setKey] = useState(0);
+  const [isFinished, setIsFinished] = useState(false);
+  const [currentAsanaIndex, setCurrentAsanaIndex] = useState(0);
+
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
   const goBack = () => {
-    setShowModal(true); // Mostrar el modal de confirmación
+    setShowModal(true);
   };
-
   const handleConfirm = () => {
     setShowModal(false);
     navigate(-1);
   };
-
   const handleCancel = () => {
     setShowModal(false);
   };
@@ -76,11 +79,10 @@ const SliderPlay = () => {
   });
 
   const currentAsana = processedAsanas[currentAsanaIndex];
+  const isFirstAsana = currentAsanaIndex === 0;
+  const isLastAsana = currentAsanaIndex === processedAsanas.length - 1;
 
   useEffect(() => {
-    const breatheInTime = 3000; // 3 segundos para "breathe in"
-    const breatheOutTime = 3000; // 3 segundos para "breathe out"
-
     const breathAnimation = () => {
       if (containerRef.current) {
         containerRef.current.className = "sliderplay-image grow";
@@ -89,16 +91,13 @@ const SliderPlay = () => {
           if (containerRef.current) {
             containerRef.current.className = "sliderplay-image shrink";
           }
-        }, breatheInTime);
+        }, 3000);
       }
     };
 
-    const interval = setInterval(
-      breathAnimation,
-      breatheInTime + breatheOutTime
-    );
+    const interval = setInterval(breathAnimation, 6000);
 
-    breathAnimation(); // Ejecutar inmediatamente
+    breathAnimation();
 
     return () => clearInterval(interval);
   }, []);
@@ -118,29 +117,27 @@ const SliderPlay = () => {
     return () => clearTimeout(timer);
   }, [isPreparing, prepTime, isPaused]);
 
-  if (processedAsanas.length === 0) {
-    return <div className="challenge-play-container">Sequence not found</div>;
-  }
+  // if (processedAsanas.length === 0) {
+  //   return <div className="challenge-play-container">Sequence not found</div>;
+  // }
 
   const handleNext = () => {
-    if (currentAsanaIndex < processedAsanas.length - 1) {
+    if (!isLastAsana) {
       setCurrentAsanaIndex(currentAsanaIndex + 1);
-      setIsPreparing(true); // Reiniciar preparación
-      setPrepTime(5); // Reiniciar el tiempo de preparación
+      setIsPreparing(true);
+      setPrepTime(5);
+      setKey((prevKey) => prevKey + 1);
+    }
+  };
+  const handleBack = () => {
+    if (!isFirstAsana) {
+      setCurrentAsanaIndex(currentAsanaIndex - 1);
+      setIsPreparing(true);
+      setPrepTime(5);
       setKey((prevKey) => prevKey + 1);
     }
   };
 
-  const handleBack = () => {
-    if (currentAsanaIndex > 0) {
-      setCurrentAsanaIndex(currentAsanaIndex - 1);
-      setIsPreparing(true); // Reiniciar preparación
-      setPrepTime(5); // Reiniciar el tiempo de preparación
-      setKey((prevKey) => prevKey + 1);
-    }
-  };
-  const isFirstAsana = currentAsanaIndex === 0;
-  const isLastAsana = currentAsanaIndex === processedAsanas.length - 1;
   const handlePause = () => {
     setIsPaused(!isPaused);
   };
@@ -153,7 +150,7 @@ const SliderPlay = () => {
       }, 2000);
     }
 
-    if (currentAsanaIndex === processedAsanas.length - 1) {
+    if (isLastAsana) {
       setIsFinished(true);
 
       setTimeout(() => {
@@ -209,7 +206,7 @@ const SliderPlay = () => {
             ) : (
               <div className="sliderplay-cowntdown-wrapper">
                 <CountdownCircleTimer
-                  key={key} // Usamos el key para reiniciar el temporizador
+                  key={key}
                   isPlaying={!isPaused}
                   duration={asanaDuration}
                   colors={["#1c7b8a", "#1c707d", "#196672", "#175d68"]}
@@ -251,3 +248,24 @@ const SliderPlay = () => {
 };
 
 export default SliderPlay;
+
+// The useRef will be used mainly to add a mark to the image and adding a class that makes it grow for 3
+// seconds and return to its shape for the next 3.
+// asanaDetails is retrieved with the location, and is mapped to processedAsanas to check if the sequence includes the
+// asanasToRepeat, if so it is added to everything that the object has, the "side" key with right and left, which doubles
+// the asana in the render.In order to allow next and previous, I generate currentAsana which will join the processedAsanas
+// with the index of each one in the array.
+// currentasanaindex is a state generated for the sole purpose of the interaction between next and previous.Without these processes,
+//   I could skip it and directly use the processedAsanas as an end - to - end mapping.I declare it at 0 so that it starts from the first asana.
+// isFirstAsana and isLastAsana will serve as conditional returns for the next and previous icons in both asanas.As well as f
+// or the functions called by these icons.Like the handleTimerExpire in case it is the last position.
+// I handle it like this at preparation time: I declare timer undefined, and there I check that basically the
+// conditions are those that the component already has by default when it is rendered.If this happens, the following if,
+//   and since preptime is 5 I advance and subtract 1 from every second, when it reaches 0 it goes through Else and
+//   there I change the isPreparing to false and return to 5 in prepTime, finally I clean the timer on the outside of
+//   the else, to ensure that the cleanUp is part of the useEffect and avoid strange behavior if it is executed again,
+//   for example if the user presses Next and then isPreparing returns to true.
+// Finally, key is a state that is basically generated with the intention of being updated.This happens in both
+// handlenext and handleback, both incrementing it by 1, to always achieve a unique value and the basis is
+//   in the CountDown timer, which needs which prop of the update of that value to restart.When React detects
+//   that it was updated to a unique value, it mounts the component again

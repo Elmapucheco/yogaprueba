@@ -1,8 +1,6 @@
-// SplashScreen.js
 import React from "react";
 import splash from "../../assets/breathe.JPG";
 import logo from "../../assets/splashLogo.webp";
-import { useEffect } from "react";
 import "./splashScreen.css";
 
 function SplashScreen() {
