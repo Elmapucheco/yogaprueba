@@ -16,23 +16,28 @@ function PoseDetail() {
   };
 
   useEffect(() => {
-    let isMounted = true;
+    const fetchData = async () => {
+      const localStorageAsana = JSON.parse(localStorage.getItem("asanas"));
 
-    fetch(`https://yoga-api-nzy4.onrender.com/v1/poses?name=${name}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (isMounted) {
-          setAsana(data);
-        }
-      })
-      .catch((error) =>
-        console.error("Error al obtener detalles de la asana:", error)
-      );
-
-    return () => {
-      isMounted = false;
+      if (localStorageAsana) {
+        const filteredAsana = localStorageAsana.find(
+          (item) => item.english_name === name
+        );
+        setAsana(filteredAsana);
+      } else {
+        fetch(`https://yoga-api-nzy4.onrender.com/v1/poses?name=${name}`)
+          .then((res) => res.json())
+          .then((data) => {
+            setAsana(data);
+            console.log(data);
+          })
+          .catch((error) =>
+            console.error("Error al obtener detalles de la asana:", error)
+          );
+      }
     };
-  }, [name]);
+    fetchData();
+  }, []);
 
   if (!asana) {
     return <div className="pose-loading">Loading...</div>;
@@ -77,3 +82,10 @@ function PoseDetail() {
 }
 
 export default PoseDetail;
+
+// I will use the params name to specify the information that comes either
+// from LocalStorage in case posesList has already saved it, or from the api if not,
+//   or that comes from Slider or Challenge.
+// Whatever the source, I will save that specific data in the asana state for rendering.
+// I will use the location to know where the component was linked from and
+// accordingly decide what information I will show
