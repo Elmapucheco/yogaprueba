@@ -2,21 +2,18 @@ import React, { useEffect, useRef, useState } from "react";
 import "./breathe.css";
 import { useDarkMode } from "../Context/DarkMode";
 
-const Breathe = () => {
+const Breathe = ({ delay }) => {
   const containerRef = useRef(null);
   const [text, setText] = useState("Breathe In!");
   const { darkMode } = useDarkMode();
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const totalTime = 7500;
     const breatheTime = 3000;
     const holdTime = 1500;
-    //   el totaltime se define para el intervalo al final,
-    //   los otros dos para establecer  los settimeout.Entonces en el return se define un ref
-    // y como siempre con ref usare un useEffect.Por convencion la funcion comenzara con un if para asegurarme
-    //  que al momento del useeffect el ref ya este existiendo, (es decir que el dom ya se haya renderizado)
-    //   y ahi comienza la respiracion y los sucesivos settimeout.Una vez declarada la funcion, finalmente puedo llamarla,
-    // generar el intervalo, y como return del useeffect la limpieza de todo para evitar fugas de memoria
+    let animationInterval = null;
+
     const breathAnimation = () => {
       if (containerRef.current) {
         setText("Breathe In!");
@@ -34,25 +31,44 @@ const Breathe = () => {
         }, breatheTime);
       }
     };
+    const startAnimation = () => {
+      setIsVisible(true);
+      breathAnimation();
+      animationInterval = setInterval(breathAnimation, totalTime);
+    };
 
-    breathAnimation();
-    const interval = setInterval(breathAnimation, totalTime);
+    if (delay) {
+      setTimeout(startAnimation, delay);
+    } else {
+      startAnimation();
+    }
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(animationInterval);
+    };
   }, []);
 
   return (
-    <div className={`body-breath ${darkMode ? "dark" : ""}`}>
-      <div className="container-breathe" ref={containerRef}>
-        <div className="circle"></div>
-        <p>{text}</p>
-        <div className="pointer-container">
-          <span className="pointer"></span>
+    isVisible && (
+      <div className={`body-breath ${darkMode ? "dark" : ""}`}>
+        <div className="container-breathe" ref={containerRef}>
+          <div className="circle"></div>
+          <p>{text}</p>
+          <div className="pointer-container">
+            <span className="pointer"></span>
+          </div>
+          <div className="gradient-circle"></div>
         </div>
-        <div className="gradient-circle"></div>
       </div>
-    </div>
+    )
   );
 };
 
 export default Breathe;
+
+//   el totaltime se define para el intervalo al final,
+//   los otros dos para establecer  los settimeout.Entonces en el return se define un ref
+// y como siempre con ref usare un useEffect.Por convencion la funcion comenzara con un if para asegurarme
+//  que al momento del useeffect el ref ya este existiendo, (es decir que el dom ya se haya renderizado)
+//   y ahi comienza la respiracion y los sucesivos settimeout.Una vez declarada la funcion, finalmente puedo llamarla,
+// generar el intervalo, y como return del useeffect la limpieza de todo para evitar fugas de memoria

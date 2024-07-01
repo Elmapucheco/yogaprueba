@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import "./favorites.css";
-import Breathe from "../../../components/Breathe/Breathe";
 import next from "../../../assets/next.png";
 import nextdark from "../../../assets/nextdark.png";
 import cat from "../../../assets/cat.jpg";
@@ -39,15 +38,6 @@ function Favorites() {
     },
     [favoritos]
   );
-
-  if (!sequences || sequences.length === 0) {
-    return (
-      <div>
-        <h1 className="favorites-loading">Loading...</h1>
-        <Breathe className="favorites-breathe" />
-      </div>
-    );
-  }
 
   return (
     <div className={`favorites-container ${darkMode ? "dark" : ""}`}>

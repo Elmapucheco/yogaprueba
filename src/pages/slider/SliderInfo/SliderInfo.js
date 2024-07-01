@@ -62,7 +62,7 @@ const SliderInfo = () => {
     return (
       <div>
         <h1 className="sliderInfo-loading">Loading...</h1>
-        <Breathe className="breathe" />
+        <Breathe className="breathe" delay={3000} />
       </div>
     );
   }

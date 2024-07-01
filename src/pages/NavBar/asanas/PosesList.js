@@ -38,7 +38,7 @@ function PosesList() {
     return (
       <div>
         <h1 className="poses-loading">Loading...</h1>
-        <Breathe className="breathe" />
+        <Breathe className="breathe" delay={3000} />
       </div>
     );
   }
