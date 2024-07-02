@@ -31,20 +31,20 @@ const Breathe = ({ delay }) => {
       }
     };
 
+    let interval;
     if (delay) {
       const timeout = setTimeout(() => {
         setIsVisible(true);
-        breathAnimation();
+        setTimeout(breathAnimation, 0);
+        interval = setInterval(breathAnimation, totalTime);
+        return () => clearInterval(interval);
       }, delay);
       return () => clearTimeout(timeout);
     } else {
       breathAnimation();
+      interval = setInterval(breathAnimation, totalTime);
+      return () => clearInterval(interval);
     }
-
-    const interval = setInterval(breathAnimation, totalTime);
-    return () => {
-      clearInterval(interval);
-    };
   }, [delay]);
 
   return (
@@ -71,3 +71,7 @@ export default Breathe;
 //  que al momento del useeffect el ref ya este existiendo, (es decir que el dom ya se haya renderizado)
 //   y ahi comienza la respiracion y los sucesivos settimeout.Una vez declarada la funcion, finalmente puedo llamarla,
 // generar el intervalo, y como return del useeffect la limpieza de todo para evitar fugas de memoria
+// With setTimeOut in breathAnimation it is not that I am forcing breathAnimation to appear as soon as isVisible is rendered,
+//   although in practice it seems that we are doing it because it actually appears with the jsx, what
+//   we do with the settimeout is leave it waiting for other events to occur, including the one we
+//    need to happen which is the re - rendering by isVisible
