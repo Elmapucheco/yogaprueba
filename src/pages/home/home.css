@@ -36,7 +36,7 @@
         position: relative;
         z-index: 0;
     }
-    .home.dark-mode::before{
+    .home:before{
       content: '';
     position: absolute;
     top: 0;
