@@ -14,16 +14,6 @@ function HeaderBar() {
   const { isPlaying, playAudio, stopAudio } = useAudio();
   const [isOpen, setIsOpen] = useState(false);
 
-  // detectamos un click en algun lado y llamamos a la funcion para que nos asegure
-  //  donde ocurrio ese click, porque si ocurrio por fuera de donde mi menuRef detecta,
-  //   y no esta relacionado con el icono, entonces cambiaremos el estado a falso y
-  //    acto seguido removeremos el detector de evento para que una vez que cierre el dropdown no escuche clicks indefinidamente
-  // Usar ref en React es una práctica común para acceder a elementos del DOM de
-  //  manera similar a como se hace con getElementById en JavaScript tradicional.
-  // .current.contains se usa para contenedores grandes, para el icono puedo directamente comparar
-  // *.current es una cuestion sintactica
-  //   * El hecho de chequear que menuRef.current existe antes de chequear si contiene al Event,
-  //     es porque el dropdown a veces puede estar cerrado.El icono en cambio esta siempre
   const menuRef = useRef();
   const iconRef = useRef();
 
@@ -98,3 +88,14 @@ function HeaderBar() {
 }
 
 export default HeaderBar;
+
+// detectamos un click en algun lado y llamamos a la funcion para que nos asegure
+//  donde ocurrio ese click, porque si ocurrio por fuera de donde mi menuRef detecta,
+//   y no esta relacionado con el icono, entonces cambiaremos el estado a falso y
+//    acto seguido removeremos el detector de evento para que una vez que cierre el dropdown no escuche clicks indefinidamente
+// Usar ref en React es una práctica común para acceder a elementos del DOM de
+//  manera similar a como se hace con getElementById en JavaScript tradicional.
+// .current.contains se usa para contenedores grandes, para el icono puedo directamente comparar
+// *.current es una cuestion sintactica
+//   * El hecho de chequear que menuRef.current existe antes de chequear si contiene al Event,
+//     es porque el dropdown a veces puede estar cerrado.El icono en cambio esta siempre
