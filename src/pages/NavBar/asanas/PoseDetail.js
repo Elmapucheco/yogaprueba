@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import "./poseDetail.css";
-import { IoMdArrowRoundBack } from "react-icons/io";
+import arrowpurple from "../../../assets/arrowpurple.png";
 import { useDarkMode } from "../../../components/Context/DarkMode";
 
 function PoseDetail() {
@@ -51,7 +51,7 @@ function PoseDetail() {
       <div className="container-posedetail-info">
         <div className="back-to-container">
           <button onClick={goBack}>
-            <IoMdArrowRoundBack />
+            <img src={arrowpurple} />
           </button>
         </div>
         <div className="details-desktop">

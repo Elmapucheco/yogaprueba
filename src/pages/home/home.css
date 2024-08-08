@@ -30,13 +30,13 @@
         padding-top: 70px;
         min-height: 100vh;
         background-image:url("../../assets/kathmandu.JPG");
-        background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
-        background-repeat: no-repeat; /* Evita que la imagen se repita */
+        background-size: cover; 
+        background-repeat: no-repeat; 
         background-position: center;
         position: relative;
         z-index: 0;
     }
-    .home:before{
+    /* .home:before{
       content: '';
     position: absolute;
     top: 0;
@@ -49,5 +49,35 @@
   background: -webkit-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", endColorstr="#471069", GradientType=1 );
     z-index: 0;
-  } 
+  }  */
+  .home:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg, 
+      hsla(185, 50%, 70%, 0.4) 0%,  /* Color menos saturado y más claro */
+      hsla(277, 50%, 70%, 0.4) 100%  /* Color menos saturado y más claro */
+    );
+    background: -moz-linear-gradient(
+      90deg, 
+      hsla(185, 50%, 70%, 0.4) 0%,  
+      hsla(277, 50%, 70%, 0.4) 100%
+    );
+    background: -webkit-linear-gradient(
+      90deg, 
+      hsla(185, 50%, 70%, 0.4) 0%,  
+      hsla(277, 50%, 70%, 0.4) 100%
+    );
+    filter: progid: DXImageTransform.Microsoft.gradient(
+      startColorstr="#C5D6D2", 
+      endColorstr="#D6C2D2", 
+      GradientType=1
+    );
+    z-index: 0;
+  }
+  
   }

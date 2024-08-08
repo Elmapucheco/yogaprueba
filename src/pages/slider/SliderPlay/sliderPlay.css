@@ -201,30 +201,30 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", en
 
 }
 @media(min-width:1024px){
-  .sand {
+  .wood {
     position: relative;
     width: 100%;
     margin: 0 auto;
     min-height: 100vh;
-    background-image: url("../../../assets/sand.jpg");
+    background-image: url("../../../assets/floor.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     overflow: hidden;
-    opacity: 0; /* Comienza con opacidad cero para la animación */
-    animation: fadeIn 3s forwards; /* Aplica la animación de fadeIn por 1 segundo */
+    opacity: 0; 
+    animation: fadeIn 3s forwards; 
   }
 
   @keyframes fadeIn {
     from {
-      opacity: 0; /* Empieza completamente transparente */
+      opacity: 0; 
     }
     to {
-      opacity: 1; /* Termina completamente visible */
+      opacity: 1;
     }
   }
-.sand.dark{
-  filter: brightness(70%);
+.wood.dark {
+  background-image: url("../../../assets/floor.jpg");
 }
 .sliderplay-container{
   width: 400px;
@@ -236,4 +236,3 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", en
 }
 
 }
-/* Renato Trentin  white sand */
