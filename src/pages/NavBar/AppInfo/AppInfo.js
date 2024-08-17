@@ -95,23 +95,20 @@ function AppInfo() {
 
   return (
     <div className={`app-info-container ${darkMode ? "dark-mode" : ""}`}>
-      <div className="presentation-section">
-        <div className="section__pic-container">
+      <div id="profile">
+        <div className="profile-pic">
           <img src={pic} alt="Gabriel profile picture" />
         </div>
-        <div className="section__text">
-          <p className="section__text__p1">Hi, I'm</p>
+        <div className="text-section">
+          <p className="section-header">Hi, I'm</p>
           <h1 className="title">Gabriel Ayilef</h1>
-          <h3 className="section__text__p2">Frontend Developer</h3>
-          <p>
+          <h3 className="subtitle">Frontend Developer</h3>
+          <p className=".text-container">
             This app showcases my first venture into the world of frontend
             development.
           </p>
 
-          <button
-            className="btn btn-color-2 project-btn"
-            onClick={handlePortfolioClick}
-          >
+          <button className="btn-info" onClick={handlePortfolioClick}>
             Visit portfolio
           </button>
         </div>

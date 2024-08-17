@@ -13,43 +13,40 @@ body {
 }
 
 
-.presentation-section {
+#profile {
+  height: 80vh;
   display: flex;
   justify-content: center;
   gap: 5rem;
 }
 
-.section__pic-container {
-  display: flex;
-  width:30%;
-  height: auto;
-  max-width: 350px;
-  margin: auto 0;
-  border-radius: 50%;
-  overflow: hidden; 
-}
-.section__pic-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-
-  display: block; /* Esto elimina posibles espacios blancos extraños */
-}
-.section__text {
+.profile-pic {
+  width: 400px;
+  height: 400px;
   align-self: center;
+}
+.profile-pic img {
+  width: 100%;
+  border-radius: 50%;
+}
+.text-section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  align-self: center;
 }
 
-.section__text p {
+.text-section p {
   font-weight: 600;
+  color: rgb(85, 85, 85);
 }
 
-.section__text__p1 {
+.section-header {
   text-align: center;
 }
 
-.section__text__p2 {
+.subtitle {
   font-size: 1.75rem;
   margin-bottom: 1rem;
 }
@@ -58,48 +55,23 @@ body {
   font-size: 3rem;
   text-align: center;
 }
-
-#socials-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-  gap: 1rem;
-}
-.btn {
+.btn-info {
   font-weight: 600;
   transition: all 300ms ease;
   padding: 1rem;
   width: 8rem;
   border-radius: 2rem;
-}
-
-.btn-color-1,
-.btn-color-2 {
-  border: rgb(53, 53, 53) 0.1rem solid;
-}
-
-.btn-color-1:hover,
-.btn-color-2:hover {
   cursor: pointer;
-}
-
-.btn-color-1,
-.btn-color-2:hover {
-  background: rgb(53, 53, 53);
-  color: white;
-}
-
-.btn-color-1:hover {
-  background: rgb(0, 0, 0);
-}
-
-.btn-color-2 {
+  border: rgb(53, 53, 53) 0.1rem solid;
   background: none;
 }
 
-.btn-color-2:hover {
+.btn-info:hover {
+  background: rgb(53, 53, 53);
+  color: white;
   border: rgb(255, 255, 255) 0.1rem solid;
 }
+
 .credits{
   padding: 20px;
   display: flex;
@@ -126,37 +98,53 @@ body {
   padding: 20px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1400px) {
+  #profile {
+    height: 83vh;
+    margin-bottom: 6rem;
+  }
+
  
+}
+
+@media screen and (max-width: 1200px) {
+  
+  #profile{
+    display: block;
+  }
+
+  .app-info-container{
+    height: fit-content;
+    margin: 0 5%;
+  }
+  .profile-pic{
+    width: 275px;
+    height: 275px;
+    margin: 0 auto 2rem;
+    
+  }
+ 
+}
+
+@media screen and (max-width: 600px) {
+
   #profile {
     height: 83vh;
     margin-bottom: 0;
   }
-
-  .about-containers,
-  .contact-info-upper-container,
-  .btn-container {
-    flex-wrap: wrap;
-  }
-  .contact-info-container {
-    margin: 0;
-  }
-  .contact-info-container p,
-  .nav-links li a {
-    font-size: 1rem;
-  }
  
-
-  .section__pic-container {
-    width: 50%;
-    height: 46vw;
+  .name {
+    font-size: 1.5rem;
+  }
+  .profile-pic{
+    width: 220px;
+    height:auto;
     justify-content: center;
-    
-    }
-
-  .section__text__p2 {
+  }
+  .subtitle {  
     font-size: 1.25rem;
   }
+ 
   .title {
     font-size: 2rem;
   }
@@ -164,3 +152,4 @@ body {
     text-align: justify;
   }
 }
+
