@@ -161,7 +161,7 @@ const ChallengePlay = () => {
   }
 
   return (
-    <div className={`sand ${darkMode ? "dark" : ""}`}>
+    <div className={`wood ${darkMode ? "dark" : ""}`}>
       <div className={`sliderplay-container ${darkMode ? "dark" : ""}`}>
         {isFinished && <Confetti />}
         <div className="sliderPlay-header">
