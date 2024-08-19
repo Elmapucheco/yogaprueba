@@ -74,13 +74,19 @@ body {
   background: none;
   margin-top: 2rem;
 }
-
-.btn-info:hover {
+.app-info-container.dark .btn-info{
+  background: white;
+  color: #2f195f;
+}
+.btn-info:hover{
   background: #2f195f;
   color: white;
   border: rgb(255, 255, 255) 0.1rem solid;
 }
-
+.app-info-container.dark .btn-info:hover{
+  background: #2f195f;
+  color: white;
+}
 .credits{
   padding: 20px;
   display: flex;
@@ -92,6 +98,7 @@ body {
   margin-bottom: 0.625rem;
   color: #2f195f;
 }
+
 .credits p,
  .credits li{
   font-size:clamp(1rem, 1.2rem, 1.8rem);
@@ -108,6 +115,15 @@ body {
 }
 .credits a{
   color: #7b2cbf;
+}
+.app-info-container.dark p,
+.app-info-container.dark li{
+  color: #bbb8c4;
+}
+.app-info-container.dark .credits a,
+.app-info-container.dark .subtitle,
+.app-info-container.dark .credits h3{
+  color:  #9f73b3;
 }
 @media screen and (max-width: 1400px) {
   #profile {
