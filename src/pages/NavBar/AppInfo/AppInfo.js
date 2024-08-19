@@ -94,7 +94,7 @@ function AppInfo() {
   };
 
   return (
-    <div className={`app-info-container ${darkMode ? "dark-mode" : ""}`}>
+    <div className={`app-info-container ${darkMode ? "dark" : ""}`}>
       <div id="profile">
         <div className="profile-pic">
           <img src={pic} alt="Gabriel profile picture" />

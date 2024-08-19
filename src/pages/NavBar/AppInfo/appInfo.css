@@ -11,10 +11,12 @@ body {
   box-sizing: border-box;
   min-height: 100vh;
 }
-
+.app-info-container.dark{
+  background-color: #282D35;
+}
 
 #profile {
-  height: 80vh;
+  height: 70vh;
   display: flex;
   justify-content: center;
   gap: 5rem;
@@ -49,11 +51,17 @@ body {
 .subtitle {
   font-size: 1.75rem;
   margin-bottom: 1rem;
+  color: #2f195f;
 }
 
 .title {
   font-size: 3rem;
   text-align: center;
+  color: #7b2cbf
+ 
+}
+.app-info-container.dark .title{
+  color: #9f73b3;
 }
 .btn-info {
   font-weight: 600;
@@ -64,10 +72,11 @@ body {
   cursor: pointer;
   border: rgb(53, 53, 53) 0.1rem solid;
   background: none;
+  margin-top: 2rem;
 }
 
 .btn-info:hover {
-  background: rgb(53, 53, 53);
+  background: #2f195f;
   color: white;
   border: rgb(255, 255, 255) 0.1rem solid;
 }
@@ -81,7 +90,7 @@ body {
 .credits h3 {
   font-size:clamp(1rem, 2vw, 1.8rem);
   margin-bottom: 0.625rem;
-  color: rgb(43, 14, 51);
+  color: #2f195f;
 }
 .credits p,
  .credits li{
@@ -97,7 +106,9 @@ body {
 .credits1, .credits2{
   padding: 20px;
 }
-
+.credits a{
+  color: #7b2cbf;
+}
 @media screen and (max-width: 1400px) {
   #profile {
     height: 83vh;
@@ -129,8 +140,9 @@ body {
 @media screen and (max-width: 600px) {
 
   #profile {
-    height: 83vh;
+    height: 60vh;
     margin-bottom: 0;
+    margin-top: 4rem;
   }
  
   .name {
@@ -150,6 +162,10 @@ body {
   }
   .text-container {
     text-align: justify;
+  }
+  .credits{
+    flex-direction: column;
+    margin-top: 10rem;
   }
 }
 
