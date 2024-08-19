@@ -94,8 +94,8 @@
     width: 100%;
     height: 100%;
     display: flex;
-  justify-content: center; /* Centra el contenido horizontalmente dentro del botón */
-  align-items: center; /* Centra el contenido verticalmente dentro del botón */
+  justify-content: center; 
+  align-items: center; 
   }
   .container-posedetail.dark .back-to-container img{
     color: #bbb8c4;
@@ -181,6 +181,7 @@
     }
    .text-asanas{
         flex: 1;
-        margin-block: auto;
+        margin: auto 10px;
+        
       }
     } 

@@ -7,7 +7,10 @@
   position: relative;
   height: auto;
   overflow: hidden;
+  transition: transform 0.1s ease;
 }
+
+
 .slider-container.dark{
   background-color: #282D35;
 }
@@ -170,13 +173,7 @@
     .slide-wrapper{
       padding-bottom: 0;
     }
-    /* div > .slide-link {
-      margin: 0;
-      padding: 0;
-      display: block;
+    .slider-container:hover{
+      transform: scale(1.1); 
     }
-    .slider-container .slick-slide {
-      margin: 0;
-      padding: 0;
-    } */
 }

@@ -6,8 +6,10 @@
     background-color: white;
     border-radius: 5px;
     position: relative;
-    
+    transition: transform 0.1s ease;
 }
+
+
 .container-wellness.dark{
     background-color: #282D35;
 }
@@ -61,5 +63,8 @@
     }
     .cont-img-wellness h3{
         font-size:clamp(1rem, 1.5vw, 2rem);
+    }
+    .container-wellness:hover{
+        transform: scale(1.1); 
     }
   }
