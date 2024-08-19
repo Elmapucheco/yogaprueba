@@ -8,7 +8,7 @@ import { useDarkMode } from "../../components/Context/DarkMode";
 function Home() {
   const { darkMode } = useDarkMode();
   return (
-    <div className={`home ${darkMode ? "dark-mode" : ""}`}>
+    <div className={`home ${darkMode ? "dark" : ""}`}>
       <SliderComponent />
       <Challenge />
       <HomeWellness />

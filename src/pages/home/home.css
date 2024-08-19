@@ -7,12 +7,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    /* padding: 1rem; */
+   
 }
-.home.dark-mode {
+.home.dark {
     background-color: #282D35;
     color: #ffffff;
-    /* Otros estilos específicos para modo oscuro */
   }
 
   @media(min-width:768px){
@@ -36,21 +35,21 @@
         position: relative;
         z-index: 0;
     }
-    /* .home:before{
+    .home:before {
       content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: hsla(185, 64%, 51%, 1);
-  background: linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
-  background: -moz-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
-  background: -webkit-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", endColorstr="#471069", GradientType=1 );
-    z-index: 0;
-  }  */
-  .home:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg, 
+        rgba(255, 255, 255, 0.6) 0%,  /* Blanco con 60% de transparencia */
+        rgba(255, 255, 255, 0.6) 100%  /* Blanco con 60% de transparencia */
+      );
+      z-index: 0; /* Asegura que el ::before esté sobre la imagen */
+    }
+  /* .home:before {
     content: '';
     position: absolute;
     top: 0;
@@ -59,8 +58,8 @@
     height: 100%;
     background: linear-gradient(
       90deg, 
-      hsla(185, 50%, 70%, 0.4) 0%,  /* Color menos saturado y más claro */
-      hsla(277, 50%, 70%, 0.4) 100%  /* Color menos saturado y más claro */
+      hsla(185, 50%, 70%, 0.4) 0%, 
+      hsla(277, 50%, 70%, 0.4) 100%  
     );
     background: -moz-linear-gradient(
       90deg, 
@@ -78,6 +77,9 @@
       GradientType=1
     );
     z-index: 0;
+  } */
+  .home.dark {
+    background-image: none;
   }
   
   }
