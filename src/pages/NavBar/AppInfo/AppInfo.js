@@ -127,6 +127,7 @@ function AppInfo() {
             </a>{" "}
             for providing the Yoga API.
           </p>
+          <br></br>
           <h3>Icon Credits</h3>
           <ul>
             <li>React Icons</li>
