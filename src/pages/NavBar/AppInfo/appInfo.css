@@ -166,7 +166,7 @@ body {
   .credits{
     flex-direction: column;
     margin-top: 10rem;
-    padding: 10px 0;
+    padding: 10px;
   }
   .credits1, .credits2{
     padding: 0;
