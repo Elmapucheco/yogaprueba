@@ -94,7 +94,7 @@ body {
   gap: 20px;
 }
 .credits h3 {
-  font-size:clamp(1.2rem, 2vw, 1.8rem);
+  font-size:clamp(1.5rem, 2vw, 1.8rem);
   margin-bottom: 0.625rem;
   color: #2f195f;
 }
