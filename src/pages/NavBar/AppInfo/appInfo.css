@@ -167,5 +167,8 @@ body {
     flex-direction: column;
     margin-top: 10rem;
   }
+  .credits1, .credits2{
+    padding: 0;
+  }
 }
 
