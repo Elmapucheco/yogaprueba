@@ -69,7 +69,7 @@
 
 
 .slider-gallery-wrapper h2 {
-  font-size: clamp(0.3rem, 1vw + 1rem, 3rem);
+  font-size: clamp(0.3rem, 1.5vw, 2rem);
   color: white;
   position: absolute;
   bottom: 10px;
@@ -114,11 +114,19 @@
   padding: 5px;
 }
 
-
-.slider-gallery-container.dark .slider-gallery-wrapper p{
+.slider-gallery-container.dark .modal,
+.slider-gallery-container.dark .modal-content{
+  background-color: #171f1d
+}
+.slider-gallery-container.dark .slider-gallery-wrapper p,
+.slider-gallery-container.dark .modal-content h2,
+.slider-gallery-container.dark .modal-content span,
+.slider-gallery-container.dark .modal-content p{
   color: #bbb8c4;
 }
-
+.slider-gallery-container.dark .modal-content .close{
+  background-color: #bbb8c4;
+}
 .modal-content h2{
   padding: 1rem auto 1rem;
   color: rgb(127, 50, 127);
