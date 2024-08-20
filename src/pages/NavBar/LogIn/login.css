@@ -1,3 +1,4 @@
+
 .login-body{
     display: flex;
     justify-content: center;
@@ -23,10 +24,10 @@
   width: 100%;
   height: 100%;
   background: hsla(185, 64%, 51%, 1);
-background: linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
-background: -moz-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
-background: -webkit-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", endColorstr="#471069", GradientType=1 );
+  background: linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
+  background: -moz-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
+  background: -webkit-linear-gradient(90deg, hsla(185, 64%, 51%, 0.3) 0%, hsla(277, 74%, 24%, 0.3) 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", endColorstr="#471069", GradientType=1 );
   z-index: 1;
 }
 .wrapper-login{
@@ -153,3 +154,49 @@ form .register-link{
         background-image:url("../../../assets/kathmandu.JPG");
     }
 }
+.modal-content {
+    position: fixed;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 50%;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    font-size: clamp(1rem, 1.5vw, 2rem);
+    line-height: 1.2;
+    letter-spacing: 1px;
+    text-decoration: none;
+    padding-block: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0.95;
+  }
+  .close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    display: block;
+    border-radius: 50%;
+    background-color: rgb(197, 134, 229,0.3);
+    padding: 5px;
+  }
+  .modal-content h3{
+    padding: 1rem;
+    /* text-align: justify; */
+    color: rgb(127, 50, 127);
+  }
+  .login-body.dark .modal-content{
+    background-color: #171f1d;
+    opacity: 0.95;
+  }
+  
+  .login-body.dark .modal-content h3{
+    color: #bbb8c4;
+  }
+  .login-body.dark .modal-content .close{
+    background-color: #bbb8c4;
+  }

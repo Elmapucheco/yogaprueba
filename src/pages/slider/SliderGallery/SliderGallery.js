@@ -61,18 +61,16 @@ const SliderGallery = () => {
       </div>
 
       {isModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <img
-              className="close"
-              onClick={closeModal}
-              src={close}
-              alt="close message"
-            />
-            <h2>{modalContent.title}</h2>
-            <span>({modalContent.duration})</span>
-            <p>{modalContent.description}</p>
-          </div>
+        <div className="modal-content">
+          <img
+            className="close"
+            onClick={closeModal}
+            src={close}
+            alt="close message"
+          />
+          <h2>{modalContent.title}</h2>
+          <span>({modalContent.duration})</span>
+          <p>{modalContent.description}</p>
         </div>
       )}
     </div>
