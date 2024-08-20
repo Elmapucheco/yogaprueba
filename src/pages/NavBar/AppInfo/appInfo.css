@@ -70,7 +70,8 @@ body {
   width: 8rem;
   border-radius: 2rem;
   cursor: pointer;
-  border: rgb(53, 53, 53) 0.1rem solid;
+  color: #282D35;
+  border: #353535 0.1rem solid;
   background: none;
   margin-top: 2rem;
 }
@@ -79,7 +80,7 @@ body {
   color: #2f195f;
 }
 .btn-info:hover{
-  background: #2f195f;
+  background: rgb(53, 53, 53);
   color: white;
   border: rgb(255, 255, 255) 0.1rem solid;
 }
