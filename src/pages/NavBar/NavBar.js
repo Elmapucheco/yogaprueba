@@ -51,7 +51,11 @@ const NavBar = () => {
     <div className={`NavBar ${darkMode ? "dark" : ""}`}>
       <div className="icons">
         <Link to="/" className="icon-container icon-container-link icon-home">
-          <img src={darkMode ? homedark : home} className="icon" />
+          <img
+            src={darkMode ? homedark : home}
+            className="icon"
+            alt="icon home"
+          />
           <p>Home</p>
         </Link>
         <div
@@ -61,6 +65,7 @@ const NavBar = () => {
           <img
             src={darkMode ? asanadark : asana}
             className="icon"
+            alt="icon lessons"
             ref={lessonRef}
           />
           <p>Practice</p>
@@ -85,6 +90,7 @@ const NavBar = () => {
           <img
             src={darkMode ? bookdark : book}
             className="icon"
+            alt="icon info"
             ref={infoRef}
           />
           <p>Info</p>
@@ -100,7 +106,11 @@ const NavBar = () => {
           )}
         </div>
         <Link to="/login" className="icon-container icon-container-link">
-          <img src={darkMode ? accountdark : account} className="icon" />
+          <img
+            src={darkMode ? accountdark : account}
+            alt="icon login"
+            className="icon"
+          />
           <p>Log In</p>
         </Link>
       </div>

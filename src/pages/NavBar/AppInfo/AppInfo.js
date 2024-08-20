@@ -97,7 +97,7 @@ function AppInfo() {
     <div className={`app-info-container ${darkMode ? "dark" : ""}`}>
       <div id="profile">
         <div className="profile-pic">
-          <img src={pic} alt="Gabriel profile picture" />
+          <img src={pic} alt="" />
         </div>
         <div className="text-section">
           <p className="section-header">Hi, I'm</p>

@@ -51,7 +51,7 @@ function PoseDetail() {
       <div className="container-posedetail-info">
         <div className="back-to-container">
           <button onClick={goBack}>
-            <img src={arrowpurple} />
+            <img src={arrowpurple} alt="icon return" />
           </button>
         </div>
         <div className="details-desktop">

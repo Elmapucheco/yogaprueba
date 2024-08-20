@@ -79,7 +79,7 @@ const SliderInfo = () => {
             onClick={isPlaying ? stopAudio : playAudio}
           />
           <h1>{title}</h1>
-          <img src={img} />
+          <img src={img} alt="" />
           <p>
             Here is your sequence! Take a look at the poses and begin your
             practice.

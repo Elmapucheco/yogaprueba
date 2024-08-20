@@ -8,7 +8,7 @@ function SplashScreen() {
     <div className="splash-screen">
       <img className="splash-background" src={splash} alt="Logo" />
       <div className="splash-logo-container">
-        <img className="splash-logo" src={logo} />
+        <img className="splash-logo" src={logo} alt="" />
       </div>
     </div>
   );
