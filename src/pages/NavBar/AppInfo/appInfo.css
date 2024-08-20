@@ -188,5 +188,8 @@ body {
   .credits1, .credits2{
     padding: 0;
   }
+  .btn-info{
+    font-size: 0.8rem;
+  }
 }
 
