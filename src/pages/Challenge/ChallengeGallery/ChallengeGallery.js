@@ -16,7 +16,6 @@ function ChallengeGallery() {
   const [favoritos, setFavoritos] = useState([]);
   const { darkMode } = useDarkMode();
 
-  // Cargar favoritos desde localStorage
   useEffect(() => {
     const favoritosGuardados =
       JSON.parse(localStorage.getItem("favoritos")) || [];
@@ -32,7 +31,6 @@ function ChallengeGallery() {
     localStorage.setItem("favoritos", JSON.stringify(nuevosFavoritos));
   };
 
-  // Obtener todas las posturas y categorías
   useEffect(() => {
     async function fetchAllPoses() {
       try {
@@ -65,7 +63,6 @@ function ChallengeGallery() {
     fetchAllPoses();
   }, []);
 
-  // Crear un mapa de categorías
   const categoryMap = useMemo(() => {
     const mapping = new Map();
     categories.forEach((category) => {
@@ -76,7 +73,6 @@ function ChallengeGallery() {
     return mapping;
   }, [categories]);
 
-  // Generar secuencias y almacenarlas en localStorage
   useEffect(() => {
     async function fetchAndGenerateSequences(allPoses, categoryMap) {
       try {
@@ -92,10 +88,10 @@ function ChallengeGallery() {
         }
 
         localStorage.setItem("sequences", JSON.stringify(sequencesArray));
-        setSequences(sequencesArray); // Actualizar el estado aquí
+        setSequences(sequencesArray);
       } catch (error) {
         console.error("Error generating sequences:", error);
-        setSequences([]); // En caso de error, retornar un array vacío
+        setSequences([]);
       }
     }
 
@@ -107,7 +103,6 @@ function ChallengeGallery() {
     }
   }, [allPoses, categories, categoryMap]);
 
-  // La función para generar una secuencia diaria
   function sequencePerDay(day, allPoses, categoryMap) {
     const eachSequence = {
       dia: day,
@@ -142,7 +137,6 @@ function ChallengeGallery() {
     return eachSequence;
   }
 
-  // La función para obtener posturas al azar por categoría
   function getRandomPosesByCategory(
     categoryName,
     count,
@@ -169,7 +163,6 @@ function ChallengeGallery() {
     return Array.from(selectedPoses);
   }
 
-  // Renderización del componente
   if (!sequences || sequences.length === 0) {
     return (
       <div>

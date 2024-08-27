@@ -112,5 +112,3 @@ export const SliderProvider = ({ children }) => {
     <SliderContext.Provider value={classes}>{children}</SliderContext.Provider>
   );
 };
-
-// crea un contexto para que quienes esten envueltos en el provider tengan acceso a las funcionalidades

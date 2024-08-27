@@ -108,16 +108,3 @@ function ChallengeDay() {
 }
 
 export default ChallengeDay;
-// daySequence is an object, but I need an array to iterate and generate
-//  the list in the jsx, that's why ObjectKeys takes it as a parameter and will return
-//  an array only with the keys of that object (id, day, standing, seated). Mapping over that array
-//  and check with Array.isArray that the portion of the daysequences object corresponding to the key,
-//  that is being iterated, is an array, and if it is, I will create in that portion an object with 3 new keys.
-//  If it is not an array, I will have an empty array. Finally, flat() will help me make the generated array alone
-//  contains iterable values, that is, if a key (for example standing) generated 4 objects inside
-//  because so determined, I do not end up with a nested array of 4 objects, but rather flat
-//  goes through those brackets and generates 4 elements for my total array, it also goes through
-//  the [] and then those empty arrays (id and dia) disappear from the final array asanaLinks
-
-// as the day I receive it from useSearchParams, and useParams transforms everything
-//  that retrieves a string, the parseInt converts it into a number for comparison

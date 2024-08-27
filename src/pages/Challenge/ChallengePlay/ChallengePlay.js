@@ -249,24 +249,3 @@ const ChallengePlay = () => {
 };
 
 export default ChallengePlay;
-
-// The useRef will be used mainly to add a mark to the image and adding a class that makes it grow for 3
-// seconds and return to its shape for the next 3.
-// asanaDetails is retrieved with the location, and is mapped to processedAsanas to check if the sequence includes the
-// asanasToRepeat, if so it is added to everything that the object has, the "side" key with right and left, which doubles
-// the asana in the render.In order to allow next and previous, I generate currentAsana which will join the processedAsanas
-// with the index of each one in the array.
-// currentasanaindex is a state generated for the sole purpose of the interaction between next and previous.Without these processes,
-//   I could skip it and directly use the processedAsanas as an end - to - end mapping.I declare it at 0 so that it starts from the first asana.
-// isFirstAsana and isLastAsana will serve as conditional returns for the next and previous icons in both asanas.As well as f
-// or the functions called by these icons.Like the handleTimerExpire in case it is the last position.
-// I handle it like this at preparation time: I declare timer undefined, and there I check that basically the
-// conditions are those that the component already has by default when it is rendered.If this happens, the following if,
-//   and since preptime is 5 I advance and subtract 1 from every second, when it reaches 0 it goes through Else and
-//   there I change the isPreparing to false and return to 5 in prepTime, finally I clean the timer on the outside of
-//   the else, to ensure that the cleanUp is part of the useEffect and avoid strange behavior if it is executed again,
-//   for example if the user presses Next and then isPreparing returns to true.
-// Finally, key is a state that is basically generated with the intention of being updated.This happens in both
-// handlenext and handleback, both incrementing it by 1, to always achieve a unique value and the basis is
-//   in the CountDown timer, which needs which prop of the update of that value to restart.When React detects
-//   that it was updated to a unique value, it mounts the component again

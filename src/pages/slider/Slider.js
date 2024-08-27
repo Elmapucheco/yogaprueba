@@ -61,12 +61,3 @@ const SliderComponent = () => {
 };
 
 export default SliderComponent;
-
-// I get the classes variable from the slidercontext with which I will do two things.
-// Whether the user chooses SEE ALL, I will send the Classes state via link so that the
-// child can use it in their logic.In the case of the slider, which has its own configuration in Settings,
-//   I will map classes and for each item I will generate a Link to which I will send not only classes,
-//   but also their components separately(this is so that if I choose to go BACK from the child,
-//   I go to the gallery SEE ALL, which requires the entire Classes array for its logic, as
-//      I did above in the link above.Finally, in the return I use the mapping info, not this
-//      time to choose what to send to the children.but to see what I place in the render itself

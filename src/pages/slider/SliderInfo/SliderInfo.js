@@ -120,11 +120,3 @@ const SliderInfo = () => {
 };
 
 export default SliderInfo;
-
-// first I check in local storgae if I have already saved the sequence corresponding to this day (params index)
-// if I find it I assign this value to asanaDetails
-// If not, bring all the asanas from the api, which is an array of objects and I will compare them with the sequence sequence
-// which was passed to me as state or prop, that is, I will filter only those whose names match sequence. This time the array
-// will not only contain the asana name but also the extra data that I need from that asana.
-// filteredAsanas generated the match for me but organized the asanas alphabetically comparing from the data that came from the api,
-// and with orderedasanas I reorder them in the way sequence established it, because I iterate from sequence

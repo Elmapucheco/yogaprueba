@@ -23,9 +23,3 @@ const ConfirmModal = ({ onConfirm, onCancel }) => {
 };
 
 export default ConfirmModal;
-
-// las funciones estan declaradas en los componentes sliderPlay y
-// ChallengePlay, ambas acceden al modal solo en caso que los respectivos estados
-// de showModal esten en True, y esto pasa cuando en cada componente el user clickea en el exit,
-//   que activa la funcion goBack(esto cambia a true el estado) y este es el condiciol en cada
-//  componente para renderizar o no el modal

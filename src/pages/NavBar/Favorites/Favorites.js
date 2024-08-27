@@ -88,16 +88,3 @@ function Favorites() {
 }
 
 export default Favorites;
-
-// The first thing the component does is bring in the favorites from localStorage.
-// The second thing is to bring the sequences that ChallengeGallery previously saved in
-//   LocalStorage.If favorites exist, it is because favorites were previously selected in
-//   ChallengeGallery and therefore the information was already processed and saved in
-//     localStorage.That is to say, it is understood that both data exist if the user chose a favorite.
-// Once obtained, it is iterated with filter over sequences in search of matches in
-//   sequence.dia with the favorites, which is the data stored in localStorage.
-// removeFavorites is called from the delete button and with a sequence.dia argument.Already in
-//   the function, a filter will check that the new array created DOES NOT contain that day, and
-//   subsequently saves the updated version in localStorage
-// useCallback in React memorizes functions to improve performance by avoiding
-// unnecessary recreations on each render, thus optimizing data flow and component efficiency.

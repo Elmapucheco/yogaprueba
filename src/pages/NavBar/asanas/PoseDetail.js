@@ -82,10 +82,3 @@ function PoseDetail() {
 }
 
 export default PoseDetail;
-
-// I will use the params name to specify the information that comes either
-// from LocalStorage in case posesList has already saved it, or from the api if not,
-//   or that comes from Slider or Challenge.
-// Whatever the source, I will save that specific data in the asana state for rendering.
-// I will use the location to know where the component was linked from and
-// accordingly decide what information I will show

@@ -78,13 +78,3 @@ const SliderGallery = () => {
 };
 
 export default SliderGallery;
-
-// I get the state classes from slider.js (originally from the slidercontext that I created to generate a provider) .
-// I start the modalContent state with an object with keys that I will use, but leaving
-//  its values ​​empty for the moment.Later in the return, when I click on Info I will call the openModal
-// function that will use values ​​brought from the Classes array, to complete the values ​​of the object.
-// During the return it is mapped by the 5 classes of the state Classes and for each one its image and its title are brought,
-//  in the play arrow a link is established to the child to whom I will send its props.And finally,
-//   in the info icon I will call the function to which I will pass more Classes data.How the
-// function sets the modal content.Then in the modal section, now outside the mapping,
-//   I use those values ​​recovered from the mapping
