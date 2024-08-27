@@ -118,7 +118,6 @@ function LogIn() {
               <p>
                 Already have an account?
                 <a href="#" onClick={loginLink}>
-                  {/* <button type="button" onClick={loginLink}>Login</button> */}
                   Login
                 </a>
               </p>
@@ -127,7 +126,7 @@ function LogIn() {
         </div>
       </div>
       {showModal && (
-        <div className="modal-content">
+        <div className="login-modal-content">
           <img
             className="close"
             onClick={closeModal}

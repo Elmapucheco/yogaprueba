@@ -5,9 +5,9 @@
     align-items: center;
     min-height: 100vh;
     background-image:url("../../../assets/breathe.JPG");
-    background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    background-position: center; /* Opcional: centra la imagen de fondo */
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center;
     margin-inline: auto;
     position: relative;
     z-index: 0;
@@ -154,7 +154,7 @@ form .register-link{
         background-image:url("../../../assets/kathmandu.JPG");
     }
 }
-.modal-content {
+.login-modal-content {
     position: fixed;
     z-index: 10;
     top: 50%;
@@ -184,19 +184,18 @@ form .register-link{
     background-color: rgba(116, 25, 228, 0.3);
     padding: 5px;
   }
-  .modal-content h3{
+  .login-modal-content h3{
     padding: 1rem;
-    /* text-align: justify; */
     color:  #2f195f;
   }
-  .login-body.dark .modal-content{
+  .login-body.dark .login-modal-content{
     background-color: #171f1d;
     opacity: 0.95;
   }
   
-  .login-body.dark .modal-content h3{
+  .login-body.dark .login-modal-content h3{
     color: #bbb8c4;
   }
-  .login-body.dark .modal-content .close{
+  .login-body.dark .login-modal-content .close{
     background-color: #bbb8c4;
   }

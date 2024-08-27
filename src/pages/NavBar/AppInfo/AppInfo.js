@@ -103,7 +103,7 @@ function AppInfo() {
           <p className="section-header">Hi, I'm</p>
           <h1 className="title">Gabriel Ayilef</h1>
           <h3 className="subtitle">Frontend Developer</h3>
-          <p className=".text-container">
+          <p className="text-container">
             This app showcases my first venture into the world of frontend
             development.
           </p>
