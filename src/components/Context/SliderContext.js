@@ -5,7 +5,7 @@ import gara2 from "../../assets/slider2.jpg";
 import gara3 from "../../assets/slider3.jpg";
 import gara4 from "../../assets/slider4.jpg";
 
-const SliderContext = createContext([]);
+const SliderContext = createContext();
 
 const classes = [
   {
@@ -105,12 +105,11 @@ const classes = [
   },
 ];
 
-export function useSlider() {
-  return useContext(SliderContext);
-}
-
 export function SliderProvider({ children }) {
   return (
     <SliderContext.Provider value={classes}>{children}</SliderContext.Provider>
   );
+}
+export function useSlider() {
+  return useContext(SliderContext);
 }
