@@ -5,9 +5,9 @@ const DarkModeContext = createContext();
 export function DarkModeProvider({ children }) {
   const [darkMode, setDarkMode] = useState(false);
 
-  const toggleDarkMode = () => {
+  function toggleDarkMode() {
     setDarkMode((prevMode) => !prevMode);
-  };
+  }
 
   return (
     <DarkModeContext.Provider value={{ darkMode, toggleDarkMode }}>

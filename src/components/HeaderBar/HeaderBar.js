@@ -11,14 +11,14 @@ import { useAudio } from "../Context/MusicPlayer";
 
 function HeaderBar() {
   const { darkMode, toggleDarkMode } = useDarkMode();
-  const { isPlaying, playAudio, stopAudio } = useAudio();
-  const [isOpen, setIsOpen] = useState(false);
+  const { isPlaying, handleMusicToggle } = useAudio();
 
+  const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef();
   const iconRef = useRef();
 
   useEffect(() => {
-    const handleClickOutside = (e) => {
+    function handleClickOutside(e) {
       if (
         menuRef.current &&
         !menuRef.current.contains(e.target) &&
@@ -26,23 +26,19 @@ function HeaderBar() {
       ) {
         setIsOpen(false);
       }
-    };
+    }
 
-    document.addEventListener("click", handleClickOutside);
+    if (isOpen) {
+      document.addEventListener("click", handleClickOutside);
+    }
 
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, []);
-
-  const handleMusicToggle = () => {
-    if (isPlaying) {
-      stopAudio();
-    } else {
-      playAudio();
-    }
-  };
-
+  }, [isOpen]);
+  function handleOpen() {
+    setIsOpen(!isOpen);
+  }
   return (
     <nav className={`headerbar-container ${darkMode ? "dark" : ""}`}>
       <Link to="/">
@@ -56,7 +52,7 @@ function HeaderBar() {
         <img
           src={darkMode ? toolsdark : tools}
           ref={iconRef}
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={handleOpen}
           alt="Settings"
         />
         {isOpen && (

@@ -22,7 +22,13 @@ export function AudioProvider({ children }) {
     audioRef.current.currentTime = 0;
     setIsPlaying(false);
   };
-
+  function handleMusicToggle() {
+    if (isPlaying) {
+      stopAudio();
+    } else {
+      playAudio();
+    }
+  }
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.visibilityState === "hidden" && isPlaying) {
@@ -49,7 +55,9 @@ export function AudioProvider({ children }) {
   }, []);
 
   return (
-    <AudioContext.Provider value={{ playAudio, stopAudio, isPlaying }}>
+    <AudioContext.Provider
+      value={{ playAudio, stopAudio, isPlaying, handleMusicToggle }}
+    >
       {children}
     </AudioContext.Provider>
   );
