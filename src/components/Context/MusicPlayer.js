@@ -9,11 +9,9 @@ import music from "../../assets/audio.wav";
 
 const AudioContext = createContext();
 
-export const AudioProvider = ({ children }) => {
+export function AudioProvider({ children }) {
   const audioRef = useRef(new Audio(music));
-
   const [isPlaying, setIsPlaying] = useState(false);
-
   const playAudio = () => {
     audioRef.current.play();
     setIsPlaying(true);
@@ -55,8 +53,8 @@ export const AudioProvider = ({ children }) => {
       {children}
     </AudioContext.Provider>
   );
-};
+}
 
-export const useAudio = () => {
+export function useAudio() {
   return useContext(AudioContext);
-};
+}

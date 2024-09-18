@@ -105,10 +105,12 @@ const classes = [
   },
 ];
 
-export const useSlider = () => useContext(SliderContext);
+export function useSlider() {
+  return useContext(SliderContext);
+}
 
-export const SliderProvider = ({ children }) => {
+export function SliderProvider({ children }) {
   return (
     <SliderContext.Provider value={classes}>{children}</SliderContext.Provider>
   );
-};
+}
