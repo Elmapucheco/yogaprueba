@@ -132,7 +132,7 @@
   transform: translateX(-50%);
   color: rgb(64, 108, 116);
   opacity: 0;
-  animation: fadeIn 3s ease-in-out forwards; /* Animación de desvanecimiento durante 3 segundos */
+  animation: fadeIn 3s ease-in-out forwards; 
 }
 
 @keyframes fadeIn {

@@ -14,7 +14,7 @@ function HeaderBar() {
   const { isPlaying, handleMusicToggle } = useAudio();
 
   const [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef();
+  const menuRef = useRef(); //null?
   const iconRef = useRef();
 
   useEffect(() => {

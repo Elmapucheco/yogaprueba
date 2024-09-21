@@ -2,18 +2,18 @@ import React, { useEffect, useRef, useState } from "react";
 import "./breathe.css";
 import { useDarkMode } from "../Context/DarkMode";
 
-const Breathe = ({ delay }) => {
+function Breathe({ delay }) {
   const containerRef = useRef(null);
   const [text, setText] = useState("Breathe In!");
   const { darkMode } = useDarkMode();
-  const [isVisible, setIsVisible] = useState(!delay);
+  const [isVisible, setIsVisible] = useState(delay ? false : true);
 
   useEffect(() => {
     const totalTime = 7500;
     const breatheTime = 3000;
     const holdTime = 1500;
 
-    const breathAnimation = () => {
+    function breathAnimation() {
       if (containerRef.current) {
         setText("Breathe In!");
         containerRef.current.className = "container-breathe grow";
@@ -29,9 +29,10 @@ const Breathe = ({ delay }) => {
           }, holdTime);
         }, breatheTime);
       }
-    };
+    }
 
     let interval;
+
     if (delay) {
       const timeout = setTimeout(() => {
         setIsVisible(true);
@@ -61,6 +62,6 @@ const Breathe = ({ delay }) => {
       </div>
     )
   );
-};
+}
 
 export default Breathe;

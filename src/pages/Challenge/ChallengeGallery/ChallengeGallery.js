@@ -13,36 +13,20 @@ function ChallengeGallery() {
   const [allPoses, setAllPoses] = useState([]);
   const [categories, setCategories] = useState([]);
   const [sequences, setSequences] = useState([]);
-  const [favoritos, setFavoritos] = useState([]);
+  const [favorites, setFavorites] = useState([]);
   const { darkMode } = useDarkMode();
-
-  useEffect(() => {
-    const favoritosGuardados =
-      JSON.parse(localStorage.getItem("favoritos")) || [];
-    setFavoritos(favoritosGuardados);
-  }, []);
-
-  const toggleFavorito = (dia) => {
-    const nuevosFavoritos = favoritos.includes(dia)
-      ? favoritos.filter((favorito) => favorito !== dia)
-      : [...favoritos, dia];
-
-    setFavoritos(nuevosFavoritos);
-    localStorage.setItem("favoritos", JSON.stringify(nuevosFavoritos));
-  };
 
   useEffect(() => {
     async function fetchAllPoses() {
       try {
-        const beginnerResponse = await fetch(
-          "https://yoga-api-nzy4.onrender.com/v1/poses?level=beginner"
-        );
-        const intermediateResponse = await fetch(
-          "https://yoga-api-nzy4.onrender.com/v1/poses?level=intermediate"
-        );
-        const categoryResponse = await fetch(
-          "https://yoga-api-nzy4.onrender.com/v1/categories"
-        );
+        const [beginnerResponse, intermediateResponse, categoryResponse] =
+          await Promise.all([
+            fetch("https://yoga-api-nzy4.onrender.com/v1/poses?level=beginner"),
+            fetch(
+              "https://yoga-api-nzy4.onrender.com/v1/poses?level=intermediate"
+            ),
+            fetch("https://yoga-api-nzy4.onrender.com/v1/categories"),
+          ]);
 
         const [beginnerData, intermediateData, categories] = await Promise.all([
           beginnerResponse.json(),
@@ -50,7 +34,8 @@ function ChallengeGallery() {
           categoryResponse.json(),
         ]);
 
-        const allPoses = beginnerData.poses.concat(intermediateData.poses);
+        const allPoses = [...beginnerData.poses, ...intermediateData.poses];
+
         setAllPoses(allPoses);
         setCategories(categories);
       } catch (error) {
@@ -70,11 +55,47 @@ function ChallengeGallery() {
         mapping.set(pose.id, category.category_name);
       });
     });
+
     return mapping;
   }, [categories]);
 
+  function getRandomPosesByCategory(categoryName, count) {
+    const posesInCategory = allPoses.filter(
+      (pose) => categoryMap.get(pose.id) === categoryName
+    );
+
+    if (posesInCategory.length < count) {
+      console.warn(
+        `There are not enough positions in the category "${categoryName}".${count}were requested, but there are only ${posesInCategory.length}.`
+      );
+      return posesInCategory;
+    }
+
+    const selectedPoses = new Set();
+    while (selectedPoses.size < count) {
+      const randomIndex = Math.floor(Math.random() * posesInCategory.length);
+      selectedPoses.add(posesInCategory[randomIndex]);
+    }
+
+    return Array.from(selectedPoses);
+  }
+
+  function sequencePerDay(day) {
+    const eachSequence = {
+      dia: day,
+      seated: getRandomPosesByCategory("Seated Yoga", 1),
+      standing: getRandomPosesByCategory("Standing Yoga", 4),
+      backbend: getRandomPosesByCategory("Backbend Yoga", 1),
+      forwardBend: getRandomPosesByCategory("Forward Bend Yoga", 1),
+      balancing: getRandomPosesByCategory("Balancing Yoga", 1),
+      restorative: [allPoses.find((pose) => pose.english_name === "Corpse")],
+    };
+
+    return eachSequence;
+  }
+
   useEffect(() => {
-    async function fetchAndGenerateSequences(allPoses, categoryMap) {
+    async function fetchAndGenerateSequences() {
       try {
         const sequencesArray = [];
 
@@ -82,7 +103,7 @@ function ChallengeGallery() {
           if (i % 5 === 0) {
             sequencesArray.push({ id: i, dia: i, restingDay: true });
           } else {
-            const sequenceReal = sequencePerDay(i, allPoses, categoryMap);
+            const sequenceReal = sequencePerDay(i);
             sequencesArray.push({ id: i, ...sequenceReal });
           }
         }
@@ -99,68 +120,24 @@ function ChallengeGallery() {
     if (storedSequences) {
       setSequences(JSON.parse(storedSequences));
     } else if (allPoses.length > 0 && categories.length > 0) {
-      fetchAndGenerateSequences(allPoses, categoryMap);
+      fetchAndGenerateSequences();
     }
   }, [allPoses, categories, categoryMap]);
 
-  function sequencePerDay(day, allPoses, categoryMap) {
-    const eachSequence = {
-      dia: day,
-      seated: getRandomPosesByCategory("Seated Yoga", 1, allPoses, categoryMap),
-      standing: getRandomPosesByCategory(
-        "Standing Yoga",
-        4,
-        allPoses,
-        categoryMap
-      ),
-      backbend: getRandomPosesByCategory(
-        "Backbend Yoga",
-        1,
-        allPoses,
-        categoryMap
-      ),
-      forwardBend: getRandomPosesByCategory(
-        "Forward Bend Yoga",
-        1,
-        allPoses,
-        categoryMap
-      ),
-      balancing: getRandomPosesByCategory(
-        "Balancing Yoga",
-        1,
-        allPoses,
-        categoryMap
-      ),
-      restorative: [allPoses.find((pose) => pose.english_name === "Corpse")],
-    };
+  // Favorites section
 
-    return eachSequence;
-  }
+  useEffect(() => {
+    const savedFavorites = JSON.parse(localStorage.getItem("favoritos")) || [];
+    setFavorites(savedFavorites);
+  }, []);
 
-  function getRandomPosesByCategory(
-    categoryName,
-    count,
-    allPoses,
-    categoryMap
-  ) {
-    const posesInCategory = allPoses.filter(
-      (pose) => categoryMap.get(pose.id) === categoryName
-    );
+  function toggleFavorite(dia) {
+    const newFavorites = favorites.includes(dia)
+      ? favorites.filter((favorito) => favorito !== dia)
+      : [...favorites, dia];
 
-    if (posesInCategory.length < count) {
-      console.warn(
-        `No hay suficientes posturas en la categoría "${categoryName}". Se solicitaron ${count}, pero solo hay ${posesInCategory.length}.`
-      );
-      return posesInCategory;
-    }
-
-    const selectedPoses = new Set();
-    while (selectedPoses.size < count) {
-      const randomIndex = Math.floor(Math.random() * posesInCategory.length);
-      selectedPoses.add(posesInCategory[randomIndex]);
-    }
-
-    return Array.from(selectedPoses);
+    setFavorites(newFavorites);
+    localStorage.setItem("favoritos", JSON.stringify(newFavorites));
   }
 
   if (!sequences || sequences.length === 0) {
@@ -200,15 +177,15 @@ function ChallengeGallery() {
               <>
                 <div className="check-go">
                   <h2>Day {sequence.dia}</h2>
-                  {favoritos.includes(sequence.dia) ? (
+                  {favorites.includes(sequence.dia) ? (
                     <MdFavorite
                       className="favorito-activo"
-                      onClick={() => toggleFavorito(sequence.dia)}
+                      onClick={() => toggleFavorite(sequence.dia)}
                     />
                   ) : (
                     <MdFavoriteBorder
                       className="challenge-favorites"
-                      onClick={() => toggleFavorito(sequence.dia)}
+                      onClick={() => toggleFavorite(sequence.dia)}
                     />
                   )}
                 </div>
