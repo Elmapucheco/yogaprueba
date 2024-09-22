@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useLocation, Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import "./challengeDay.css";
 import { FaMusic } from "react-icons/fa";
 import { IoMdArrowRoundBack } from "react-icons/io";
@@ -10,36 +10,27 @@ import { useDarkMode } from "../../../components/Context/DarkMode";
 
 function ChallengeDay() {
   const { darkMode } = useDarkMode();
-  const { dia } = useParams();
   const location = useLocation();
-  const sequences = location.state;
-  const [daySequence, setDaySequence] = useState(null);
+  const sequence = location.state;
   const navigate = useNavigate();
   const { isPlaying, stopAudio, playAudio } = useAudio();
 
-  useEffect(() => {
-    const sequence = sequences.find(
-      (sequence) => sequence.dia === parseInt(dia)
-    );
-    setDaySequence(sequence);
-  }, []);
-
-  const goBack = () => {
+  function goBack() {
     navigate(-1);
-  };
+  }
 
-  if (!daySequence) {
+  if (!sequence) {
     return (
       <div className="no-sequence">
-        No se encontró la secuencia para el día {dia}
+        No sequence found for the day {sequence.dia}
       </div>
     );
   }
 
-  const asanaLinks = Object.keys(daySequence)
+  const asanaLinks = Object.keys(sequence)
     .map((key) =>
-      Array.isArray(daySequence[key])
-        ? daySequence[key].map((asana, index) => ({
+      Array.isArray(sequence[key])
+        ? sequence[key].map((asana, index) => ({
             english_name: asana.english_name,
             key: `${key}_${index}`,
             url_png: asana.url_png,
@@ -59,11 +50,11 @@ function ChallengeDay() {
             className="music-icon"
             onClick={isPlaying ? stopAudio : playAudio}
           />
-          <h1>Day {dia}</h1>
-          <img src={start} alt={`Start of Day ${dia}`} />
+          <h1>Day {sequence.dia}</h1>
+          <img src={start} alt={`Day Challenge ${sequence.dia}`} />
           <p>
             Here is your sequence! Take a look at the poses and begin your day{" "}
-            {dia}.
+            {sequence.dia}.
           </p>
         </div>
       </div>
@@ -72,7 +63,6 @@ function ChallengeDay() {
         <div className="challengeDay-asana-container">
           {asanaLinks.map((asana) => (
             <Link
-              state={{ from: { dia } }}
               to={`/poses-list/${asana.english_name}`}
               key={asana.key}
               className="challengeDay-asana"
@@ -80,7 +70,7 @@ function ChallengeDay() {
               <div className="challengeDay-asana-img-contenedor">
                 <img
                   src={asana.url_png}
-                  alt={`Asana ${asana.key}`}
+                  alt={`Icon ${asana.english_name}`}
                   className="challengeDay-asana-img"
                 />
                 <span className="challengeDay-asana-name">
@@ -96,7 +86,7 @@ function ChallengeDay() {
           ))}
         </div>
         <Link
-          to={`/challengeGallery/${dia}/play`}
+          to={`/challengeGallery/${sequence.dia}/play`}
           state={{ asanaLinks }}
           className="challengeDay-start-button"
         >

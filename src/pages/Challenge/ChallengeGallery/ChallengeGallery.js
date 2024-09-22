@@ -156,7 +156,7 @@ function ChallengeGallery() {
           30 <span className="highlight">Yoga Days</span> Challenge
         </h1>
         <img src={pic} alt="Challenge Day Pic" />
-        <p>Experience the benefits of consistent practice</p>
+        <p>Let's experience the benefits of consistent practice</p>
       </div>
 
       <div className="challenge-sequence-list">
@@ -192,7 +192,7 @@ function ChallengeGallery() {
                 <Link
                   className="sequence-link"
                   to={`/challengeGallery/${sequence.dia}`}
-                  state={sequences}
+                  state={sequence}
                 >
                   <img src={arrow} alt="Right Arrow" className="next-icon" />
                 </Link>

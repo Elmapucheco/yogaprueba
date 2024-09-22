@@ -37,7 +37,7 @@ const asanasToRepeat = [
   "Warrior Two",
 ];
 
-const ChallengePlay = () => {
+function ChallengePlay() {
   const { darkMode } = useDarkMode();
   const containerRef = useRef(null);
   const location = useLocation();
@@ -51,18 +51,18 @@ const ChallengePlay = () => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
 
-  const goBack = () => {
+  function goBack() {
     setShowModal(true);
-  };
+  }
 
-  const handleConfirm = () => {
+  function handleConfirm() {
     setShowModal(false);
     navigate(-1);
-  };
+  }
 
-  const handleCancel = () => {
+  function handleCancel() {
     setShowModal(false);
-  };
+  }
 
   const processedAsanas = asanaLinks.flatMap((asana) => {
     if (asanasToRepeat.includes(asana.english_name)) {
@@ -114,7 +114,7 @@ const ChallengePlay = () => {
   const isFirstAsana = currentAsanaIndex === 0;
   const isLastAsana = currentAsanaIndex === processedAsanas.length - 1;
 
-  const handleTimerExpire = () => {
+  function handleTimerExpire() {
     bellAudio.play();
     if (!isPreparing) {
       setTimeout(() => {
@@ -128,29 +128,29 @@ const ChallengePlay = () => {
         navigate(-1);
       }, 5000);
     }
-  };
+  }
 
-  const handleBack = () => {
+  function handleBack() {
     if (!isFirstAsana) {
       setCurrentAsanaIndex(currentAsanaIndex - 1);
       setIsPreparing(true);
       setPrepTime(5);
       setKey((prevKey) => prevKey + 1);
     }
-  };
+  }
 
-  const handleNext = () => {
+  function handleNext() {
     if (!isLastAsana) {
       setCurrentAsanaIndex(currentAsanaIndex + 1);
       setIsPreparing(true);
       setPrepTime(5);
       setKey((prevKey) => prevKey + 1);
     }
-  };
+  }
 
-  const handlePause = () => {
+  function handlePause() {
     setIsPaused(!isPaused);
-  };
+  }
 
   if (asanaLinks.length === 0) {
     return (
@@ -246,6 +246,6 @@ const ChallengePlay = () => {
       </div>
     </div>
   );
-};
+}
 
 export default ChallengePlay;
