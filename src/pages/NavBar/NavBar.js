@@ -17,14 +17,15 @@ function NavBar() {
   const [isOpenLessons, setIsOpenLessons] = useState(false);
   const [isOpenInfo, setIsOpenInfo] = useState(false);
   const { darkMode } = useDarkMode();
-  const menuInfoRef = useRef();
-  const menuLessonRef = useRef();
-  const lessonRef = useRef();
-  const infoRef = useRef();
+  const menuInfoRef = useRef(null);
+  const menuLessonRef = useRef(null);
+  const lessonRef = useRef(null);
+  const infoRef = useRef(null);
 
   useEffect(() => {
     function handleClickOutside(e) {
       if (
+        isOpenLessons &&
         menuLessonRef.current &&
         !menuLessonRef.current.contains(e.target) &&
         e.target !== lessonRef.current
@@ -32,6 +33,7 @@ function NavBar() {
         setIsOpenLessons(false);
       }
       if (
+        isOpenInfo &&
         menuInfoRef.current &&
         !menuInfoRef.current.contains(e.target) &&
         e.target !== infoRef.current
