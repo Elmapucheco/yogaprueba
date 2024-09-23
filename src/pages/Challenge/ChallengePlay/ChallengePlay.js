@@ -51,6 +51,7 @@ function ChallengePlay() {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
 
+  // Modal
   function goBack() {
     setShowModal(true);
   }
@@ -64,20 +65,21 @@ function ChallengePlay() {
     setShowModal(false);
   }
 
-  const processedAsanas = asanaLinks.flatMap((asana) => {
-    if (asanasToRepeat.includes(asana.english_name)) {
-      return [
-        { ...asana, side: "Right side" },
-        { ...asana, side: "Left side" },
-      ];
-    }
-    return [asana];
-  });
-
-  const currentAsana = processedAsanas[currentAsanaIndex];
+  const processedAsanas = asanaLinks
+    .map((asana) => {
+      if (asanasToRepeat.includes(asana.english_name)) {
+        return [
+          { ...asana, side: "Right side" },
+          { ...asana, side: "Left side" },
+        ];
+      } else {
+        return asana;
+      }
+    })
+    .flat();
 
   useEffect(() => {
-    const breathAnimation = () => {
+    function breathAnimation() {
       if (containerRef.current) {
         containerRef.current.className = "sliderplay-image grow";
 
@@ -87,7 +89,7 @@ function ChallengePlay() {
           }
         }, 3000);
       }
-    };
+    }
 
     const interval = setInterval(breathAnimation, 6000);
 
@@ -111,17 +113,17 @@ function ChallengePlay() {
     return () => clearTimeout(timer);
   }, [isPreparing, prepTime, isPaused]);
 
+  const currentAsana = processedAsanas[currentAsanaIndex];
   const isFirstAsana = currentAsanaIndex === 0;
   const isLastAsana = currentAsanaIndex === processedAsanas.length - 1;
 
   function handleTimerExpire() {
     bellAudio.play();
-    if (!isPreparing) {
+    if (!isPreparing && !isLastAsana) {
       setTimeout(() => {
         handleNext();
       }, 2000);
-    }
-    if (isLastAsana) {
+    } else {
       setIsFinished(true);
 
       setTimeout(() => {
@@ -155,7 +157,7 @@ function ChallengePlay() {
   if (asanaLinks.length === 0) {
     return (
       <div className="challenge-play-container">
-        No se encontró la secuencia para reproducir
+        Sequence to play was not found
       </div>
     );
   }
