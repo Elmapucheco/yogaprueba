@@ -8,7 +8,7 @@ import Breathe from "../../../components/Breathe/Breathe";
 import { useDarkMode } from "../../../components/Context/DarkMode";
 import "./sliderInfo.css";
 
-const SliderInfo = () => {
+function SliderInfo() {
   const { darkMode } = useDarkMode();
   const location = useLocation();
   const { sequence, title, img, classes } = location.state;
@@ -22,7 +22,7 @@ const SliderInfo = () => {
     if (storedAsanas) {
       setAsanaDetails(JSON.parse(storedAsanas));
     } else {
-      const fetchAsanas = async () => {
+      async function fetchAsanas() {
         try {
           const response = await fetch(
             "https://yoga-api-nzy4.onrender.com/v1/poses"
@@ -30,7 +30,6 @@ const SliderInfo = () => {
           const data = await response.json();
 
           let filteredAsanas;
-
           if (sequence) {
             filteredAsanas = data.filter((asana) =>
               sequence.includes(asana.english_name)
@@ -52,7 +51,7 @@ const SliderInfo = () => {
         } catch (error) {
           console.error("Error fetching asana details:", error);
         }
-      };
+      }
 
       fetchAsanas();
     }
@@ -62,7 +61,7 @@ const SliderInfo = () => {
     return (
       <div>
         <h1 className="sliderInfo-loading">Loading...</h1>
-        <Breathe className="breathe" delay={3000} />
+        <Breathe className="breathe" delay={5000} />
       </div>
     );
   }
@@ -94,7 +93,7 @@ const SliderInfo = () => {
                 <div className="sliderInfo-asana-img-contenedor">
                   <img
                     src={asana.url_png}
-                    alt={`Asana ${index + 1}`}
+                    alt={`Asana ${asana.english_name}`}
                     className="sliderInfo-asana-img"
                   />
                   <span className="sliderInfo-asana-name">
@@ -117,6 +116,6 @@ const SliderInfo = () => {
       </div>
     </div>
   );
-};
+}
 
 export default SliderInfo;

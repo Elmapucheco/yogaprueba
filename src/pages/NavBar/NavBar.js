@@ -12,7 +12,7 @@ import accountdark from "../../assets/accountdark.png";
 import { useDarkMode } from "../../components/Context/DarkMode";
 import { useSlider } from "../../components/Context/SliderContext";
 
-const NavBar = () => {
+function NavBar() {
   const classes = useSlider();
   const [isOpenLessons, setIsOpenLessons] = useState(false);
   const [isOpenInfo, setIsOpenInfo] = useState(false);
@@ -23,7 +23,7 @@ const NavBar = () => {
   const infoRef = useRef();
 
   useEffect(() => {
-    const handleClickOutside = (e) => {
+    function handleClickOutside(e) {
       if (
         menuLessonRef.current &&
         !menuLessonRef.current.contains(e.target) &&
@@ -38,14 +38,15 @@ const NavBar = () => {
       ) {
         setIsOpenInfo(false);
       }
-    };
-
-    document.addEventListener("click", handleClickOutside);
+    }
+    if (isOpenInfo || isOpenLessons) {
+      document.addEventListener("click", handleClickOutside);
+    }
 
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, []);
+  }, [isOpenInfo, isOpenLessons]);
 
   return (
     <div className={`NavBar ${darkMode ? "dark" : ""}`}>
@@ -116,6 +117,6 @@ const NavBar = () => {
       </div>
     </div>
   );
-};
+}
 
 export default NavBar;

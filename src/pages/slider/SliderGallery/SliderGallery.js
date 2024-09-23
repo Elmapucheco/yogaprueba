@@ -5,7 +5,7 @@ import { useDarkMode } from "../../../components/Context/DarkMode";
 import { FaPlay, FaInfoCircle } from "react-icons/fa";
 import close from "../../../assets/exit.png";
 
-const SliderGallery = () => {
+function SliderGallery() {
   const { darkMode } = useDarkMode();
   const location = useLocation();
   const { classes } = location.state;
@@ -16,14 +16,14 @@ const SliderGallery = () => {
     title: "",
   });
 
-  const openModal = (duration, description, title) => {
+  function openModal(duration, description, title) {
     setModalContent({ duration, description, title });
     setIsModalOpen(true);
-  };
+  }
 
-  const closeModal = () => {
+  function closeModal() {
     setIsModalOpen(false);
-  };
+  }
 
   return (
     <div className={`slider-gallery-container ${darkMode ? "dark" : ""}`}>
@@ -32,7 +32,7 @@ const SliderGallery = () => {
           <div key={index} className="slider-gallery-item">
             <div className="slider-gallery-wrapper">
               <h2>{classItem.title}</h2>
-              <img src={classItem.img} alt={`Imagen ${index + 1}`} />
+              <img src={classItem.img} alt={`Imagen ${classItem.title}`} />
 
               <Link
                 to={`/slider/info/${index}`}
@@ -75,6 +75,6 @@ const SliderGallery = () => {
       )}
     </div>
   );
-};
+}
 
 export default SliderGallery;

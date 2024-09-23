@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
 import nextIcon from "../../../assets/nextPlay.png";
 import backIcon from "../../../assets/backPlay.png";
 import nextIcondark from "../../../assets/nextPlaydark.png";
@@ -11,11 +10,9 @@ import exit from "../../../assets/exit.png";
 import play from "../../../assets/play.png";
 import playdark from "../../../assets/playdark.png";
 import bell from "../../../assets/bell.wav";
-
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import ConfirmModal from "../../../components/Modal/ConfirmModal";
 import Confetti from "react-confetti";
-
 import "./sliderPlay.css";
 import { useDarkMode } from "../../../components/Context/DarkMode";
 
@@ -43,44 +40,40 @@ const asanasToRepeat = [
 const SliderPlay = () => {
   const { darkMode } = useDarkMode();
   const containerRef = useRef(null);
-
   const location = useLocation();
   const { asanaDetails } = location.state;
-
   const [isPaused, setIsPaused] = useState(false);
   const [isPreparing, setIsPreparing] = useState(true);
   const [prepTime, setPrepTime] = useState(5);
   const [key, setKey] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
   const [currentAsanaIndex, setCurrentAsanaIndex] = useState(0);
-
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
-  const goBack = () => {
+  function goBack() {
     setShowModal(true);
-  };
-  const handleConfirm = () => {
+  }
+  function handleConfirm() {
     setShowModal(false);
     navigate(-1);
-  };
-  const handleCancel = () => {
+  }
+  function handleCancel() {
     setShowModal(false);
-  };
+  }
 
-  const processedAsanas = asanaDetails.flatMap((asana) => {
-    if (asanasToRepeat.includes(asana.english_name)) {
-      return [
-        { ...asana, side: "Right side" },
-        { ...asana, side: "Left side" },
-      ];
-    }
-    return [asana];
-  });
-
-  const currentAsana = processedAsanas[currentAsanaIndex];
-  const isFirstAsana = currentAsanaIndex === 0;
-  const isLastAsana = currentAsanaIndex === processedAsanas.length - 1;
+  const processedAsanas = asanaDetails
+    .map((asana) => {
+      if (asanasToRepeat.includes(asana.english_name)) {
+        return [
+          { ...asana, side: "Right side" },
+          { ...asana, side: "Left side" },
+        ];
+      } else {
+        return asana;
+      }
+    })
+    .flat();
 
   useEffect(() => {
     const breathAnimation = () => {
@@ -117,47 +110,49 @@ const SliderPlay = () => {
     return () => clearTimeout(timer);
   }, [isPreparing, prepTime, isPaused]);
 
-  // if (processedAsanas.length === 0) {
-  //   return <div className="challenge-play-container">Sequence not found</div>;
-  // }
+  if (processedAsanas.length === 0) {
+    return <div className="challenge-play-container">Sequence not found</div>;
+  }
 
-  const handleNext = () => {
+  const currentAsana = processedAsanas[currentAsanaIndex];
+  const isFirstAsana = currentAsanaIndex === 0;
+  const isLastAsana = currentAsanaIndex === processedAsanas.length - 1;
+
+  function handleNext() {
     if (!isLastAsana) {
       setCurrentAsanaIndex(currentAsanaIndex + 1);
       setIsPreparing(true);
       setPrepTime(5);
       setKey((prevKey) => prevKey + 1);
     }
-  };
-  const handleBack = () => {
+  }
+  function handleBack() {
     if (!isFirstAsana) {
       setCurrentAsanaIndex(currentAsanaIndex - 1);
       setIsPreparing(true);
       setPrepTime(5);
       setKey((prevKey) => prevKey + 1);
     }
-  };
+  }
 
-  const handlePause = () => {
+  function handlePause() {
     setIsPaused(!isPaused);
-  };
+  }
 
-  const handleTimerExpire = () => {
+  function handleTimerExpire() {
     bellAudio.play();
-    if (!isPreparing) {
+    if (!isPreparing && !isLastAsana) {
       setTimeout(() => {
         handleNext();
       }, 2000);
-    }
-
-    if (isLastAsana) {
+    } else {
       setIsFinished(true);
 
       setTimeout(() => {
         navigate(-1);
       }, 5000);
     }
-  };
+  }
 
   return (
     <div className={`wood${darkMode ? " dark" : ""}`}>
