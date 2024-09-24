@@ -61,7 +61,7 @@ function SliderInfo() {
     return (
       <div>
         <h1 className="sliderInfo-loading">Loading...</h1>
-        <Breathe className="breathe" delay={5000} />
+        <Breathe className="breathe" delay={4000} />
       </div>
     );
   }

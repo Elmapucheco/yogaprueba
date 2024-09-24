@@ -11,12 +11,11 @@ function PoseDetail() {
   const navigate = useNavigate();
   const location = useLocation();
   const receivedSignal = location.state;
-
   const { darkMode } = useDarkMode();
 
-  const goBack = () => {
+  function goBack() {
     navigate(-1);
-  };
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -25,9 +24,10 @@ function PoseDetail() {
           `https://yoga-api-nzy4.onrender.com/v1/poses?name=${name}`
         );
         const data = await response.json();
+
         setAsana(data);
-      } catch {
-        console.error("Error getting asana data");
+      } catch (error) {
+        console.error("Error getting asana data:", error);
       }
     }
     const localStorageAsana = JSON.parse(localStorage.getItem("asanas"));

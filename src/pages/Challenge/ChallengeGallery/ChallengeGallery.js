@@ -144,7 +144,7 @@ function ChallengeGallery() {
     return (
       <div>
         <h1 className="challenge-loading">Loading...</h1>
-        <Breathe className="challenge-breathe" delay={5000} />
+        <Breathe className="challenge-breathe" delay={4000} />
       </div>
     );
   }
