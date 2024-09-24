@@ -9,36 +9,33 @@ function PosesList() {
   const { darkMode } = useDarkMode();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const localStorageData = localStorage.getItem("asanas");
-      if (localStorageData) {
-        setAsanas(JSON.parse(localStorageData));
-      } else {
-        try {
-          const response = await fetch(
-            "https://yoga-api-nzy4.onrender.com/v1/poses"
-          );
-          if (!response.ok) {
-            throw new Error("Error fetching data");
-          }
-          const data = await response.json();
-          setAsanas(data);
+    async function fetchData() {
+      try {
+        const response = await fetch(
+          "https://yoga-api-nzy4.onrender.com/v1/poses"
+        );
+        const data = await response.json();
 
-          localStorage.setItem("asanas", JSON.stringify(data));
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
+        setAsanas(data);
+
+        localStorage.setItem("asanas", JSON.stringify(data));
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
-    };
-
-    fetchData();
+    }
+    const localStorageData = JSON.parse(localStorage.getItem("asanas"));
+    if (localStorageData) {
+      setAsanas(localStorageData);
+    } else {
+      fetchData();
+    }
   }, []);
 
   if (!asanas || asanas.length === 0) {
     return (
       <div>
         <h1 className="poses-loading">Loading...</h1>
-        <Breathe className="breathe" delay={3000} />
+        <Breathe className="breathe" delay={4000} />
       </div>
     );
   }
