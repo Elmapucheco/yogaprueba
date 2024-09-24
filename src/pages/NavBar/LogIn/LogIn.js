@@ -11,7 +11,8 @@ function LogIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [showModal, setShowModal] = useState(false);
+  const CORRECT_USERNAME = "user";
+  const CORRECT_PASSWORD = "123";
 
   function registerLink() {
     setAction(" active");
@@ -23,13 +24,20 @@ function LogIn() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (username && password && (action ? email : true)) {
-      setShowModal(true);
-    }
-  }
 
-  function closeModal() {
-    setShowModal(false);
+    if (action) {
+      if (username && email && password) {
+        alert("Registration successful.");
+      } else {
+        alert("Please fill in all fields.");
+      }
+    } else {
+      if (username === CORRECT_USERNAME && password === CORRECT_PASSWORD) {
+        alert("Login successful.");
+      } else {
+        alert("Incorrect username or password.");
+      }
+    }
   }
 
   return (
@@ -126,17 +134,6 @@ function LogIn() {
           </form>
         </div>
       </div>
-      {showModal && (
-        <div className="login-modal-content">
-          <img
-            className="close"
-            onClick={closeModal}
-            src={close}
-            alt="close message"
-          />
-          <h3>This is a demo form for portfolio purposes only.</h3>
-        </div>
-      )}
     </div>
   );
 }
