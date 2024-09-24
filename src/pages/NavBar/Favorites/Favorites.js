@@ -8,13 +8,14 @@ import { MdDelete } from "react-icons/md";
 import { useDarkMode } from "../../../components/Context/DarkMode";
 
 function Favorites() {
-  const [favoritos, setFavoritos] = useState([]);
+  const [favorites, setFavorites] = useState([]);
   const [sequences, setSequences] = useState([]);
   const { darkMode } = useDarkMode();
 
   useEffect(() => {
     const storedFavorites = JSON.parse(localStorage.getItem("favoritos")) || [];
-    setFavoritos(storedFavorites);
+
+    setFavorites(storedFavorites);
   }, []);
 
   useEffect(() => {
@@ -27,26 +28,26 @@ function Favorites() {
   }, []);
 
   const favoriteSequences = sequences.filter((sequence) =>
-    favoritos.includes(sequence.dia)
+    favorites.includes(sequence.dia)
   );
 
   const removeFavorite = useCallback(
-    (dia) => {
-      const updatedFavoritos = favoritos.filter((favorito) => favorito !== dia);
-      setFavoritos(updatedFavoritos);
-      localStorage.setItem("favoritos", JSON.stringify(updatedFavoritos));
+    (day) => {
+      const updatedFavorites = favorites.filter((favorite) => favorite !== day);
+      setFavorites(updatedFavorites);
+      localStorage.setItem("favoritos", JSON.stringify(updatedFavorites));
     },
-    [favoritos]
+    [favorites]
   );
 
   return (
     <div className={`favorites-container ${darkMode ? "dark" : ""}`}>
       <div className="favorites-header">
         <h1>Favorite Challenge Days</h1>
-        <img className="favorites-img" src={cat} alt="Cat" />
+        <img className="favorites-img" src={cat} alt="cat lying on mat" />
         <p>Enjoy your selection</p>
       </div>
-      {favoritos.length === 0 ? (
+      {favorites.length === 0 ? (
         <div className="no-favorites-container">
           <h2 className="no-favorites">
             You haven't chosen favorites yet.
@@ -71,7 +72,7 @@ function Favorites() {
               <Link
                 className="favorites-sequence-link"
                 to={`/challengeGallery/${sequence.dia}`}
-                state={sequences}
+                state={sequence}
               >
                 <img
                   src={darkMode ? nextdark : next}
