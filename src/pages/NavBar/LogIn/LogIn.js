@@ -23,7 +23,7 @@ function LogIn() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (username && password && (action === " active" ? email : true)) {
+    if (username && password && (action ? email : true)) {
       setShowModal(true);
     }
   }
