@@ -11,6 +11,8 @@ function LogIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [message, setmessage] = useState(false);
   const CORRECT_USERNAME = "user";
   const CORRECT_PASSWORD = "123";
 
@@ -27,19 +29,25 @@ function LogIn() {
 
     if (action) {
       if (username && email && password) {
-        alert("Registration successful.");
+        setmessage("Registration successful.");
+        setShowModal(true);
       } else {
-        alert("Please fill in all fields.");
+        setmessage("Please fill in all fields.");
+        setShowModal(true);
       }
     } else {
       if (username === CORRECT_USERNAME && password === CORRECT_PASSWORD) {
-        alert("Login successful.");
+        setmessage("Login successful.");
+        setShowModal(true);
       } else {
-        alert("Incorrect username or password.");
+        setmessage("Incorrect username or password.");
+        setShowModal(true);
       }
     }
   }
-
+  function closeModal() {
+    setShowModal(false);
+  }
   return (
     <div className={`login-body ${darkMode ? "dark" : ""}`}>
       <div className={`wrapper-login ${action}`}>
@@ -134,6 +142,19 @@ function LogIn() {
           </form>
         </div>
       </div>
+       {" "}
+      {showModal && (
+        <div className="login-modal-content">
+               
+          <img
+            className="close"
+            onClick={closeModal}
+            src={close}
+            alt="close message"
+          />
+                    <h3>{message}</h3>
+        </div>
+      )}
     </div>
   );
 }
