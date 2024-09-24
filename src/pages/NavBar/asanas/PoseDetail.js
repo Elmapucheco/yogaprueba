@@ -3,12 +3,15 @@ import { useParams, useLocation, useNavigate } from "react-router-dom";
 import "./poseDetail.css";
 import arrowpurple from "../../../assets/arrowpurple.png";
 import { useDarkMode } from "../../../components/Context/DarkMode";
+import Breathe from "../../../components/Breathe/Breathe";
 
 function PoseDetail() {
   const [asana, setAsana] = useState(null);
   const { name } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
+  const receivedSignal = location.state;
+
   const { darkMode } = useDarkMode();
 
   const goBack = () => {
@@ -16,35 +19,37 @@ function PoseDetail() {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const localStorageAsana = JSON.parse(localStorage.getItem("asanas"));
-
-      if (localStorageAsana) {
-        const filteredAsana = localStorageAsana.find(
-          (item) => item.english_name === name
+    async function fetchData() {
+      try {
+        const response = await fetch(
+          `https://yoga-api-nzy4.onrender.com/v1/poses?name=${name}`
         );
-        setAsana(filteredAsana);
-      } else {
-        fetch(`https://yoga-api-nzy4.onrender.com/v1/poses?name=${name}`)
-          .then((res) => res.json())
-          .then((data) => {
-            setAsana(data);
-            console.log(data);
-          })
-          .catch((error) =>
-            console.error("Error al obtener detalles de la asana:", error)
-          );
+        const data = await response.json();
+        setAsana(data);
+      } catch {
+        console.error("Error getting asana data");
       }
-    };
-    fetchData();
+    }
+    const localStorageAsana = JSON.parse(localStorage.getItem("asanas"));
+
+    if (localStorageAsana) {
+      const filteredAsana = localStorageAsana.find(
+        (item) => item.english_name === name
+      );
+      setAsana(filteredAsana);
+    } else {
+      fetchData();
+    }
   }, []);
 
   if (!asana) {
-    return <div className="pose-loading">Loading...</div>;
+    return (
+      <div>
+        <h1 className="poses-loading">Loading...</h1>
+        <Breathe className="breathe" delay={4000} />
+      </div>
+    );
   }
-
-  const receivedSignal =
-    location.state && location.state.fromPosesList === "signal";
 
   return (
     <div className={`container-posedetail ${darkMode ? "dark" : ""}`}>
