@@ -194,6 +194,7 @@ form .register-link{
     padding: 1rem;
     color: #2f195f;
     text-align: center; 
+    pointer-events: none;
 }
   .login-body.dark .login-modal-content{
     background-color: #171f1d;
