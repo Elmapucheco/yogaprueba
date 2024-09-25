@@ -152,7 +152,7 @@ function LogIn() {
             src={close}
             alt="close message"
           />
-                    <h3>{message}</h3>
+                    <h2>{message}</h2>
         </div>
       )}
     </div>
