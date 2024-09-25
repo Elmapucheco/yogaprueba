@@ -47,7 +47,7 @@
     height: 65%;
     display: block;
     margin: 0 auto; 
-    filter: brightness(120%);
+    filter: brightness(120%) saturate(1.8);
   }
   
   .container-posedetail-info h2 {
