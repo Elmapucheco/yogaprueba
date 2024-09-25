@@ -83,7 +83,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#30C5D2", en
   background-color: white;
   display: block;
   border-radius: 50%;
-  filter: brightness(120%) saturate(2);
+  filter: brightness(120%) saturate(1.8);
   box-shadow: 0 0 10px rgb(244, 242, 242);
 }
 
